@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-
+import Auth from '../utils/auth'
 import { ADD_POST } from '../utils/mutations';
 
 
@@ -33,9 +33,12 @@ const NewPostForm = () => {
             event.stopPropagation();
         }
 
+        const loggedUser = Auth.getProfile()
+
+
         try {
             const { data } = await addPost({
-                variables: { ...postFormData }
+                variables: { ...postFormData, postUser: loggedUser.data._id }
             });
             console.log(data);
 
