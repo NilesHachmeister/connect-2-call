@@ -13,51 +13,38 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($name: String!, $email: String!, $password: String!, $siteLanguage: String!, $spokenLanguage: String!, $isCaller: Boolean!, $category: String, $rating: String ) {
+    addUser(name: $name, email: $email, password: $password, siteLanguage: $siteLanguage, spokenLanguage: $spokenLanguage, isCaller: $isCaller, category: $category, rating: $rating ) {
       token
       user {
         _id
-        username
+        name
+        email
+        password
+        siteLanguage
+        spokenLanguage
+        isCaller
+        category
+        rating
       }
     }
   }
 `;
 
-export const SAVE_BOOK = gql`
-  mutation saveBook($body: savedBookInput!) {
-    saveBook(body: $body) {
-      _id
-      username
-      email
-      bookCount
-      savedBooks {
-        authors
+export const ADD_POST = gql`
+  mutation addUser($taskTitle: String!, $callLanguage: String!, $description: String!, $callCategory: String, $payment: String!, $callTime: String, $phoneNumberToCall: String!) {
+    addUser(taskTitle: $taskTitle, callLanguage: $callLanguage, description: $description, callCategory: $callCategory, payment: $payment, callTime: $callTime, phoneNumberToCall: $phoneNumberToCall) {
+      token
+      post {
+        _id
+        taskTitle
+        callLanguage
         description
-        image
-        link
-        title
-        bookId
-      }
-    }
-  }
-`;
-
-export const REMOVE_BOOK = gql`
-  mutation removeBook($bookId: String!) {
-    removeBook(bookId: $bookId) {
-      _id
-      username
-      email
-      bookCount
-      savedBooks {
-        authors
-        description
-        bookId
-        image
-        link
-        title
-        
+        callCategory
+        payment
+        callTime
+        phoneNumberToCall
+    
       }
     }
   }
