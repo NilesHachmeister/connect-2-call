@@ -1,4 +1,4 @@
-# tail-hangs
+# Connect-2-Caller
 
 Use React for the front end.
 Use GraphQL with a Node.js and Express.js server.
