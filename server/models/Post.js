@@ -4,6 +4,8 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema({
 
+
+
   taskTitle: {
     type: String,
     required: true,
@@ -20,17 +22,65 @@ const postSchema = new Schema({
     required: true,
   },
 
-  
+
+  description: {
+    type: String,
+    required: true,
+  },
+
+  callCategory: {
+    type: String,
+    required: true,
+  },
+
   payment: {
 
     type: String,
     required: true,
 
-},
+  },
 
 
-  // time frame?
-  // messages
+  callTime: {
+
+    type: String,
+    required: true,
+
+  },
+
+  comments: {
+
+    type: String,
+    required: true,
+
+  },
+
+  phoneNumberToCall: {
+
+    type: String,
+    required: true,
+
+  },
+
+  postUser: {
+
+    type: String,
+    required: true,
+
+  },
+
+  caller: {
+    type: String,
+    // user
+  },
+
+  rating: {
+
+    type: String,
+    required: true,
+
+  },
+
 
 
 });
