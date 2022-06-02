@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false, category: '', rating: '' });
+  const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false, category: '' });
   const [addUser, { error }] = useMutation(ADD_USER);
   // set state for form validation
   const [validated] = useState(false);
@@ -20,6 +20,12 @@ const SignupForm = () => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
+
+  const booleanChange = (event) => {
+    const { name } = event.target;
+    setUserFormData({ ...userFormData, [name]: !userFormData.isCaller})
+    console.log(userFormData.isCaller)
+  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -41,9 +47,9 @@ const SignupForm = () => {
         throw new Error('something went wrong!');
       }
 
-      // const { token, user } = await response.json();
-      // console.log(user);
+  
       Auth.login(data.addUser.token);
+
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -57,7 +63,6 @@ const SignupForm = () => {
       spokenLanguage: '',
       isCaller: false,
       category: '',
-      rating: ''
     });
   };
 
@@ -136,19 +141,17 @@ const SignupForm = () => {
         </Form.Group>
 
 
-
         <Form.Group>
-          <Form.Label htmlFor='siteLanguage'>siteLanguage</Form.Label>
+          <Form.Label htmlFor='isCaller'>isCaller</Form.Label>
           <Form.Control
             type='checkbox'
-            name='siteLanguage'
-            onChange={handleInputChange}
-            value={userFormData.siteLanguage}
+            name='isCaller'
+            onChange={booleanChange}
+            // value={userFormData.isCaller}
             required
           />
-          <Form.Control.Feedback type='invalid'>siteLanguage is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>isCaller is required!</Form.Control.Feedback>
         </Form.Group>
-
 
 
         <Form.Group>
@@ -163,6 +166,8 @@ const SignupForm = () => {
           />
           <Form.Control.Feedback type='invalid'>category is required!</Form.Control.Feedback>
         </Form.Group>
+
+
 
 
 

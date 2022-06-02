@@ -23,7 +23,7 @@ const typeDefs = gql`
       payment: String
       callTime: String
       phoneNumberToCall: String
-      postUser: User
+      postUser: String
       caller: User
     comments: [Comment]
     }
@@ -51,9 +51,9 @@ const typeDefs = gql`
 
   type Mutation {
 
-    addUser(name: String!, email: String!, password: String!, siteLanguage: String!, spokenLanguage: String!, isCaller: Boolean!, category: String, rating: String ): Auth
+    addUser(name: String!, email: String!, password: String!, siteLanguage: String!, spokenLanguage: String!, isCaller: Boolean!, category: String): Auth
 
-    addPost(taskTitle: String!, callLanguage: String!, description: String!, callCategory: String, payment: String, callTime: String!, phoneNumberToCall: String! ): Post
+    addPost(taskTitle: String!, callLanguage: String!, description: String!, callCategory: String, payment: String, callTime: String!, phoneNumberToCall: String!, postUser: String! ): Post
 
     login(email: String!, password: String!): Auth
 
