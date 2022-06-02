@@ -2,9 +2,18 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Conversation = require('./Post');
+
+// const Conversation = require('./Post');
 
 const userSchema = new Schema({
+
+
+    // create categories schema
+    // have the category fit in posts
+    // have post belong to user
+
+
+
     name: {
         type: String,
         required: true,
@@ -20,7 +29,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 5
     },
-// what language the site will populate in
+    // what language the site will populate in
     siteLanguage: {
         type: String,
         required: true,
@@ -32,6 +41,17 @@ const userSchema = new Schema({
         type: String,
         required: true,
 
+    },
+
+    // if false, it is a user
+    isCaller: {
+        type: Boolean,
+        required: true,
+    },
+
+    // only for isCaller
+    catagory: {
+        type: String,
     },
 
 
