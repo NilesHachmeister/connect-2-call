@@ -55,7 +55,6 @@ query User($userId: ID!) {
       siteLanguage
       spokenLanguage
       isCaller
-      category
       rating
     }
   }`;

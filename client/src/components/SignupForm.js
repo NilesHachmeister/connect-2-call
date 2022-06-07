@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false, category: '' });
+  const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false });
   const [addUser, { error }] = useMutation(ADD_USER);
   // set state for form validation
   const [validated] = useState(false);
@@ -23,7 +23,7 @@ const SignupForm = () => {
 
   const booleanChange = (event) => {
     const { name } = event.target;
-    setUserFormData({ ...userFormData, [name]: !userFormData.isCaller})
+    setUserFormData({ ...userFormData, [name]: !userFormData.isCaller })
     console.log(userFormData.isCaller)
   }
 
@@ -47,7 +47,7 @@ const SignupForm = () => {
         throw new Error('something went wrong!');
       }
 
-  
+
       Auth.login(data.addUser.token);
 
     } catch (err) {
@@ -62,7 +62,6 @@ const SignupForm = () => {
       siteLanguage: '',
       spokenLanguage: '',
       isCaller: false,
-      category: '',
     });
   };
 
@@ -152,22 +151,6 @@ const SignupForm = () => {
           />
           <Form.Control.Feedback type='invalid'>isCaller is required!</Form.Control.Feedback>
         </Form.Group>
-
-
-        <Form.Group>
-          <Form.Label htmlFor='category'>category</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='category'
-            name='category'
-            onChange={handleInputChange}
-            value={userFormData.category}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>category is required!</Form.Control.Feedback>
-        </Form.Group>
-
-
 
 
 
