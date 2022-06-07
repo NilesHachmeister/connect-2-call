@@ -1,13 +1,13 @@
 # Connect-2-Caller
-
-Use React for the front end.
-Use GraphQL with a Node.js and Express.js server.
-Use MongoDB and the Mongoose ODM for the database
-Use queries and mutations for retrieving, adding, updating, and deleting data.
-Use a polished UI.
-Be deployed using Heroku (with data)
-Be interactive (i.e., accept and respond to user input)
-Include authentication (JWT).
+## Acceptiance Criteria 
+* Use React for the front end.
+* Use GraphQL with a Node.js and Express.js server.
+* Use MongoDB and the Mongoose ODM for the database
+* Use queries and mutations for retrieving, adding, updating, and deleting data.
+* Use a polished UI.
+* Be deployed using Heroku (with data)
+* Be interactive (i.e., accept and respond to user input)
+*Include authentication (JWT).
 
 Protect sensitive API key information on the server.
 Include a high-quality README (with unique name, description, technologies used, 
