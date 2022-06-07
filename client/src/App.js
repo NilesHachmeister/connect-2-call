@@ -1,15 +1,38 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SignupForm from './components/SignupForm';
+import NewPostForm from './components/NewPostForm';
+import Home from './components/Home';
+import MainHomePage from './pages/home-page';
 
+import './homepg.css';
+import Testimonials from './components/Testimonials';
 
-
-const client = new ApolloClient({
+const httpLink = createHttpLink({
     uri: '/graphql',
-    cache: new InMemoryCache(),
 });
 
+const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('id_token');
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    };
+});
 
+const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+});
 
 
 // landing page
@@ -23,21 +46,20 @@ const client = new ApolloClient({
 // comments 
 
 
-function App() {
+class App extends React.Component {
+    render() {
     return (
         <ApolloProvider client={client}>
             <Router>
-                <div className="flex-column justify-flex-start min-100-vh">
-                    <Header />
-                    <div className="container">
 
+                <MainHomePage />
+          
+                {/* <NewPostForm /> */}
 
-                    </div>
-                    <Footer />
-                </div>
             </Router>
         </ApolloProvider>
     );
+    }
 }
 
 export default App;

@@ -37,10 +37,8 @@ const userSchema = new Schema({
 
     // filters out languanges you dont speak
     spokenLanguage: {
-
         type: String,
         required: true,
-
     },
 
     // if false, it is a user
@@ -50,12 +48,15 @@ const userSchema = new Schema({
     },
 
     // only for isCaller
-    catagory: {
+    category: {
         type: String,
     },
 
-
-
+    rating: {
+        type: Number,
+        min: 0,
+        default: 0,
+    },
 
 });
 
