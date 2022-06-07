@@ -9,8 +9,11 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SignupForm from './components/SignupForm';
 import NewPostForm from './components/NewPostForm';
+import Home from './components/Home';
+import MainHomePage from './pages/home-page';
 
-
+import './homepg.css';
+import Testimonials from './components/Testimonials';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -43,16 +46,20 @@ const client = new ApolloClient({
 // comments 
 
 
-function App() {
+class App extends React.Component {
+    render() {
     return (
         <ApolloProvider client={client}>
             <Router>
 
-                <NewPostForm />
+                <MainHomePage />
+          
+                {/* <NewPostForm /> */}
 
             </Router>
         </ApolloProvider>
     );
+    }
 }
 
 export default App;
