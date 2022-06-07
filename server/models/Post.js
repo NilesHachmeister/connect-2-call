@@ -73,8 +73,8 @@ const postSchema = new Schema({
         maxlength: 280,
       },
       commentAuthor: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
       },
       createdAt: {
         type: Date,

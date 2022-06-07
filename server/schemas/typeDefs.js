@@ -9,7 +9,6 @@ const typeDefs = gql`
     siteLanguage: String
     spokenLanguage: String
     isCaller: Boolean
-    category: String
     rating: String
   }
 
