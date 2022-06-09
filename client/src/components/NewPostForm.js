@@ -175,6 +175,20 @@ const NewPostForm = () => {
                     variant='success'>
                     Submit
                 </Button>
+
+                <Button
+                    disabled={!(postFormData.taskTitle && postFormData.callLanguage && postFormData.description)}
+                    type='edit'
+                    variant='success'>
+                    Edit post
+                </Button>
+
+                <Button
+                    disabled={!(postFormData.taskTitle && postFormData.callLanguage && postFormData.description)}
+                    type='complited'
+                    variant='success'>
+                    Complited
+                </Button>
             </Form>
         </>
     );
