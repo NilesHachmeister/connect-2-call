@@ -23,7 +23,6 @@ const postSchema = new Schema({
     required: true,
   },
 
-
   description: {
     type: String,
     required: true,
@@ -61,6 +60,12 @@ const postSchema = new Schema({
   caller: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+  },
+
+  completed: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
 
 
