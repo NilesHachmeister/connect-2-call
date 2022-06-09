@@ -6,12 +6,7 @@ import card4 from '../assets/card4.jpeg'
 import card13 from '../assets/card13.jpeg'
 
 export default function Info() {
-  
-
     return (
-
-
-
      <>
   <li className="card" id="card_1">
     <div className="card__content">
@@ -65,6 +60,6 @@ export default function Info() {
 
       
   );
-  };
+};
 
 
