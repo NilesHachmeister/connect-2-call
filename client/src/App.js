@@ -7,13 +7,9 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignupForm from './components/SignupForm';
-import NewPostForm from './components/NewPostForm';
-import Home from './components/Home';
-import MainHomePage from './pages/home-page';
+import HomePage from './pages/home-page';
 
 import './homepg.css';
-import Testimonials from './components/Testimonials';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -51,22 +47,8 @@ class App extends React.Component {
         return (
             <ApolloProvider client={client}>
                 <Router>
-                    <Routes>
-
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
-                        <Route
-                            path="/signup"
-                            element={<SignupForm />}
-                        />
-                        <Route
-                            path="/new-post"
-                            element={<NewPostForm />}
-                        />
-
-                    </Routes>
+                    
+                    <HomePage />
 
                 </Router>
             </ApolloProvider>
