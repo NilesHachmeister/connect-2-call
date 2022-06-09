@@ -47,3 +47,25 @@ mutation AddUser($username: String!, $email: String!, $password: String!, $siteL
       token
   }
 }`;
+
+
+export const ADD_COMMENT = gql`
+mutation AddComment($commentAuthor: String!, $commentText: String!, $postId: String!) {
+  addComment(commentAuthor: $commentAuthor, commentText: $commentText, postId: $postId) {
+    comments {
+      commentText
+      commentAuthor
+      createdAt
+    }
+  }
+}`;
+
+export const DELETE_POST = gql`
+mutation DeletePost($postId: String!) {
+  deletePost(postId: $postId) {
+   _id
+  }
+}`;
+
+
+
