@@ -7,29 +7,14 @@ import NewPostForm from '../components/NewPostForm';
 
 
 const boardPage = () => {
-  const [content, setContent] = useState("Home")
-  const handleChange = (content) => {
-    setContent(content)
-  }
-  const render = () => {
-    if (content === "Home") {
-      return <Home />
-    }
-    else if (content === "Logout") {
-      return <Home
-      />
-    }
-    else if (content === "Add Post") {
-      return <NewPostForm />
-    }
-  }
+
   return (
     <>
       <Header
-        currentPage={content} changeFunction={handleChange}
+
       />
-      {render()}
-      
+
+
       <Footer />
     </>
   )

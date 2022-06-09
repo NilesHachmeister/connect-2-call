@@ -9,6 +9,9 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home-page';
 import SignupForm from './components/SignupForm'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Board from './pages/board'
 
 
 import './homepg.css';
@@ -49,10 +52,27 @@ class App extends React.Component {
         return (
             <ApolloProvider client={client}>
                 <Router>
-                    
-                    <HomePage />
+                    <div>
 
+                        <Header />
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<HomePage />}
+                            />
+                            <Route
+                                path="/signupform"
+                                element={<SignupForm />}
+                            />
+                            <Route
+                                path="/board"
+                                element={<Board />}
+                            />
+                        </Routes>
+                        <Footer />
+                    </div>
                 </Router>
+
             </ApolloProvider>
         );
     }

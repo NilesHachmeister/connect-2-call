@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false });
+  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false });
   const [addUser, { error }] = useMutation(ADD_USER);
   // set state for form validation
   const [validated] = useState(false);
@@ -56,7 +56,7 @@ const SignupForm = () => {
     }
 
     setUserFormData({
-      name: '',
+      username: '',
       email: '',
       password: '',
       siteLanguage: '',
@@ -75,16 +75,16 @@ const SignupForm = () => {
         </Alert>
 
         <Form.Group>
-          <Form.Label htmlFor='name'>name</Form.Label>
+          <Form.Label htmlFor='username'>username</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Your name'
-            name='name'
+            placeholder='Your username'
+            name='username'
             onChange={handleInputChange}
-            value={userFormData.name}
+            value={userFormData.username}
             required
           />
-          <Form.Control.Feedback type='invalid'>name is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>username is required!</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
