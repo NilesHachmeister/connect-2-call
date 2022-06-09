@@ -4,10 +4,14 @@ import { ADD_COMMENT } from '../utils/mutations';
 import Auth from '../utils/auth'
 import { useMutation } from '@apollo/client';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { GET_POST } from "../utils/queries";
+import NewPostForm from "./NewPostForm";
 
 
 const Card = () => {
-    const [commentFormData, setCommentFormData] = useState({  commentText: '', username: '', caller_username: ''});
+    const [Post, { post }] = useMutation(GET_POST);
+
+    const [commentFormData, setCommentFormData] = useState({  username: '', commentText: ''});
     const [addComment, { error }] = useMutation(ADD_COMMENT);
     // set state for form validation
     const [validated] = useState(true);
@@ -15,8 +19,8 @@ const Card = () => {
     const [showAlert, setShowAlert] = useState(false);
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setCommentFormData({ ...commentFormData, [name]: value });
+        const { username, value } = event.target;
+        setCommentFormData({ ...commentFormData, [username]: value });
     };
 
     const handleFormSubmit = async (event) => {
@@ -31,6 +35,21 @@ const Card = () => {
 
         const loggedUser = Auth.getProfile()
 
+        try {
+            const { data } = await Post({
+                variables: { ...post, postUser: loggedUser.data._id }
+            });
+            console.log(data);
+
+            if (error) {
+                throw new Error('something went wrong!');
+            }
+
+        } catch (err) {
+            console.error(err);
+            setShowAlert(true);
+        }
+
 
         try {
             const { data } = await addComment({
@@ -42,20 +61,15 @@ const Card = () => {
                 throw new Error('something went wrong!');
             }
 
-            // const { token, user } = await response.json();
-            // console.log(user);
-            // Auth.login(data.addPost.token);
-
-
-
         } catch (err) {
             console.error(err);
             setShowAlert(true);
         }
 
         setCommentFormData({
-            commentText: '', 
             username: '',
+            commentText: ''
+
         });
     };
 
@@ -65,27 +79,28 @@ const Card = () => {
     return (
         <>
         {/* This is needed for the validation functionality above */}
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <NewPostForm noValidate validated={validated} onSubmit={handleFormSubmit}>
             {/* show alert if server response is bad */}
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                 Something went wrong with your signup!
             </Alert>
 
             <Form.Group>
-                <Form.Label htmlFor='commentText'>Comment: </Form.Label>
-                <Form.Control
+                <Form.Label htmlFor='taskTitle'>Title: </Form.Label>
+                <Form.Label htmlFor='description'>Description: </Form.Label>
+                < Post />
+
+                <Form.Label htmlFor='username'>Name: </Form.Label>
+                    
+                    <Form.Control
                     type='text'
                     placeholder='commentText'
                     name='commentText'
                     onChange={handleInputChange}
                     value={commentFormData.commentText}
                     required
-                />
-                <Form.Control.Feedback type='text'
-                placeholder='name'
-                name='name'
-                value={ name}
-                    required></Form.Control.Feedback>
+                    />
+                    
             </Form.Group>
 
 
@@ -96,7 +111,8 @@ const Card = () => {
                 variant='success'>
                 Submit
             </Button>
-        </Form>
+            
+        </NewPostForm>
     </>
     );
 };
