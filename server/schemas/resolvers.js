@@ -74,14 +74,14 @@ const resolvers = {
         },
 
         deletePost: async (parent, { postId }, context) => {
-            // if (context.user) {
+            if (context.user) {
 
-            return User.findOneAndRemove(
-                { _id: postId }
-            );
-            
-            // }
-            // throw new AuthenticationError('You need to be logged in!');
+                return Post.findOneAndRemove(
+                    { _id: postId }
+                );
+
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
 

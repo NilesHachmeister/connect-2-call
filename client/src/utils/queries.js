@@ -38,10 +38,15 @@ query Posts {
       payment
       callTime
       phoneNumberToCall
-      postUser {
-        name
-        _id
-      }
+      postUser
+      caller
+      completed
+    comments {
+      _id
+      commentText
+      commentAuthor
+      createdAt
+    }
     }
   }`;
 
