@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import '../styles/homepg.css';
+import '../homepg.css';
 
 
 function Footer() {
@@ -10,7 +10,7 @@ function Footer() {
         <li class="list-inline-item"><a href="#">Home</a></li>
         <li class="list-inline-item"><a href="#">Login</a></li>
         <li class="list-inline-item"><a href="#">Sign Up</a></li>
-        <li class="list-inline-item"><a href="#">FAQ's</a></li>
+    
     </ul>
 
     <p class="copyright">Connect 2 Call © 2022</p>
