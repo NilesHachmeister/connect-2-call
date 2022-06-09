@@ -38,7 +38,12 @@ const Home = () => {
                 <h4>New Here?</h4>
 
                 <p>SIgn up below to either make or request calls.</p>
-                <button>Sign Up</button>
+
+                <a className="button" href="/signupform">
+                  <button href='/signupform'>Sign Up</button>
+                </a>
+
+
                 <br />
 
               </div>
