@@ -14,7 +14,7 @@ const userSchema = new Schema({
 
 
 
-    name: {
+    username: {
         type: String,
         required: true,
         trim: true
@@ -58,7 +58,7 @@ const userSchema = new Schema({
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
+        const saltRounds = bcrypt.genSaltSync(10);
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
 

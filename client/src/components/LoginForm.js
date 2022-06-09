@@ -28,7 +28,7 @@ const LoginForm = () => {
 
     try {
       const { data } = await loginUser({
-        variables: {...userFormData} 
+        variables: { ...userFormData }
       });
 
       Auth.login(data.login.token);
@@ -46,6 +46,7 @@ const LoginForm = () => {
 
   return (
     <>
+      <h1>Welcome Back!</h1>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
