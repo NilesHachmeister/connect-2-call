@@ -8,7 +8,7 @@ db.once('open', async () => {
 
     const users = await User.insertMany([
         {
-            name: 'Amy',
+            username: 'Amy',
             email:
                 'Amye23@gmail.com',
             password: 'password1234',
@@ -17,7 +17,7 @@ db.once('open', async () => {
             isCaller: false,
         },
         {
-            name: 'Larry L.',
+            username: 'Larry L.',
             email:
                 'TheBestLarry@yahoo.com',
             password: 'password1234',
@@ -25,7 +25,7 @@ db.once('open', async () => {
             spokenLanguage: "english",
             isCaller: false,
         }, {
-            name: 'Dan',
+            username: 'Dan',
             email:
                 'Dan-the-best-teacher@gmail.com',
             password: 'password1234',
@@ -33,7 +33,7 @@ db.once('open', async () => {
             spokenLanguage: "english",
             isCaller: false,
         }, {
-            name: 'Terry C.',
+            username: 'Terry C.',
             email:
                 'terryc@gmail.com',
             password: 'password1234',

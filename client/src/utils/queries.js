@@ -12,10 +12,7 @@ query Post($postId: ID!) {
       callTime
       phoneNumberToCall
       postUser {
-        name
-      }
-      caller {
-        name
+        username
       }
       comments {
           _id
@@ -54,7 +51,7 @@ export const GET_USER = gql`
 query User($userId: ID!) {
     user(userId: $userId) {
       _id
-      name
+      username
       email
       password
       siteLanguage

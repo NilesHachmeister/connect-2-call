@@ -33,11 +33,11 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_USER = gql`
-mutation AddUser($name: String!, $email: String!, $password: String!, $siteLanguage: String!, $spokenLanguage: String!, $isCaller: Boolean!) {
-  addUser(name: $name, email: $email, password: $password, siteLanguage: $siteLanguage, spokenLanguage: $spokenLanguage, isCaller: $isCaller) {
+mutation AddUser($username: String!, $email: String!, $password: String!, $siteLanguage: String!, $spokenLanguage: String!, $isCaller: Boolean!) {
+  addUser(username: $username, email: $email, password: $password, siteLanguage: $siteLanguage, spokenLanguage: $spokenLanguage, isCaller: $isCaller) {
        user {
         _id
-        name
+        username
         email
         password
         siteLanguage
