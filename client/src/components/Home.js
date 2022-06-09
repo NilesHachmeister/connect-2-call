@@ -3,8 +3,6 @@ import Info from './InfoCards';
 import '../homepg.css';
 import backgroundImage from '../assets/new-header.jpg';
 import signUp from '../assets/newsignup.jpeg';
-
-
 const Home = () => {
   
   return (
