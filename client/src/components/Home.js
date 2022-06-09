@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Testimonials from './Testimonials';
+import Info from './InfoCards';
 import '../homepg.css';
 
 
@@ -7,33 +7,24 @@ import '../homepg.css';
 const Home = () => {
   
   return (
-   
-    <main>
-    <div class="fixed-bg"></div>
 
- 
-    <li class="card" id="card_1">
-			<div class="card__content">
-				<div >
-					<h2><i>"I'm so thankful I can depend on you!"</i></h2>
-					<p>-Joan from Minneapolis </p>
-					<p><a href="#top" class="btn btn--accent">Read more</a></p>
-				</div>
-				<figure class >
-					
-         < img src = {require('../assets/card6.jpeg')} alt = 'this is Joan'/>
-        
-				</figure>
-			</div>
-		</li>
-    
+    <><>
+
+      <div className="fixed-bg"></div>
+    </><aside>
+        <ul>
+          <Info />
+        </ul>
+      </aside>
+  
 
 
-    <aside>
+  <aside>
       <div class="card" id="card-about">
         <p>Blah Blah Blah....where we explain our App</p>
         <br />
       </div>
+
 
       <div class="container" id="container">
         <div class="form-container log-in-container">
@@ -55,13 +46,14 @@ const Home = () => {
               <p>SIgn up below to either make or request calls.</p>
               <button>Sign Up</button>
               <br />
+              
+            </div>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
-    </main>
     
+    </aside> 
+         </>
   );
 };
 

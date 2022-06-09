@@ -40,13 +40,16 @@ export default function Info() {
       paddingTop: "20px",
       listStyle: "none",
       maxWidth: "200px",
+      width: "21rem"
     };
 
     return (
       <li className = "card">
          
-        <Card className = "card__content" style={{ width: "21rem" }}>
-          <Card.Img variant="top" src={card.image} />
+        <Card  style={{renderCard }}>
+            <figure>
+            <Card.Img variant="top" src={card.image} />
+          </figure>
           <Card.Body>
             <Card.Title style={{ fontStyle: "italic" }}>
               {card.title}{" "}
