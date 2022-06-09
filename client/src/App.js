@@ -6,7 +6,7 @@ import {
     createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignupForm from './components/SignupForm';
 import NewPostForm from './components/NewPostForm';
 import Home from './components/Home';
@@ -48,17 +48,29 @@ const client = new ApolloClient({
 
 class App extends React.Component {
     render() {
-    return (
-        <ApolloProvider client={client}>
-            <Router>
+        return (
+            <ApolloProvider client={client}>
+                <Router>
+                    <Routes>
 
-                <MainHomePage />
-          
-                {/* <NewPostForm /> */}
+                        <Route
+                            path="/"
+                            element={<Home />}
+                        />
+                        <Route
+                            path="/signup"
+                            element={<SignupForm />}
+                        />
+                        <Route
+                            path="/new-post"
+                            element={<NewPostForm />}
+                        />
 
-            </Router>
-        </ApolloProvider>
-    );
+                    </Routes>
+
+                </Router>
+            </ApolloProvider>
+        );
     }
 }
 

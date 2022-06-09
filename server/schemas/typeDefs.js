@@ -9,7 +9,6 @@ const typeDefs = gql`
     siteLanguage: String
     spokenLanguage: String
     isCaller: Boolean
-    category: String
     rating: String
   }
 
@@ -25,6 +24,7 @@ const typeDefs = gql`
       phoneNumberToCall: String
       postUser: String
       caller: User
+      completed: Boolean
     comments: [Comment]
     }
   
@@ -60,6 +60,9 @@ const typeDefs = gql`
 
     addComment(postId: ID!, commentText: String!): Post
 
+    deletePost(postId: ID!): Post
+
+    markAsCompleted(postId: ID!): Post
   }
 `;
 

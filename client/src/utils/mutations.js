@@ -43,7 +43,6 @@ mutation AddUser($name: String!, $email: String!, $password: String!, $siteLangu
         siteLanguage
         spokenLanguage
         isCaller
-        category
       }
       token
   }

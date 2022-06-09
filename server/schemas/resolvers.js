@@ -1,4 +1,4 @@
-const { User, Post, Comment } = require('../models');
+const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -72,6 +72,38 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        deletePost: async (parent, { postId }, context) => {
+            if (context.user) {
+
+                return Post.findOneAndRemove(
+                    { _id: postId }
+                );
+
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+
+
+        markAsCompleted: async (parent, { postId }, context) => {
+            if (context.user) {
+                return Post.findOneAndUpdate(
+                    { _id: postId },
+                    {
+                        $set: {
+                            completed: true,
+                        },
+                    },
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                );
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
 
 
     }

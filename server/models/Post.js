@@ -23,7 +23,6 @@ const postSchema = new Schema({
     required: true,
   },
 
-
   description: {
     type: String,
     required: true,
@@ -63,6 +62,12 @@ const postSchema = new Schema({
     ref: 'User',
   },
 
+  completed: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+
 
   comments: [
     {
@@ -73,8 +78,8 @@ const postSchema = new Schema({
         maxlength: 280,
       },
       commentAuthor: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
       },
       createdAt: {
         type: Date,

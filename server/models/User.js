@@ -47,11 +47,6 @@ const userSchema = new Schema({
         required: true,
     },
 
-    // only for isCaller
-    category: {
-        type: String,
-    },
-
     rating: {
         type: Number,
         min: 0,
