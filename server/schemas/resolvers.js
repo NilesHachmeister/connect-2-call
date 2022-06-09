@@ -55,22 +55,23 @@ const resolvers = {
 
 
 
-        addComment: async (parent, { postId, commentText }, context) => {
-            if (context.user) {
-                return Post.findOneAndUpdate(
-                    { _id: postId },
-                    {
-                        $addToSet: {
-                            comments: { postText, commentAuthor: context.user.username },
-                        },
+        addComment: async (parent, { postId, commentText, commentAuthor }, context) => {
+            // if (context.user) {
+            return Post.findOneAndUpdate(
+                { _id: postId },
+                {
+                    $addToSet: {
+                        comments: { commentText, commentAuthor },
                     },
-                    {
-                        new: true,
-                        runValidators: true,
-                    }
-                );
-            }
-            throw new AuthenticationError('You need to be logged in!');
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                }
+            );
+
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
         },
 
         deletePost: async (parent, { postId }, context) => {

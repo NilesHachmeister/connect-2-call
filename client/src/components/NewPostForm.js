@@ -31,9 +31,9 @@ const NewPostForm = () => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        }
+        };
 
-        const loggedUser = Auth.getProfile()
+        const loggedUser = Auth.getProfile();
 
 
         try {
@@ -44,13 +44,13 @@ const NewPostForm = () => {
 
             if (error) {
                 throw new Error('something went wrong!');
-            }
+            };
 
 
         } catch (err) {
             console.error(err);
             setShowAlert(true);
-        }
+        };
 
         setPostFormData({
             taskTitle: '',
