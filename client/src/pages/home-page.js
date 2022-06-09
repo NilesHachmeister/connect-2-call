@@ -5,7 +5,6 @@ import Home from '../components/Home';
 import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm';
 import Footer from '../components/Footer';
-import Testimonials from '../components/Testimonials';
 
 
 
