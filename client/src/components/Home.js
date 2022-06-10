@@ -49,7 +49,11 @@ const Home = () => {
 
                 <p><h3>Sign up below to either make or request calls.</h3></p>
                 <br></br>
-                <button>Sign Up</button>
+
+                <a className="button" href="/signupform">
+                  <button>Sign Up</button>
+                </a>
+
                 <br />
 
               </div>
