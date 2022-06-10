@@ -22,7 +22,7 @@ const typeDefs = gql`
       payment: String
       callTime: String
       phoneNumberToCall: String
-      postUser: String
+      postUser: User
       caller: User
       completed: Boolean
     comments: [Comment]
@@ -31,7 +31,7 @@ const typeDefs = gql`
     type Comment {
       _id: ID
       commentText: String
-      commentAuthor: String
+      commentAuthor: User
       createdAt: String
     }
 
@@ -45,7 +45,7 @@ const typeDefs = gql`
   type Query {
     post(postId: ID!): Post
     posts: [Post]!
-    user(userId: ID!): User
+    user(userId: String!): User
     users:[User]!
   }
 

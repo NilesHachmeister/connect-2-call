@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import '../homepg.css';
-import { ADD_COMMENT } from '../utils/mutations';
 import Auth from '../utils/auth'
 import { useMutation, useQuery } from '@apollo/client';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { GET_POSTS } from "../utils/queries";
+import { GET_POSTS, GET_USER } from "../utils/queries";
 import NewPostForm from "./NewPostForm";
-import { DELETE_POST } from "../utils/mutations";
+import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
 
 
 const Card = () => {
@@ -17,10 +16,12 @@ const Card = () => {
     const [deleteThisPost, { deleteError }] = useMutation(DELETE_POST);
     const [commentFormData, setCommentFormData] = useState({ username: "", commentText: '', postId: '' });
     const [addComment, { error }] = useMutation(ADD_COMMENT);
+    const [toggleComplete] = useMutation(TOGGLE_COMPLETE);
     // set state for form validation
     const [validated] = useState(true);
     // set state for alert
-    const [showAlert, setShowAlert] = useState(false);
+    const [showDeleteAlert, setDeleteShowAlert] = useState(false);
+    const [deletePostIdState, setDeletePostIdState] = useState("")
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -32,12 +33,7 @@ const Card = () => {
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
-
-
         const loggedUser = Auth.getProfile();
-
-        console.log(loggedUser.data._id)
-        console.log(user)
 
         if (user === loggedUser.data._id) {
             try {
@@ -52,6 +48,8 @@ const Card = () => {
             };
 
         } else {
+            setDeleteShowAlert(true)
+            setDeletePostIdState(id)
             console.log("you must own this post");
         }
     }
@@ -68,13 +66,6 @@ const Card = () => {
         }
 
         const loggedUser = Auth.getProfile()
-
-        // console.log(event.target.dataset.postid)
-
-        // setCommentFormData({ ...commentFormData, [name]: value });
-        // console.log(commentFormData.commentText)
-        console.log(loggedUser.data._id)
-
 
         const commentAuthorId = loggedUser.data._id
 
@@ -95,22 +86,32 @@ const Card = () => {
         setCommentFormData({
             commentText: ''
         });
+
+
+        window.location.assign('/board');
     };
 
 
+    const toggleAPostCompleted = async (event) => {
+        const { id } = event.target.dataset;
+        try {
+            const { data } = await toggleComplete({
+                variables: { postId: id }
+            });
+            console.log(data);
+
+        } catch (err) {
+            console.error(err);
+        };
+
+        window.location.assign('/board');
+    }
 
 
     return (
 
 
         <div>
-
-
-
-
-
-
-
 
 
             {data ? data.posts.map((element, index) => {
@@ -120,25 +121,28 @@ const Card = () => {
                     <div key={element._id}>
 
                         <h2> title: {element.taskTitle}</h2>
-                        <p>Username: {element.postUser}</p>
+                        <p>Username: {element.postUser.username}</p>
                         <p>createdAt:{element.createdAt} </p>
                         <p>Call Language: {element.callLanguage} </p>
                         <p>Description: {element.description}</p>
                         <p>Call Category: {element.callCategory}</p>
                         <p>Payment: {element.payment}</p>
                         <p>Phone Number: {element.phoneNumberToCall}</p>
-                        <p>Completed: {element.completed}</p>
+                        <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
+
+
+
                         <p>Comments: {element.comments.length > 0 ? element.comments.map((comment) => {
                             return (
                                 <div>
-                                    <div>{comment.commentText}</div>
-                                    <div>{comment.commentAuthor}</div>
+                                    <div>Comment: {comment.commentText}</div>
+                                    <div>From: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
                                 </div>
                             )
                         }) : <div>no comments</div>};</p>
 
                         <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser} onClick={deletePost}>
-                            ✗
+                            Delete This Post  X {showDeleteAlert && deletePostIdState === element._id ? "You must own this post inorder to delete it" : ""}
                         </span>
 
                         <Form onSubmit={handleFormSubmit} data-postId={element._id}>
@@ -150,7 +154,6 @@ const Card = () => {
                                     placeholder='commentText'
                                     name='commentText'
                                     onChange={handleInputChange}
-                                    // value={commentFormData.commentText}
                                     required
                                 />
                                 <Form.Control.Feedback type='invalid'>Comment is required!</Form.Control.Feedback>

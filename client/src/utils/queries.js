@@ -35,11 +35,15 @@ query Posts {
     payment
     callTime
     phoneNumberToCall
-    postUser
+      postUser {
+      username
+    }
     completed
     comments {
       commentText
-      commentAuthor
+      commentAuthor{
+        username
+      }
       createdAt
     }
   }
@@ -47,17 +51,16 @@ query Posts {
 `;
 
 
-
-// export const GET_USER = gql`
-// query User($userId: ID!) {
-//     user(userId: $userId) {
-//       _id
-//       username
-//       email
-//       password
-//       siteLanguage
-//       spokenLanguage
-//       isCaller
-//       rating
-//     }
-//   }`;
+export const GET_USER = gql`
+query Query($userId: String!) {
+  user(userId: $userId) {
+    username
+    email
+    password
+    siteLanguage
+    spokenLanguage
+    isCaller
+    rating
+  }
+}
+`;

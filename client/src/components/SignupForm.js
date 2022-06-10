@@ -15,7 +15,7 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
-  
+
 
 
   const handleInputChange = (event) => {
@@ -69,104 +69,104 @@ const SignupForm = () => {
 
   return (
     <>
-    <div style = {{backgroundImage: `url(${pattern2})`}}>
-    <div className="sign-up-form">
-      <h1>Happy To Have You!</h1>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your signup!
-        </Alert>
+      <div style={{ backgroundImage: `url(${pattern2})` }}>
+        <div className="sign-up-form">
+          <h1>Happy To Have You!</h1>
+          {/* This is needed for the validation functionality above */}
+          <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+            {/* show alert if server response is bad */}
+            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+              Something went wrong with your signup!
+            </Alert>
 
-        <Form.Group>
-          <Form.Label htmlFor='username'>Username</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your username'
-            name='username'
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor='username'>Username</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Your username'
+                name='username'
+                onChange={handleInputChange}
+                value={userFormData.username}
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Your email address'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor='email'>Email</Form.Label>
+              <Form.Control
+                type='email'
+                placeholder='Your email address'
+                name='email'
+                onChange={handleInputChange}
+                value={userFormData.email}
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor='password'>Password</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='Your password'
+                name='password'
+                onChange={handleInputChange}
+                value={userFormData.password}
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='siteLanguage'>siteLanguage</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='siteLanguage'
-            name='siteLanguage'
-            onChange={handleInputChange}
-            value={userFormData.siteLanguage}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Site Language Preference is required.</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor='siteLanguage'>siteLanguage</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='siteLanguage'
+                name='siteLanguage'
+                onChange={handleInputChange}
+                value={userFormData.siteLanguage}
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Site Language Preference is required.</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='spokenLanguage'>Spoken Language</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Spoken Language'
-            name='Spoken Language'
-            onChange={handleInputChange}
-            value={userFormData.spokenLanguage}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Spoken Language is required.</Form.Control.Feedback>
-        </Form.Group>
-
-
-        <Form.Group>
-          <Form.Label htmlFor='isCaller'>I will be making calls.</Form.Label>
-          <Form.Control
-            type='checkbox'
-            name='isCaller'
-            onChange={booleanChange}
-            // value={userFormData.isCaller}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Caller preference is required.</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor='spokenLanguage'>Spoken Language</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Spoken Language'
+                name='spokenLanguage'
+                onChange={handleInputChange}
+                value={userFormData.spokenLanguage}
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Spoken Language is required.</Form.Control.Feedback>
+            </Form.Group>
 
 
+            <Form.Group>
+              <Form.Label htmlFor='isCaller'>I will be making calls.</Form.Label>
+              <Form.Control
+                type='checkbox'
+                name='isCaller'
+                onChange={booleanChange}
+                // value={userFormData.isCaller}
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Caller preference is required.</Form.Control.Feedback>
+            </Form.Group>
 
-        <Button
-          disabled={!(userFormData.name && userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
-          Submit
-        </Button>
-      </Form>
-      </div>
+
+
+            <Button
+              disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+              type='submit'
+              variant='success'>
+              Submit
+            </Button>
+          </Form>
+        </div>
       </div>
     </>
   );

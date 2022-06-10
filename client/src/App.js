@@ -12,7 +12,7 @@ import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Board from './pages/board'
-
+import NewPostForm from './components/NewPostForm';
 
 import './homepg.css';
 
@@ -67,6 +67,10 @@ class App extends React.Component {
                             <Route
                                 path="/board"
                                 element={<Board />}
+                            />
+                            <Route
+                                path="/new-post"
+                                element={<NewPostForm />}
                             />
                         </Routes>
                     </div>
