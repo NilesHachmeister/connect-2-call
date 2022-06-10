@@ -32,7 +32,6 @@ const userSchema = new Schema({
     // what language the site will populate in
     siteLanguage: {
         type: String,
-        required: true,
     },
 
     // filters out languanges you dont speak

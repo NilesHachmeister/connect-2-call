@@ -33,7 +33,7 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_USER = gql`
-mutation AddUser($username: String!, $email: String!, $password: String!, $siteLanguage: String!, $spokenLanguage: String!, $isCaller: Boolean!) {
+mutation AddUser($username: String!, $email: String!, $password: String!, $siteLanguage: String, $spokenLanguage: String!, $isCaller: Boolean!) {
   addUser(username: $username, email: $email, password: $password, siteLanguage: $siteLanguage, spokenLanguage: $spokenLanguage, isCaller: $isCaller) {
        user {
         _id
@@ -50,12 +50,12 @@ mutation AddUser($username: String!, $email: String!, $password: String!, $siteL
 
 
 export const ADD_COMMENT = gql`
-mutation AddComment($commentAuthor: String!, $commentText: String!, $postId: String!) {
-  addComment(commentAuthor: $commentAuthor, commentText: $commentText, postId: $postId) {
+mutation AddComment($postId: String!, $commentText: String!, $commentAuthor: String!) {
+  addComment(postId: $postId, commentText: $commentText, commentAuthor: $commentAuthor) {
     comments {
-      commentText
-      commentAuthor
-      createdAt
+      commentAuthor {
+        _id
+      }
     }
   }
 }`;
