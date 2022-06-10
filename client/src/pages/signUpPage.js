@@ -6,8 +6,6 @@ import Home from "../components/Home";
 import Footer from "../components/Footer";
 import SignupForm from "../components/SignupForm";
 
-
-
 const SignUpPage = () => {
   const [content, setContent] = useState("Home")
   const handleChange = (content) => {
