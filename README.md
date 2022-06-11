@@ -20,9 +20,8 @@
 * THEN the user can create an account or login 
 * THEN the user can make a post about the prospective phone call they need help making. 
 * THEN a fellow user can find the post and respond if they can help. 
-* THEN the users can commuicate via the application to plan the call. 
+* THEN the users can commuicate to plan the call. 
 * THEN the users can leave a review or a positive comment about the experience. 
-* to be continued.... 
 
 
 ## Built with. 
@@ -32,8 +31,10 @@
 
 
 ## [Live Website]()
-
 <img src = "img/Screen Shot 2022-06-08 at 10.43.02 PM.png">
+<br />
+<br />
+<img src = "img/Screen Shot 2022-06-11 at 12.50.41 PM.png">
 <br />
 <br />
 <img src ="img/Screen Shot 2022-06-08 at 10.46.27 PM.png">
