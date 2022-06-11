@@ -1,67 +1,69 @@
 import React, { useState } from "react";
-import Testimonials from './Testimonials';
+import Info from './InfoCards';
 import '../homepg.css';
-
-
-
+import backgroundImage from '../assets/new-header.jpg';
+import signUp from '../assets/newsignup.jpeg';
 const Home = () => {
-  
+
   return (
-   
-    <main>
-    <div class="fixed-bg"></div>
-
- 
-    <li class="card" id="card_1">
-			<div class="card__content">
-				<div >
-					<h2><i>"I'm so thankful I can depend on you!"</i></h2>
-					<p>-Joan from Minneapolis </p>
-					<p><a href="#top" class="btn btn--accent">Read more</a></p>
-				</div>
-				<figure class >
-					
-         < img src = {require('../assets/card6.jpeg')} alt = 'this is Joan'/>
-        
-				</figure>
-			</div>
-		</li>
-    
+    <>
 
 
-    <aside>
-      <div class="card" id="card-about">
-        <p>Blah Blah Blah....where we explain our App</p>
-        <br />
-      </div>
+      <div className="fixed-bg" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
+      <main>
+        <aside >
+          <ul id="cards" style={{ width: "600px", paddingLeft: 0 }}>
+            <Info />
+          </ul>
+        </aside>
+      </main>
 
-      <div class="container" id="container">
-        <div class="form-container log-in-container">
-          <form action="#">
-            <h1>Welcome Back!</h1>
-            <br />
 
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
 
-            <button>Log In</button>
-          </form>
+      <aside>
+        <div class="card" id="card-about">
+          <p><h7>Connect 2 Call is a platform utilized to assist others in making phone calls!
+            <br></br>
+            <br></br>Whether the reason be anxiety, language barriers, or available time, we help connect you to callers who are available, capable, and comfortable calling for you.</h7></p>
+
         </div>
-        <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-right">
-              <h4>New Here?</h4>
 
-              <p>SIgn up below to either make or request calls.</p>
-              <button>Sign Up</button>
+
+        <div class="container" id="container">
+          <div class="form-container log-in-container">
+            <form>
+              <h1>Welcome Back!</h1>
               <br />
+
+              <input type="email" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+
+              <button>Log In</button>
+            </form>
+          </div>
+          <div class="overlay-container">
+            <div class="overlay" style={{ backgroundImage: `url(${signUp})` }}>
+              <div class="overlay-panel overlay-right">
+
+                <h4>New Here?</h4>
+
+                <p><h3>Sign up below to either make or request calls.</h3></p>
+                <br></br>
+
+                <a className="button" href="/signupform">
+                  <button>Sign Up</button>
+                </a>
+
+                <br />
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
-    </main>
-    
+
+      </aside>
+    </>
+
   );
 };
 

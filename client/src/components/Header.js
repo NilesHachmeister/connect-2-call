@@ -4,27 +4,28 @@ import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
+import '../homepg.css';
 
 
 const Header = () => {
 
   return (
     <>
-    <header>
-      <div class="header">
-        <div class="header-right">
-          <a class="button" href="#home">
-            Home
-          </a>
-          <a class="button" href="#login">
-            Login
-          </a>
-          <a class="button" href="#signup">
-            Sign Up
-          </a>
+      <header>
+        <div className="header">
+          <div className="header-right">
+            <a className="button" href="/">
+              Home
+            </a>
+            <a className="button" href="/">
+              Login
+            </a>
+            <a className="button" href="/signupform">
+              Sign Up
+            </a>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
     </>
   );
@@ -46,7 +47,7 @@ export default Header;
 //           </Navbar.Brand>
 //           <Navbar.Toggle aria-controls='navbar' />
 //           <Navbar.Collapse id='navbar'>
-//             <Nav className='ml-auto'>
+//             <Nav classNameName='ml-auto'>
 //               <Nav.Link as={Link} to='/'>
 //                 Search For Books
 //               </Nav.Link>

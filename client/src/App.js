@@ -7,13 +7,14 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignupForm from './components/SignupForm';
+import HomePage from './pages/home-page';
+import SignupForm from './components/SignupForm'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Board from './pages/board'
 import NewPostForm from './components/NewPostForm';
-import Home from './components/Home';
-import MainHomePage from './pages/home-page';
 
 import './homepg.css';
-import Testimonials from './components/Testimonials';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -51,24 +52,31 @@ class App extends React.Component {
         return (
             <ApolloProvider client={client}>
                 <Router>
-                    <Routes>
+                    <div>
 
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
-                        <Route
-                            path="/signup"
-                            element={<SignupForm />}
-                        />
-                        <Route
-                            path="/new-post"
-                            element={<NewPostForm />}
-                        />
-
-                    </Routes>
-
+                        <Header />
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<HomePage />}
+                            />
+                            <Route
+                                path="/signupform"
+                                element={<SignupForm />}
+                            />
+                            <Route
+                                path="/board"
+                                element={<Board />}
+                            />
+                            <Route
+                                path="/new-post"
+                                element={<NewPostForm />}
+                            />
+                        </Routes>
+                    </div>
                 </Router>
+           
+
             </ApolloProvider>
         );
     }
