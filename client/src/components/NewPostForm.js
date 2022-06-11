@@ -9,13 +9,14 @@ import pattern2 from '../assets/pattern2.jpeg';
 
 const NewPostForm = () => {
     // set initial form state
-    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: '', description: '', callCategory: '', payment: '', callTime: '', phoneNumberToCall: '', });
+    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: '', description: '', callCategory: '', payment: 0, callTime: '', phoneNumberToCall: '', });
     const [addPost, { error }] = useMutation(ADD_POST);
     // set state for form validation
     const [validated] = useState(true);
     // set state for alert
     const [showAlert, setShowAlert] = useState(false);
 
+    const loggedUser = Auth.getProfile();
 
 
     const handleInputChange = (event) => {
@@ -23,7 +24,16 @@ const NewPostForm = () => {
         setPostFormData({ ...postFormData, [name]: value });
     };
 
+
     const handleFormSubmit = async (event) => {
+
+
+        console.log(loggedUser)
+
+        // if (loggedUser.data._id){
+
+
+
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
@@ -33,8 +43,6 @@ const NewPostForm = () => {
             event.stopPropagation();
         };
 
-        const loggedUser = Auth.getProfile();
-
 
         try {
             const { data } = await addPost({
@@ -43,6 +51,7 @@ const NewPostForm = () => {
             console.log(data);
 
             if (error) {
+                console.log(error);
                 throw new Error('something went wrong!');
             };
 
@@ -52,15 +61,11 @@ const NewPostForm = () => {
             setShowAlert(true);
         };
 
-        setPostFormData({
-            taskTitle: '',
-            callLanguage: '',
-            description: '',
-            callCategory: '',
-            payment: '',
-            callTime: '',
-            phoneNumberToCall: '',
-        });
+        window.location.assign('/board');
+
+
+        // }
+
     };
 
     return (
@@ -130,8 +135,7 @@ const NewPostForm = () => {
                     <Form.Group>
                         <Form.Label htmlFor='payment'>payment</Form.Label>
                         <Form.Control
-                            type='text'
-                            placeholder='payment'
+                            type='float'
                             name='payment'
                             onChange={handleInputChange}
                             value={postFormData.payment}
@@ -179,19 +183,6 @@ const NewPostForm = () => {
                         Submit
                     </Button>
 
-                    <Button
-                        disabled={!(postFormData.taskTitle && postFormData.callLanguage && postFormData.description)}
-                        type='edit'
-                        variant='success'>
-                        Edit post
-                    </Button>
-
-                    <Button
-                        disabled={!(postFormData.taskTitle && postFormData.callLanguage && postFormData.description)}
-                        type='complited'
-                        variant='success'>
-                        Complited
-                    </Button>
                 </Form>
             </div>
         </>

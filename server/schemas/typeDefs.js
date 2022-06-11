@@ -19,7 +19,7 @@ const typeDefs = gql`
       callLanguage: String
       description: String
       callCategory: String
-      payment: String
+      payment: Int
       callTime: String
       phoneNumberToCall: String
       postUser: User
@@ -53,7 +53,7 @@ const typeDefs = gql`
 
     addUser(username: String!, email: String!, password: String!, siteLanguage: String, spokenLanguage: String!, isCaller: Boolean!, category: String): Auth
 
-    addPost(taskTitle: String!, callLanguage: String!, description: String!, callCategory: String, payment: String, callTime: String!, phoneNumberToCall: String!, postUser: String! ): Post
+    addPost(taskTitle: String!, callLanguage: String!, description: String!, callCategory: String, payment: Int, callTime: String!, phoneNumberToCall: String!, postUser: String! ): Post
 
     login(email: String!, password: String!): Auth
 

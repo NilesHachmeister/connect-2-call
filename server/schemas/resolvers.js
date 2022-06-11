@@ -33,8 +33,10 @@ const resolvers = {
 
 
         addPost: async (parent, args) => {
+   
             const post = await Post.create(args);
-            return { post };
+            console.log(post)
+  
         },
 
 
@@ -59,22 +61,22 @@ const resolvers = {
 
 
         addComment: async (parent, { postId, commentText, commentAuthor }, context) => {
-            // if (context.user) {
-            return Post.findOneAndUpdate(
-                { _id: postId },
-                {
-                    $addToSet: {
-                        comments: { commentText, commentAuthor },
+            if (context.user) {
+                return Post.findOneAndUpdate(
+                    { _id: postId },
+                    {
+                        $addToSet: {
+                            comments: { commentText, commentAuthor },
+                        },
                     },
-                },
-                {
-                    new: true,
-                    runValidators: true,
-                }
-            );
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                );
 
-            // }
-            // throw new AuthenticationError('You need to be logged in!');
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
         deletePost: async (parent, { postId }, context) => {
