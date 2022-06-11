@@ -1,5 +1,5 @@
 {
-  "name": "tail-hangs",
+  "name": "connect-2-call",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
