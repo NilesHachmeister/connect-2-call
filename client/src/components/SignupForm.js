@@ -101,12 +101,15 @@ const SignupForm = () => {
 
   return (
     <>
-      <div style={{ backgroundImage: `url(${pattern2})` }}>
-        <div className="sign-up-form">
-          <h1>Happy To Have You!</h1>
+ 
+  <main style={{ backgroundImage: `url(${pattern2})` }}>
+        
+        {/* <div style={{ backgroundImage: `url(${pattern2})` }}></div> */}
+         
           <br></br>
           {/* This is needed for the validation functionality above */}
-          <Form onSubmit={handleFormSubmit}>
+          <Form className="sign-up-form" onSubmit={handleFormSubmit}>
+          <h1>Happy To Have You!</h1>
             {/* show alert if server response is bad */}
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
               Something went wrong with your signup!
@@ -204,12 +207,23 @@ const SignupForm = () => {
               Submit
             </Button>
           </Form>
+<<<<<<< HEAD
+        
+            
+
+        <footer className = "footer2">
+      <p className="copyright">Connect 2 Call © 2022</p>
+      </footer>
+      
+      </main>
+=======
         </div>
         <footer className="footer2">
           <p className="copyright">Connect 2 Call © 2022</p>
         </footer>
       </div>
 
+>>>>>>> 0f9754ae43ce882b6acb4b6778da2d414c793901
     </>
   );
 };
