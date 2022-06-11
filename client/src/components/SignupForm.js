@@ -57,10 +57,6 @@ const SignupForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-
-    console.log(userFormData);
-
-
   };
 
   const booleanChange = (event) => {
@@ -180,17 +176,6 @@ const SignupForm = () => {
 
                 </select></Form.Label>
               <br></br>
-
-
-
-              {/* <Form.Control
-                type='text'
-                placeholder='SPOKEN LANGUAGE'
-                name='spokenLanguage'
-                onChange={handleInputChange}
-                value={userFormData.spokenLanguage}
-                required
-              /> */}
               <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak" : ""}</Form.Control.Feedback>
             </Form.Group>
 
