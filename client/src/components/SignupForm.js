@@ -112,10 +112,11 @@ const SignupForm = () => {
             </Alert>
 
             <Form.Group>
-              <Form.Label htmlFor='username'>Username</Form.Label>
+              <Form.Label htmlFor='username'>Username:</Form.Label>
+              <br></br>
               <Form.Control
                 type='text'
-                placeholder='Your username'
+                placeholder='YOUR USERNAME'
                 name='username'
                 onChange={handleInputChange}
                 value={userFormData.username}
@@ -125,10 +126,11 @@ const SignupForm = () => {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label htmlFor='email'>Email</Form.Label>
+              <Form.Label htmlFor='email'>Email:</Form.Label>
+              <br></br>
               <Form.Control
                 type='email'
-                placeholder='Your email address'
+                placeholder='EMAIL ADDRESS'
                 name='email'
                 onChange={handleInputChange}
                 value={userFormData.email}
@@ -138,10 +140,11 @@ const SignupForm = () => {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label htmlFor='password'>Password</Form.Label>
+              <Form.Label htmlFor='password'>Password:</Form.Label>
+              <br></br>
               <Form.Control
                 type='password'
-                placeholder='Your password'
+                placeholder='PASSWORD'
                 name='password'
                 onChange={handleInputChange}
                 value={userFormData.password}
@@ -164,10 +167,11 @@ const SignupForm = () => {
             </Form.Group> */}
 
             <Form.Group>
-              <Form.Label htmlFor='spokenLanguage'>Spoken Language</Form.Label>
+              <Form.Label htmlFor='spokenLanguage'>Spoken Language:</Form.Label>
+              <br></br>
               <Form.Control
                 type='text'
-                placeholder='Spoken Language'
+                placeholder='SPOKEN LANGUAGE'
                 name='spokenLanguage'
                 onChange={handleInputChange}
                 value={userFormData.spokenLanguage}
@@ -179,12 +183,17 @@ const SignupForm = () => {
 
             <Form.Group>
               <Form.Label htmlFor='isCaller'>I will be making calls.</Form.Label>
+              <br></br>
               <Form.Control
                 type='checkbox'
                 name='isCaller'
                 onChange={booleanChange}
               // value={userFormData.isCaller}
               />
+                 <br></br>
+          <h11>Yes!</h11>
+                <br></br>
+                <br></br>
             </Form.Group>
 
 

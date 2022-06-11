@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import pattern2 from "../assets/pattern2.jpeg";
-import Header from "../components/Header";
 import Home from "../components/Home";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SignupForm from "../components/SignupForm";
+import '../homepg.css';
 
 const SignUpPage = () => {
   const [content, setContent] = useState("Home")
@@ -23,14 +24,15 @@ const SignUpPage = () => {
   }
   return (
     <>
-    <Header currentPage={content} changeFunction={handleChange}/>
-        <main style={{ backgroundImage: `url(${pattern2})` }}>
+  
+      <Header style = {{backgroundImage: `url(${pattern2})`}}
+        currentPage={content} changeFunction={handleChange}  />
+      
      
-
       {render(SignupForm)}
       
-      <Footer />
-      </main>
+  
+      
       </>
     
   )
