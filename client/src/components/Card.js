@@ -6,6 +6,8 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { GET_POSTS, GET_USER } from "../utils/queries";
 import NewPostForm from "./NewPostForm";
 import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
+import Header from '../components/Header';
+import pattern2 from "../assets/pattern2.jpeg";
 
 
 const Card = () => {
@@ -112,22 +114,23 @@ const Card = () => {
 
 
     return (
-
-
-        <div>
-
-
+        
+        <>
+       
+         
+    
             {data ? data.posts.map((element, index) => {
                 return (
+                   
 
 
-                    <div key={element._id}>
+                    <div className = "container" key={element._id}>
 
-                        <h2> title: {element.taskTitle}</h2>
+                        <h33> Call Needed: </h33><h22>{element.taskTitle}</h22>
                         <p>Username: {element.postUser.username}</p>
-                        <p>createdAt:{element.createdAt} </p>
+                        <p>Created At: {element.createdAt} </p>
                         <p>Call Language: {element.callLanguage} </p>
-                        <p>Description: {element.description}</p>
+                        <p><u>Description: </u>{element.description}</p>
                         <p>Call Category: {element.callCategory}</p>
                         <p>Payment: {element.payment}</p>
                         <p>Phone Number: {element.phoneNumberToCall}</p>
@@ -154,7 +157,7 @@ const Card = () => {
                                 <Form.Label htmlFor='comment'>Comment</Form.Label>
                                 <Form.Control
                                     type='text'
-                                    placeholder='commentText'
+                                    placeholder='Enter Comment Here'
                                     name='commentText'
                                     onChange={handleInputChange}
                                     required
@@ -183,9 +186,9 @@ const Card = () => {
 
 
 
-        </div>
+        
 
-
+</>
     );
 };
 

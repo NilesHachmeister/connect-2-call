@@ -54,7 +54,7 @@ class App extends React.Component {
                 <Router>
                     <div>
 
-                        <Header />
+                        {/* <Header /> */}
                         <Routes>
                             <Route
                                 path="/"

@@ -10,25 +10,36 @@ import '../homepg.css';
 import pattern2 from '../assets/pattern2.jpeg';
 
 
+
 const BoardPage = () => {
+  
 
-
+  
   return (
     <>
-      <main>
-        <Header
+       <div  style={{ backgroundImage: `url(${pattern2})` }}>
+    <main>
+      
+      <Header />
+     
+    
+    
+     
+       
+      
+       
+      
 
-        />
 
-
-
+        
         <YourBoard />
 
-        <Footer />
+
+        
       </main>
 
-
-    </>
+      </div>
+      </>
   )
 };
 export default BoardPage;
