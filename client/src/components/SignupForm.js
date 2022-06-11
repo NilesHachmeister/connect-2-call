@@ -206,7 +206,11 @@ const SignupForm = () => {
             </Button>
           </Form>
         </div>
+        <footer className = "footer2">
+      <p className="copyright">Connect 2 Call © 2022</p>
+      </footer>
       </div>
+
     </>
   );
 };

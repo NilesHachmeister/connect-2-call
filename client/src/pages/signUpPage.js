@@ -24,14 +24,15 @@ const SignUpPage = () => {
   }
   return (
     <>
-  
+    <main>
       <Header style = {{backgroundImage: `url(${pattern2})`}}
         currentPage={content} changeFunction={handleChange}  />
       
      
       {render(SignupForm)}
       
-  
+      <Footer />
+      </main>
       
       </>
     
