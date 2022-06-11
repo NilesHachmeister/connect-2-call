@@ -104,6 +104,7 @@ const SignupForm = () => {
       <div style={{ backgroundImage: `url(${pattern2})` }}>
         <div className="sign-up-form">
           <h1>Happy To Have You!</h1>
+          <br></br>
           {/* This is needed for the validation functionality above */}
           <Form onSubmit={handleFormSubmit}>
             {/* show alert if server response is bad */}
@@ -167,7 +168,15 @@ const SignupForm = () => {
             </Form.Group> */}
 
             <Form.Group>
-              <Form.Label htmlFor='spokenLanguage'>Spoken Language:</Form.Label>
+              <Form.Label htmlFor='spokenLanguage'>Spoken Language:
+              <select>
+                <option value="en">English</option>
+                <option value="sp">Español</option>
+                <option value="fr">Français</option>
+                <option value="br">Беларускі</option>
+                <option value="ru">Русский</option>
+                
+              </select></Form.Label>
               <br></br>
               <Form.Control
                 type='text'
