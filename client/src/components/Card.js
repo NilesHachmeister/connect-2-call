@@ -1,23 +1,59 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import '../homepg.css';
-import { ADD_COMMENT } from '../utils/mutations';
 import Auth from '../utils/auth'
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { GET_POSTS, GET_USER } from "../utils/queries";
+import NewPostForm from "./NewPostForm";
+import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
 
 
 const Card = () => {
-    const [commentFormData, setCommentFormData] = useState({  commentText: '', username: '', caller_username: ''});
+
+    const { loading, data } = useQuery(GET_POSTS);
+
+
+    const [deleteThisPost, { deleteError }] = useMutation(DELETE_POST);
+    const [commentFormData, setCommentFormData] = useState({ username: "", commentText: '', postId: '' });
     const [addComment, { error }] = useMutation(ADD_COMMENT);
+    const [toggleComplete] = useMutation(TOGGLE_COMPLETE);
     // set state for form validation
     const [validated] = useState(true);
     // set state for alert
-    const [showAlert, setShowAlert] = useState(false);
+    const [showDeleteAlert, setDeleteShowAlert] = useState(false);
+    const [deletePostIdState, setDeletePostIdState] = useState("")
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setCommentFormData({ ...commentFormData, [name]: value });
+
+
+        console.log(commentFormData)
     };
+
+    const deletePost = async (event) => {
+        const { id, user } = event.target.dataset;
+        const loggedUser = Auth.getProfile();
+
+        if (user === loggedUser.data._id) {
+            try {
+                const { data } = await deleteThisPost({
+                    variables: { postId: id, postUser: user }
+                });
+                console.log(data);
+
+            } catch (err) {
+                console.error(err);
+
+            };
+
+        } else {
+            setDeleteShowAlert(true)
+            setDeletePostIdState(id)
+            console.log("you must own this post");
+        }
+    }
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -31,10 +67,11 @@ const Card = () => {
 
         const loggedUser = Auth.getProfile()
 
+        const commentAuthorId = loggedUser.data._id
 
         try {
             const { data } = await addComment({
-                variables: { ...commentFormData, postUser: loggedUser.data._id }
+                variables: { postId: event.target.dataset.postid, commentText: commentFormData.commentText, commentAuthor: commentAuthorId }
             });
             console.log(data);
 
@@ -42,62 +79,110 @@ const Card = () => {
                 throw new Error('something went wrong!');
             }
 
-            // const { token, user } = await response.json();
-            // console.log(user);
-            // Auth.login(data.addPost.token);
-
-
-
         } catch (err) {
             console.error(err);
-            setShowAlert(true);
         }
 
         setCommentFormData({
-            commentText: '', 
-            username: '',
+            commentText: ''
         });
+
+
+        window.location.assign('/board');
     };
 
 
+    const toggleAPostCompleted = async (event) => {
+        const { id } = event.target.dataset;
+        try {
+            const { data } = await toggleComplete({
+                variables: { postId: id }
+            });
+            console.log(data);
+
+        } catch (err) {
+            console.error(err);
+        };
+
+        window.location.assign('/board');
+    }
 
 
     return (
-        <>
-        {/* This is needed for the validation functionality above */}
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-            {/* show alert if server response is bad */}
-            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-                Something went wrong with your signup!
-            </Alert>
 
-            <Form.Group>
-                <Form.Label htmlFor='commentText'>Comment: </Form.Label>
-                <Form.Control
-                    type='text'
-                    placeholder='commentText'
-                    name='commentText'
-                    onChange={handleInputChange}
-                    value={commentFormData.commentText}
-                    required
-                />
-                <Form.Control.Feedback type='text'
-                placeholder='name'
-                name='name'
-                value={ name}
-                    required></Form.Control.Feedback>
-            </Form.Group>
+
+        <div>
+
+
+            {data ? data.posts.map((element, index) => {
+                return (
+
+
+                    <div key={element._id}>
+
+                        <h2> title: {element.taskTitle}</h2>
+                        <p>Username: {element.postUser.username}</p>
+                        <p>createdAt:{element.createdAt} </p>
+                        <p>Call Language: {element.callLanguage} </p>
+                        <p>Description: {element.description}</p>
+                        <p>Call Category: {element.callCategory}</p>
+                        <p>Payment: {element.payment}</p>
+                        <p>Phone Number: {element.phoneNumberToCall}</p>
+                        <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
 
 
 
-            <Button
-                disabled={!(commentFormData.commentText )}
-                type='submit'
-                variant='success'>
-                Submit
-            </Button>
-        </Form>
-    </>
+                        <p>Comments: {element.comments.length > 0 ? element.comments.map((comment) => {
+                            return (
+                                <div>
+                                    <div>Comment: {comment.commentText}</div>
+                                    <div>From: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
+                                </div>
+                            )
+                        }) : <div>no comments</div>};</p>
+
+                        <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser} onClick={deletePost}>
+                            Delete This Post  X {showDeleteAlert && deletePostIdState === element._id ? "You must own this post inorder to delete it" : ""}
+                        </span>
+
+                        <Form onSubmit={handleFormSubmit} data-postId={element._id}>
+
+                            <Form.Group>
+                                <Form.Label htmlFor='comment'>Comment</Form.Label>
+                                <Form.Control
+                                    type='text'
+                                    placeholder='commentText'
+                                    name='commentText'
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                                <Form.Control.Feedback type='invalid'>Comment is required!</Form.Control.Feedback>
+                            </Form.Group>
+
+
+
+                            <Button
+                                // disabled={!(commentFormData.commentText)}
+                                type='submit'
+                                variant='success'>
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
+
+
+
+                )
+            }) : <div>loading</div>}
+
+
+
+
+
+
+        </div>
+
+
     );
 };
 

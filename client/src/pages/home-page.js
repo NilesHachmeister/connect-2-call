@@ -3,11 +3,11 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import Home from '../components/Home';
 import LoginForm from '../components/LoginForm'
-import SignupForm from '../components/SignupForm';
+import SignUpPage from '../pages/signUpPage';
 import Footer from '../components/Footer';
+
 import '../homepg.css';
-
-
+import pattern2 from '../assets/pattern2.jpeg';
 
 const MainHomePage = () => {
   const [content, setContent] = useState("Home")
@@ -23,12 +23,12 @@ const MainHomePage = () => {
       />
     }
     else if (content === "SignUp") {
-      return <SignupForm />
+      return <SignUpPage />
     }
   }
   return (
     <>
-<main>
+<main style = {{backgroundImage: `url(${pattern2})`}}>
       <Header
         currentPage={content} changeFunction={handleChange}
       />

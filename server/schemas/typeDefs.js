@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    name: String
+    username: String
     email: String
     password: String
     siteLanguage: String
@@ -22,7 +22,7 @@ const typeDefs = gql`
       payment: String
       callTime: String
       phoneNumberToCall: String
-      postUser: String
+      postUser: User
       caller: User
       completed: Boolean
     comments: [Comment]
@@ -31,7 +31,7 @@ const typeDefs = gql`
     type Comment {
       _id: ID
       commentText: String
-      commentAuthor: String
+      commentAuthor: User
       createdAt: String
     }
 
@@ -45,22 +45,22 @@ const typeDefs = gql`
   type Query {
     post(postId: ID!): Post
     posts: [Post]!
-    user(userId: ID!): User
+    user(userId: String!): User
     users:[User]!
   }
 
   type Mutation {
 
-    addUser(name: String!, email: String!, password: String!, siteLanguage: String!, spokenLanguage: String!, isCaller: Boolean!, category: String): Auth
+    addUser(username: String!, email: String!, password: String!, siteLanguage: String, spokenLanguage: String!, isCaller: Boolean!, category: String): Auth
 
     addPost(taskTitle: String!, callLanguage: String!, description: String!, callCategory: String, payment: String, callTime: String!, phoneNumberToCall: String!, postUser: String! ): Post
 
     login(email: String!, password: String!): Auth
 
 
-    addComment(postId: ID!, commentText: String!): Post
+    addComment(postId: String!, commentText: String!, commentAuthor: String!): Post
 
-    deletePost(postId: ID!): Post
+    deletePost(postId: String!): Post
 
     markAsCompleted(postId: ID!): Post
   }
