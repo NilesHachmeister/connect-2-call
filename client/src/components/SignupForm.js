@@ -18,10 +18,6 @@ const SignupForm = () => {
   const [passwordValidate, setPasswordValidate] = useState(false);
   const [spokenLanguageValidate, setSpokenLanguageValidate] = useState(false);
 
-  useEffect(() => {
-
-  });
-
 
   const [showAlert, setShowAlert] = useState(false);
 
