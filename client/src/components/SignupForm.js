@@ -57,10 +57,6 @@ const SignupForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-
-    console.log(userFormData);
-
-
   };
 
   const booleanChange = (event) => {
@@ -183,17 +179,6 @@ const SignupForm = () => {
 
                 </select></Form.Label>
               <br></br>
-
-
-
-              {/* <Form.Control
-                type='text'
-                placeholder='SPOKEN LANGUAGE'
-                name='spokenLanguage'
-                onChange={handleInputChange}
-                value={userFormData.spokenLanguage}
-                required
-              /> */}
               <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak" : ""}</Form.Control.Feedback>
             </Form.Group>
 
@@ -222,7 +207,6 @@ const SignupForm = () => {
               Submit
             </Button>
           </Form>
-<<<<<<< HEAD
         
             
 
@@ -231,14 +215,6 @@ const SignupForm = () => {
       </footer>
       
       </main>
-=======
-        </div>
-        <footer className="footer2">
-          <p className="copyright">Connect 2 Call © 2022</p>
-        </footer>
-      </div>
-
->>>>>>> 0f9754ae43ce882b6acb4b6778da2d414c793901
     </>
   );
 };

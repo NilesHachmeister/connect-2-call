@@ -11,36 +11,20 @@ import pattern2 from '../assets/pattern2.jpeg';
 
 
 const BoardPage = () => {
-  const [content, setContent] = useState("Home")
-  const handleChange = (content) => {
-    setContent(content)
-  }
-  const render = () => {
-    if (content === "Home") {
-      return <Home />
-    }
-    else if (content === "Login") {
-      return <LoginForm
-      />
-    }
-    else if (content === "SignUp") {
-      return <SignUpPage />
-    }
-  }
+
 
   return (
     <>
-    <main>
-      <Header
-        currentPage={content} changeFunction={handleChange}
-      />
-      
-     
-      {render()}
-  
-      <YourBoard />
+      <main>
+        <Header
 
-      <Footer />
+        />
+
+
+
+        <YourBoard />
+
+        <Footer />
       </main>
 
 

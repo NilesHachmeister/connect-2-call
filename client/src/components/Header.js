@@ -5,14 +5,43 @@ import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
 import '../homepg.css';
-
+import { Form } from 'react-bootstrap';
 
 const Header = () => {
+
+
+  const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'English' });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setSiteLanguage({ ...siteLanguage, [name]: value });
+
+    console.log(siteLanguage)
+
+
+
+  };
+
+
+
+
 
   return (
     <>
       <header>
         <div className="header">
+
+          <Form.Group>
+            <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >Spoken Language:
+              <select name='spokenLanguage'>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="ru">Русский</option>
+
+              </select></Form.Label>
+            <br></br>
+            <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
+          </Form.Group>
 
           <a className="button" href="/">
             Home
