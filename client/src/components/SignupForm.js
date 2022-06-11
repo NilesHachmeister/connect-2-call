@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import pattern2 from '../assets/pattern2.jpeg';
@@ -8,7 +8,7 @@ import { emailValidation } from '../utils/emailValidation';
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', siteLanguage: '', spokenLanguage: '', isCaller: false });
+  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', siteLanguage: '', spokenLanguage: 'English', isCaller: false });
   const [addUser, { error }] = useMutation(ADD_USER);
 
 
@@ -18,21 +18,17 @@ const SignupForm = () => {
   const [passwordValidate, setPasswordValidate] = useState(false);
   const [spokenLanguageValidate, setSpokenLanguageValidate] = useState(false);
 
+  useEffect(() => {
 
+  });
 
 
   const [showAlert, setShowAlert] = useState(false);
 
 
+  useEffect(() => {
 
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
-
-
-
-    if (userFormData.username.split("").length >= 4) {
+    if (userFormData.username.split("").length >= 5) {
       setUsernameValidate(true)
     } else {
       setUsernameValidate(false)
@@ -43,7 +39,7 @@ const SignupForm = () => {
       setEmailValidate(false)
     }
 
-    if (userFormData.password.split("").length >= 4) {
+    if (userFormData.password.split("").length >= 5) {
       setPasswordValidate(true)
     } else {
       setPasswordValidate(false)
@@ -55,6 +51,14 @@ const SignupForm = () => {
     }
 
 
+  });
+
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+
+    console.log(userFormData);
 
 
   };
@@ -171,24 +175,25 @@ const SignupForm = () => {
             </Form.Group> */}
 
             <Form.Group>
-              <Form.Label htmlFor='spokenLanguage'>Spoken Language:
-              <select>
-                <option value="en">English</option>
-                <option value="sp">Español</option>
-                <option value="fr">Français</option>
-                <option value="br">Беларускі</option>
-                <option value="ru">Русский</option>
-                
-              </select></Form.Label>
+              <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >Spoken Language:
+                <select name='spokenLanguage'>
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="ru">Русский</option>
+
+                </select></Form.Label>
               <br></br>
-              <Form.Control
+
+
+
+              {/* <Form.Control
                 type='text'
                 placeholder='SPOKEN LANGUAGE'
                 name='spokenLanguage'
                 onChange={handleInputChange}
                 value={userFormData.spokenLanguage}
                 required
-              />
+              /> */}
               <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak" : ""}</Form.Control.Feedback>
             </Form.Group>
 
@@ -202,10 +207,10 @@ const SignupForm = () => {
                 onChange={booleanChange}
               // value={userFormData.isCaller}
               />
-                 <br></br>
-          <h11>Yes!</h11>
-                <br></br>
-                <br></br>
+              <br></br>
+              <h11>Yes!</h11>
+              <br></br>
+              <br></br>
             </Form.Group>
 
 
@@ -217,6 +222,7 @@ const SignupForm = () => {
               Submit
             </Button>
           </Form>
+<<<<<<< HEAD
         
             
 
@@ -225,6 +231,14 @@ const SignupForm = () => {
       </footer>
       
       </main>
+=======
+        </div>
+        <footer className="footer2">
+          <p className="copyright">Connect 2 Call © 2022</p>
+        </footer>
+      </div>
+
+>>>>>>> 0f9754ae43ce882b6acb4b6778da2d414c793901
     </>
   );
 };

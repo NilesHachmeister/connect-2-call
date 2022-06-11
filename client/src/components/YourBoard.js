@@ -1,9 +1,9 @@
 import React, { useState, useQuery } from "react";
-import '../homepg.css';
 import Card from './Card'
 import NewPostForm from "./NewPostForm";
 import { GET_POSTS } from '../utils/queries'
-
+import BoardPage from "../pages/board";
+import pattern2 from '../assets/pattern2.jpeg';
 
 
 function YourBoard() {
@@ -68,10 +68,14 @@ function YourBoard() {
   };
 
   return (
+    
+ 
+    <main style={{ backgroundImage: `url(${pattern2})` }}>
+          
     <div>
       <h1>What is on your bucket list?</h1>
 
-      <Card
+      <Card className = "sign-up-form"
 
         card={card}
         completeCardItem={completeCardItem}
@@ -82,6 +86,7 @@ function YourBoard() {
 
       ></Card>
     </div>
+    </main>
   );
 };
 

@@ -13,6 +13,9 @@ const Card = () => {
     const { loading, data } = useQuery(GET_POSTS);
 
 
+
+
+
     const [deleteThisPost, { deleteError }] = useMutation(DELETE_POST);
     const [commentFormData, setCommentFormData] = useState({ username: "", commentText: '', postId: '' });
     const [addComment, { error }] = useMutation(ADD_COMMENT);
