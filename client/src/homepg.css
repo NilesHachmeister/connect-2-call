@@ -133,7 +133,7 @@ p {
 .header a {
 	color: black;
 	text-align: center;
-	padding: 12px;
+	padding: 14px;
 	text-decoration: none;
 	font-size: 24px;
 	line-height: 25px;
@@ -183,9 +183,9 @@ footer {
 } */
 
 header {
- 
-	padding-top: 15px;
-    background-color: rgba(245, 243, 243, 0.407);
+
+	background-color:transparent;
+	padding-top: 15px; 
     color: white;
     position: fixed;
     height: 15vh;

@@ -13,7 +13,7 @@ const Header = () => {
     <>
       <header>
         <div className="header">
-          <div className="header-right">
+         
             <a className="button" href="/">
               Home
             </a>
@@ -24,7 +24,7 @@ const Header = () => {
               Sign Up
             </a>
           </div>
-        </div>
+    
       </header>
 
     </>
