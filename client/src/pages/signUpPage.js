@@ -31,7 +31,7 @@ const SignUpPage = () => {
      
       {render(SignupForm)}
       
-      <Footer />
+    
       </main>
       
       </>
