@@ -75,6 +75,7 @@ class App extends React.Component {
                         </Routes>
                     </div>
                 </Router>
+           
 
             </ApolloProvider>
         );
