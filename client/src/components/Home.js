@@ -50,9 +50,9 @@ const Home = () => {
                 <p><h3>Sign up below to either make or request calls.</h3></p>
                 <br></br>
 
-                <a className="button" href="/signupform">
+                <a1 className="button" href="/signupform">
                   <button>Sign Up</button>
-                </a>
+                </a1>
 
                 <br />
 

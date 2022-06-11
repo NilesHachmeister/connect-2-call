@@ -4,6 +4,7 @@ import pattern2 from "../assets/pattern2.jpeg";
 import Home from "../components/Home";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LoginForm from '../components/LoginForm'
 import SignupForm from "../components/SignupForm";
 import '../homepg.css';
 
@@ -16,20 +17,25 @@ const SignUpPage = () => {
     if (content === "Home") {
       return <Home />
     }
-
-    else if (content === "Logout") {
-      return <Home
+    else if (content === "Login") {
+      return <LoginForm
       />
+    }
+    else if (content === "SignUp") {
+      return <SignUpPage />
     }
   }
   return (
     <>
-    <main>
-      <Header style = {{backgroundImage: `url(${pattern2})`}}
-        currentPage={content} changeFunction={handleChange}  />
+<main>
+      <Header
+        currentPage={content} changeFunction={handleChange}
+      />
       
      
-      {render(SignupForm)}
+      {render()}
+
+      <SignupForm />
       
     
       </main>
