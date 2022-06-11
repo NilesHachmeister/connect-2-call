@@ -207,7 +207,6 @@ const SignupForm = () => {
               Submit
             </Button>
           </Form>
-<<<<<<< HEAD
         
             
 
@@ -216,14 +215,6 @@ const SignupForm = () => {
       </footer>
       
       </main>
-=======
-        </div>
-        <footer className="footer2">
-          <p className="copyright">Connect 2 Call © 2022</p>
-        </footer>
-      </div>
-
->>>>>>> 0f9754ae43ce882b6acb4b6778da2d414c793901
     </>
   );
 };
