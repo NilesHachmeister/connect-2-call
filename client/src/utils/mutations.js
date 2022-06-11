@@ -15,7 +15,7 @@ export const LOGIN_USER = gql`
 
 
 export const ADD_POST = gql`
-  mutation addPost($taskTitle: String!, $callLanguage: String!, $description: String!, $callCategory: String, $payment: String!, $callTime: String!, $phoneNumberToCall: String!, $postUser: String!) {
+  mutation addPost($taskTitle: String!, $callLanguage: String!, $description: String!, $callCategory: String, $payment: Int!, $callTime: String!, $phoneNumberToCall: String!, $postUser: String!) {
     addPost(taskTitle: $taskTitle, callLanguage: $callLanguage, description: $description, callCategory: $callCategory, payment: $payment, callTime: $callTime, phoneNumberToCall: $phoneNumberToCall, postUser: $postUser ) {
         _id
         taskTitle
@@ -25,7 +25,9 @@ export const ADD_POST = gql`
         payment
         callTime
         phoneNumberToCall
-       postUser
+       postUser{
+        _id
+       }
 
       
     }

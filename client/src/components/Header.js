@@ -13,18 +13,24 @@ const Header = () => {
     <>
       <header>
         <div className="header">
-         
-            <a className="button" href="/">
-              Home
-            </a>
-            <a className="button" href="/">
-              Login
-            </a>
-            <a className="button" href="/signupform">
-              Sign Up
-            </a>
-          </div>
-    
+
+          <a className="button" href="/">
+            Home
+          </a>
+          <a className="button" href="/">
+            Login
+          </a>
+          <a className="button" href="/signupform">
+            Sign Up
+          </a>
+          <a className="button" href="/board">
+            Broad
+          </a>
+          <a className="button" href="/new-post">
+            New Post
+          </a>
+        </div>
+
       </header>
 
     </>
