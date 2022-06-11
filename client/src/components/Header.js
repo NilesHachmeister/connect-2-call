@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignupForm from './SignupForm';
@@ -10,38 +10,25 @@ import { Form } from 'react-bootstrap';
 const Header = () => {
 
 
-  const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'English' });
+  const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'en' });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setSiteLanguage({ ...siteLanguage, [name]: value });
-
-    console.log(siteLanguage)
-
-
-
+    localStorage.setItem("i18nextLng", value);
   };
 
 
-
+  useEffect(() => {
+    const currentLanguage = localStorage.getItem("i18nextLng");
+    setSiteLanguage(currentLanguage)
+  });
 
 
   return (
     <>
       <header>
         <div className="header">
-
-          <Form.Group>
-            <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >Spoken Language:
-              <select name='spokenLanguage'>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="ru">Русский</option>
-
-              </select></Form.Label>
-            <br></br>
-            <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
-          </Form.Group>
 
           <a className="button" href="/">
             Home
@@ -58,7 +45,23 @@ const Header = () => {
           <a className="button" href="/new-post">
             New Post
           </a>
+          <br />
+          <div id="site-language">
+            <Form.Group id="site-language-form">
+              <Form.Label id="site-language-form-label" htmlFor='spokenLanguage' onChange={handleInputChange}>Site Language:
+                <select name='spokenLanguage' value={siteLanguage}>
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="ru">Русский</option>
+                </select></Form.Label>
+              <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
+            </Form.Group>
+          </div>
+
         </div>
+
+
+
 
       </header>
 
