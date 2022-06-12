@@ -412,6 +412,11 @@ form.sign-up-form {
 
 }
 
+.postform.was-validated {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .sign-up-form {
 	margin-top: 80px;
 
@@ -476,6 +481,8 @@ form {
 
 }
 
+
+
 input {
 	background-color: rgb(255, 255, 255);
 	border: none;
@@ -484,6 +491,7 @@ input {
 	width: 100%;
 	border-radius: 5px;;
 }
+
 
 
 
@@ -508,12 +516,35 @@ input {
 	margin-right: 20px;
 
 }
+.postform {
+	padding-top: 300px;
+	background-color: rgba(255, 255, 255, 0.74);
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	position: relative;
+	overflow: hidden;
+	width: 500px;
+	max-width: auto;
+	min-height: auto;
+   margin-top: 20px;
+	border-radius: 10px;
+	height: 100%;
+	align-items: center;
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+
+}
 
 /* background-color: #d7d7d7; */
 
+
+
 form1 {
 	background-color: #e8e6e6c7;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -540,6 +571,8 @@ form1 {
 	min-height: 480px;
 }
 
+
+
 .form-container1 {
 	position: absolute;
 	top: 0;
@@ -553,7 +586,7 @@ form1 {
 }
 
 input.form1-control {
-	background-color: rgb(212, 210, 210);
+
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;

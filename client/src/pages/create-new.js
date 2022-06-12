@@ -29,6 +29,9 @@ const NewPostPage = () => {
           <NewPostForm />
          
         </main>
+        <footer>
+            
+        </footer>
       </div>
     </>
   );

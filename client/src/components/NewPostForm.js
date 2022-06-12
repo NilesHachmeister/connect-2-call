@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth'
 import { ADD_POST } from '../utils/mutations';
 import pattern2 from '../assets/pattern2.jpeg';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 import { useTranslation, Trans } from "react-i18next";
 import { Link } from 'react-router-dom';
@@ -151,29 +153,30 @@ const NewPostForm = () => {
 
     return (
         <>
-
-            <div className="container">
-                <div style={{ backgroundImage: `url(${pattern2})` }}>
+            <div style={{ backgroundImage: `url(${pattern2})` }}>
+                <Header />
+     
+               
 
 
                     {/* This is needed for the validation functionality above */}
-                    <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+                    <Form className = "postform" noValidate validated={validated} onSubmit={handleFormSubmit}>
                         {/* show alert if server response is bad */}
                         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                             {t("Something went wrong with your signup!")}
                         </Alert>
 
                         <Form.Group>
-                            <Form.Label htmlFor='taskTitle'>{t("taskTitle")}</Form.Label>
+                            <Form.Label htmlFor='taskTitle'>{t("Task Title")}</Form.Label>
                             <Form.Control
                                 type='text'
-                                placeholder='taskTitle'
+                                placeholder='TASK TITLE'
                                 name='taskTitle'
                                 onChange={handleInputChange}
                                 value={postFormData.taskTitle}
                                 required
                             />
-                            <Form.Control.Feedback type='invalid'>{!taskTitleValidate ? "Please enter a task title" : ""}</Form.Control.Feedback>
+                            <Form.Control.Feedback type='invalid'>{!taskTitleValidate ? "Please enter a task title." : ""}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group>
@@ -191,26 +194,26 @@ const NewPostForm = () => {
                             <Form.Label htmlFor='description'>{t("Description")}</Form.Label>
                             <Form.Control
                                 type='text'
-                                placeholder='description'
+                                placeholder='DESCRIPTION'
                                 name='description'
                                 onChange={handleInputChange}
                                 value={postFormData.description}
                                 required
                             />
-                            <Form.Control.Feedback type='invalid'>{!descriptionValidate ? "Please enter a description" : ""}</Form.Control.Feedback>
+                            <Form.Control.Feedback type='invalid'>{!descriptionValidate ? "Please enter a description." : ""}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label htmlFor='callCategory'>{t("Call Category")}</Form.Label>
                             <Form.Control
                                 type='text'
-                                placeholder='callCategory'
+                                placeholder='CALL CATEGORY'
                                 name='callCategory'
                                 onChange={handleInputChange}
                                 value={postFormData.callCategory}
                                 required
                             />
-                            <Form.Control.Feedback type='invalid'>{!callCategoryValidate ? "Please enter a category" : ""}</Form.Control.Feedback>
+                            <Form.Control.Feedback type='invalid'>{!callCategoryValidate ? "Please enter a category." : ""}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group>
@@ -228,10 +231,10 @@ const NewPostForm = () => {
 
 
                         <Form.Group>
-                            <Form.Label htmlFor='callTime'>{t("callTime")}</Form.Label>
+                            <Form.Label htmlFor='callTime'>{t("Call Time")}</Form.Label>
                             <Form.Control
                                 type='text'
-                                placeholder='callTime'
+                                placeholder='CALL TIME'
                                 name='callTime'
                                 onChange={handleInputChange}
                                 value={postFormData.callTime}
@@ -243,16 +246,16 @@ const NewPostForm = () => {
 
 
                         <Form.Group>
-                            <Form.Label htmlFor='phoneNumberToCall'>{t("phoneNumberToCall")}</Form.Label>
+                            <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call")}</Form.Label>
                             <Form.Control
                                 type='text'
-                                placeholder='phoneNumberToCall'
+                                placeholder='PHONE NUMBER'
                                 name='phoneNumberToCall'
                                 onChange={handleInputChange}
                                 value={postFormData.phoneNumberToCall}
                                 required
                             />
-                            <Form.Control.Feedback type='invalid'>{!phoneNumberToCallValidate ? "Please enter a phone number to call" : ""}</Form.Control.Feedback>
+                            <Form.Control.Feedback type='invalid'>{!phoneNumberToCallValidate ? "Please enter a phone number to call." : ""}</Form.Control.Feedback>
                         </Form.Group>
 
 
@@ -265,8 +268,12 @@ const NewPostForm = () => {
                         </Button>
 
                     </Form>
+                    <footer className = "footer2">
+                    <p className="copyright">Connect 2 Call © 2022</p>
+
+                    </footer>
                 </div>
-            </div>
+  
         </>
     );
 };
