@@ -43,8 +43,10 @@ const Home = () => {
 
         <div class="container1" id="container1">
           <div class="form-container1 log-in-container1">
+
             <form1>
               <h1>{t("Welcome Back!")}</h1>
+
               <br />
 
               <input type="email" placeholder="Email" />
@@ -62,9 +64,11 @@ const Home = () => {
                 <p><h3>{t("Sign up below to either make or request calls.")}</h3></p>
                 <br></br>
 
+
                 <a1 className="button" href="/signupform">
                   <button>{t("Sign Up")}</button>
                 </a1>
+
 
                 <br />
 

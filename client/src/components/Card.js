@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../homepg.css';
 import Auth from '../utils/auth'
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { GET_POSTS, GET_USER } from "../utils/queries";
 import NewPostForm from "./NewPostForm";
@@ -20,6 +20,8 @@ const lngs = {
 }
 
 
+// import { QUERY_CHECKOUT } from '../../utils/queries';
+
 const Card = () => {
 
     const { loading, data } = useQuery(GET_POSTS);
@@ -27,6 +29,7 @@ const Card = () => {
     const loggedUser = Auth.getProfile()
 
     const commentAuthorId = loggedUser.data._id
+
 
 
 
@@ -47,7 +50,7 @@ const Card = () => {
     };
 
 
-  
+
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -121,6 +124,19 @@ const Card = () => {
         window.location.assign('/board');
     }
 
+    // const stripePay = async (event) => {
+    //     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    //     useEffect(() => {
+    //         if (data) {
+    //             stripePromise.then((res) => {
+    //                 res.redirectToCheckout({ sessionId: data.checkout.session });
+    //             });
+    //         }
+    //     }, [data]);
+    // }
+
+
+
 
     return (
 
@@ -130,11 +146,12 @@ const Card = () => {
 
             {data ? data.posts.map((element, index) => {
                 return (
-                   
-                        //figure out how to inline cap the Language
+
+                    //figure out how to inline cap the Language
 
 
                     <div className="container" key={element._id}>
+
 
                         <h33> {t("Call Needed")}: </h33><h22>{element.taskTitle}</h22>
                         <p><u>{t("Username")}:</u> {element.postUser.username}</p>
@@ -144,6 +161,7 @@ const Card = () => {
                         <p><u>{t("Call Category")}:</u> {element.callCategory}</p>
                         <p><u>{t("Payment")}:</u> {element.payment}</p>
                         <p><u>{t("Phone Number")}:</u> {element.phoneNumberToCall}</p>
+
                         <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
 
 
