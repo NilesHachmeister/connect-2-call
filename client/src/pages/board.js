@@ -21,20 +21,9 @@ const BoardPage = () => {
     <main>
       
       <Header />
-     
-    
-    
-     
-       
-      
-       
-      
-
 
         
         <YourBoard />
-
-
         
       </main>
 

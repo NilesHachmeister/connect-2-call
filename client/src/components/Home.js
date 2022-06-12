@@ -29,9 +29,9 @@ const Home = () => {
         </div>
 
 
-        <div class="container" id="login-div">
-          <div class="form-container log-in-container">
-            <form>
+        <div class="container1" id="container1">
+          <div class="form-container1 log-in-container1">
+            <form1>
               <h1>Welcome Back!</h1>
               <br />
 
@@ -39,7 +39,7 @@ const Home = () => {
               <input type="password" placeholder="Password" />
 
               <button>Log In</button>
-            </form>
+            </form1>
           </div>
           <div class="overlay-container">
             <div class="overlay" style={{ backgroundImage: `url(${signUp})` }}>

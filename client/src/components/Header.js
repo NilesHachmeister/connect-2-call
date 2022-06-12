@@ -13,14 +13,14 @@ import "../i18n"
 import { t } from 'i18next';
 import Home from './Home';
 
-const lngs ={
-  en: { nativeName: 'English'},
-  es: { nativeName: 'Spanish'}
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
 }
 
 
 function Header() {
-  
+
   // const { i18n } = useTranslation();
 
 
@@ -38,14 +38,14 @@ function Header() {
     const currentLanguage = localStorage.getItem("i18nextLng");
     setSiteLanguage(currentLanguage)
   });
- 
+
   return (
-    
+
     <>
       <header>
         <div className="header">
 
-        <a className="button" href="/">
+          <a className="button" href="/">
             {t("Home")}
           </a>
 
@@ -53,21 +53,21 @@ function Header() {
             {t("Login")}
           </a>
           <a className="button" href="/signupform">
-          {t("Sign Up")}
+            {t("Sign Up")}
           </a>
           <a className="button" href="/board">
-          {t("Board")}
+            {t("Board")}
           </a>
           <a className="button" href="/new-post">
-          {t("New post")}
+            {t("New post")}
           </a>
           <br />
           <div id="site-language">
             <Form.Group id="site-language-form">
-              <Form.Label id="site-language-form-label" htmlFor='spokenLanguage' 
-              onChange={handleInputChange}
+              <Form.Label id="site-language-form-label" htmlFor='spokenLanguage'
+                onChange={handleInputChange}
               >{t("Site Language")}:
-                <select name='spokenLanguage' 
+                <select name='spokenLanguage'
                 // value={siteLanguage}
                 >
                   <option value="en">English</option>
@@ -96,4 +96,3 @@ function Header() {
 }
 
 export default Header;
-
