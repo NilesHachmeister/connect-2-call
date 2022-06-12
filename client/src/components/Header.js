@@ -23,7 +23,6 @@ function Header() {
 
   // const { i18n } = useTranslation();
 
-
   const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'en' });
 
   const handleInputChange = (event) => {
@@ -33,11 +32,27 @@ function Header() {
   };
 
 
-
   useEffect(() => {
+
+
+
     const currentLanguage = localStorage.getItem("i18nextLng");
     setSiteLanguage(currentLanguage)
   });
+
+  const renderNewPost = () => {
+
+    if (Auth.loggedIn()) {
+      window.location.assign('/new-post');
+    }
+    window.location.assign('/#login-form')
+
+  }
+
+
+
+
+
 
   return (
 
@@ -49,7 +64,7 @@ function Header() {
             {t("Home")}
           </a>
 
-          <a className="button" href="/">
+          <a className="button" href="/#login-form">
             {t("Login")}
           </a>
           <a className="button" href="/signupform">
@@ -58,7 +73,7 @@ function Header() {
           <a className="button" href="/board">
             {t("Board")}
           </a>
-          <a className="button" href="/new-post">
+          <a className="button" onClick={renderNewPost}>
             {t("New post")}
           </a>
           <br />
@@ -68,7 +83,7 @@ function Header() {
                 onChange={handleInputChange}
               >{t("Site Language")}:
                 <select name='spokenLanguage'
-                // value={siteLanguage}
+                  value={siteLanguage}
                 >
                   <option value="en">English</option>
                   <option value="es">Español</option>
