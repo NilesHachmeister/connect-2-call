@@ -14,6 +14,9 @@ const Card = () => {
 
     const { loading, data } = useQuery(GET_POSTS);
 
+    const loggedUser = Auth.getProfile()
+
+    const commentAuthorId = loggedUser.data._id
 
 
 
@@ -25,16 +28,16 @@ const Card = () => {
     // set state for form validation
     const [validated] = useState(true);
     // set state for alert
-    const [showDeleteAlert, setDeleteShowAlert] = useState(false);
-    const [deletePostIdState, setDeletePostIdState] = useState("")
+    // const [showDeleteAlert, setDeleteShowAlert] = useState(false);
+    const [deletePostIdState, setDeletePostIdState] = useState(commentAuthorId)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setCommentFormData({ ...commentFormData, [name]: value });
-
-
-        console.log(commentFormData)
     };
+
+
+  
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -49,14 +52,12 @@ const Card = () => {
 
             } catch (err) {
                 console.error(err);
-
             };
 
         } else {
-            setDeleteShowAlert(true)
             setDeletePostIdState(id)
-            console.log("you must own this post");
         }
+        window.location.assign('/board');
     }
 
 
@@ -70,9 +71,7 @@ const Card = () => {
             event.stopPropagation();
         }
 
-        const loggedUser = Auth.getProfile()
 
-        const commentAuthorId = loggedUser.data._id
 
         try {
             const { data } = await addComment({
@@ -114,17 +113,17 @@ const Card = () => {
 
 
     return (
-        
+
         <>
-       
-         
-    
+
+
+
             {data ? data.posts.map((element, index) => {
                 return (
-                   
 
 
-                    <div className = "container" key={element._id}>
+
+                    <div className="container" key={element._id}>
 
                         <h33> Call Needed: </h33><h22>{element.taskTitle}</h22>
                         <p>Username: {element.postUser.username}</p>
@@ -145,10 +144,10 @@ const Card = () => {
                                     <div>From: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
                                 </div>
                             )
-                        }) : <div>no comments</div>};</p>
+                        }) : <div>no comments</div>}</p>
 
-                        <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser} onClick={deletePost}>
-                            Delete This Post  X {showDeleteAlert && deletePostIdState === element._id ? "You must own this post inorder to delete it" : ""}
+                        <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser._id} onClick={deletePost}>
+                            {deletePostIdState === element.postUser._id ? "Delete This Post  X" : ""}
                         </span>
 
                         <Form onSubmit={handleFormSubmit} data-postId={element._id}>
@@ -162,7 +161,7 @@ const Card = () => {
                                     onChange={handleInputChange}
                                     required
                                 />
-                                <Form.Control.Feedback type='invalid'>Comment is required!</Form.Control.Feedback>
+                                <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
                             </Form.Group>
 
 
@@ -186,9 +185,9 @@ const Card = () => {
 
 
 
-        
 
-</>
+
+        </>
     );
 };
 

@@ -11,7 +11,21 @@ const NewPostForm = () => {
 
     const currentLanguage = localStorage.getItem("i18nextLng");
     // set initial form state
-    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: '', description: '', callCategory: '', payment: 0, callTime: '', phoneNumberToCall: '', });
+    let starterLanguage = ""
+
+    if (currentLanguage === "en") {
+        starterLanguage = "English";
+    }
+    if (currentLanguage === "es") {
+        starterLanguage = "Español";
+    }
+    if (currentLanguage === "ru") {
+        starterLanguage = "Русский";
+    }
+
+
+
+    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: starterLanguage, description: '', callCategory: '', payment: 0, callTime: '', phoneNumberToCall: '', });
     const [addPost, { error }] = useMutation(ADD_POST);
     // set state for form validation
     const [validated] = useState(true);
@@ -32,11 +46,7 @@ const NewPostForm = () => {
 
 
 
-
-
     useEffect(() => {
-
-
 
 
         if (callLanguage === "en") {
@@ -49,11 +59,7 @@ const NewPostForm = () => {
             setCallLanguage("Русский");
         }
 
-        console.log(currentLanguage)
-        console.log(callLanguage)
 
-
-        console.log(callLanguage)
 
         if (postFormData.taskTitle.split("").length >= 1) {
             setTaskTitleValidate(true)
@@ -97,8 +103,6 @@ const NewPostForm = () => {
 
     const handleFormSubmit = async (event) => {
 
-
-        console.log(loggedUser)
 
         // if (loggedUser.data._id){
 
@@ -188,7 +192,7 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='callCategory'>callCategory</Form.Label>
+                        <Form.Label htmlFor='callCategory'>call Category</Form.Label>
                         <Form.Control
                             type='text'
                             placeholder='callCategory'
@@ -201,7 +205,7 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='payment'>payment</Form.Label>
+                        <Form.Label htmlFor='payment'>payment in full dolar amount</Form.Label>
                         <Form.Control
                             type='float'
                             name='payment'
@@ -245,7 +249,7 @@ const NewPostForm = () => {
 
 
                     <Button
-                        disabled={!(postFormData.taskTitle && postFormData.callLanguage && postFormData.description)}
+                        disabled={!(postFormData.taskTitle && postFormData.description)}
                         type='submit'
                         variant='success'>
                         Submit
