@@ -13,8 +13,8 @@ import "../i18n"
 import { t } from 'i18next';
 
 const lngs = {
-  en: { nativeName: 'English' },
-  es: { nativeName: 'Spanish' }
+    en: { nativeName: 'English' },
+    es: { nativeName: 'Spanish' }
 }
 
 // import Auth from '../utils/auth';
@@ -52,20 +52,18 @@ const NewPostForm = () => {
 
 
         if (callLanguage === "en") {
+            setPostFormData({ ...postFormData, callLanguage: "English" });
             setCallLanguage("English");
         }
         if (callLanguage === "es") {
+            setPostFormData({ ...postFormData, callLanguage: "Español" });
             setCallLanguage("Español");
         }
         if (callLanguage === "ru") {
+            setPostFormData({ ...postFormData, callLanguage: "Русский" });
             setCallLanguage("Русский");
         }
 
-        console.log(currentLanguage)
-        console.log(callLanguage)
-
-
-        console.log(callLanguage)
 
         if (postFormData.taskTitle.split("").length >= 1) {
             setTaskTitleValidate(true)
@@ -110,12 +108,6 @@ const NewPostForm = () => {
     const handleFormSubmit = async (event) => {
 
 
-        console.log(loggedUser)
-
-        // if (loggedUser.data._id){
-
-
-
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
@@ -145,9 +137,6 @@ const NewPostForm = () => {
 
         window.location.assign('/board');
 
-
-        // }
-
     };
 
 
@@ -155,125 +144,125 @@ const NewPostForm = () => {
         <>
             <div style={{ backgroundImage: `url(${pattern2})` }}>
                 <Header />
-     
-               
-
-
-                    {/* This is needed for the validation functionality above */}
-                    <Form className = "postform" noValidate validated={validated} onSubmit={handleFormSubmit}>
-                        {/* show alert if server response is bad */}
-                        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-                            {t("Something went wrong with your signup!")}
-                        </Alert>
-
-                        <Form.Group>
-                            <Form.Label htmlFor='taskTitle'>{t("Task Title")}</Form.Label>
-                            <Form.Control
-                                type='text'
-                                placeholder='TASK TITLE'
-                                name='taskTitle'
-                                onChange={handleInputChange}
-                                value={postFormData.taskTitle}
-                                required
-                            />
-                            <Form.Control.Feedback type='invalid'>{!taskTitleValidate ? "Please enter a task title." : ""}</Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group>
-                            <Form.Label htmlFor='callLanguage' onChange={handleInputChange} >{t("Call Language")}:
-                                <select name='callLanguage' value={callLanguage}>
-                                    <option value="English">English</option>
-                                    <option value="Español">Español</option>
-                                    <option value="Русский">Русский</option>
-                                </select></Form.Label>
-                            <br></br>
-                            <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group>
-                            <Form.Label htmlFor='description'>{t("Description")}</Form.Label>
-                            <Form.Control
-                                type='text'
-                                placeholder='DESCRIPTION'
-                                name='description'
-                                onChange={handleInputChange}
-                                value={postFormData.description}
-                                required
-                            />
-                            <Form.Control.Feedback type='invalid'>{!descriptionValidate ? "Please enter a description." : ""}</Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group>
-                            <Form.Label htmlFor='callCategory'>{t("Call Category")}</Form.Label>
-                            <Form.Control
-                                type='text'
-                                placeholder='CALL CATEGORY'
-                                name='callCategory'
-                                onChange={handleInputChange}
-                                value={postFormData.callCategory}
-                                required
-                            />
-                            <Form.Control.Feedback type='invalid'>{!callCategoryValidate ? "Please enter a category." : ""}</Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group>
-                            <Form.Label htmlFor='payment'>{t("Payment")}</Form.Label>
-                            <Form.Control
-                                type='float'
-                                name='payment'
-                                onChange={handleInputChange}
-                                value={postFormData.payment}
-                                required
-                            />
-                            <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
-                        </Form.Group>
 
 
 
-                        <Form.Group>
-                            <Form.Label htmlFor='callTime'>{t("Call Time")}</Form.Label>
-                            <Form.Control
-                                type='text'
-                                placeholder='CALL TIME'
-                                name='callTime'
-                                onChange={handleInputChange}
-                                value={postFormData.callTime}
-                                required
-                            />
-                            <Form.Control.Feedback type='invalid'>{!callTimeValidate ? "Please enter a task call time (please specify time zone)" : ""}</Form.Control.Feedback>
-                        </Form.Group>
+
+                {/* This is needed for the validation functionality above */}
+                <Form className="postform" noValidate validated={validated} onSubmit={handleFormSubmit}>
+                    {/* show alert if server response is bad */}
+                    <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+                        {t("Something went wrong with your signup!")}
+                    </Alert>
+
+                    <Form.Group>
+                        <Form.Label htmlFor='taskTitle'>{t("Task Title")}</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='TASK TITLE'
+                            name='taskTitle'
+                            onChange={handleInputChange}
+                            value={postFormData.taskTitle}
+                            required
+                        />
+                        <Form.Control.Feedback type='invalid'>{!taskTitleValidate ? "Please enter a task title." : ""}</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label htmlFor='callLanguage' onChange={handleInputChange} >{t("Call Language")}:
+                            <select name='callLanguage' value={callLanguage}>
+                                <option value="English">English</option>
+                                <option value="Español">Español</option>
+                                <option value="Русский">Русский</option>
+                            </select></Form.Label>
+                        <br></br>
+                        <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label htmlFor='description'>{t("Description")}</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='DESCRIPTION'
+                            name='description'
+                            onChange={handleInputChange}
+                            value={postFormData.description}
+                            required
+                        />
+                        <Form.Control.Feedback type='invalid'>{!descriptionValidate ? "Please enter a description." : ""}</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label htmlFor='callCategory'>{t("Call Category")}</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='CALL CATEGORY'
+                            name='callCategory'
+                            onChange={handleInputChange}
+                            value={postFormData.callCategory}
+                            required
+                        />
+                        <Form.Control.Feedback type='invalid'>{!callCategoryValidate ? "Please enter a category." : ""}</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label htmlFor='payment'>{t("Payment")}</Form.Label>
+                        <Form.Control
+                            type='float'
+                            name='payment'
+                            onChange={handleInputChange}
+                            value={postFormData.payment}
+                            required
+                        />
+                        <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
+                    </Form.Group>
 
 
 
-                        <Form.Group>
-                            <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call")}</Form.Label>
-                            <Form.Control
-                                type='text'
-                                placeholder='PHONE NUMBER'
-                                name='phoneNumberToCall'
-                                onChange={handleInputChange}
-                                value={postFormData.phoneNumberToCall}
-                                required
-                            />
-                            <Form.Control.Feedback type='invalid'>{!phoneNumberToCallValidate ? "Please enter a phone number to call." : ""}</Form.Control.Feedback>
-                        </Form.Group>
+                    <Form.Group>
+                        <Form.Label htmlFor='callTime'>{t("Call Time")}</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='CALL TIME'
+                            name='callTime'
+                            onChange={handleInputChange}
+                            value={postFormData.callTime}
+                            required
+                        />
+                        <Form.Control.Feedback type='invalid'>{!callTimeValidate ? "Please enter a task call time (please specify time zone)" : ""}</Form.Control.Feedback>
+                    </Form.Group>
 
 
 
-                        <Button
-                            disabled={!(postFormData.taskTitle && postFormData.description)}
-                            type='submit'
-                            variant='success'>
-                            {t("Submit")}
-                        </Button>
+                    <Form.Group>
+                        <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call")}</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='PHONE NUMBER'
+                            name='phoneNumberToCall'
+                            onChange={handleInputChange}
+                            value={postFormData.phoneNumberToCall}
+                            required
+                        />
+                        <Form.Control.Feedback type='invalid'>{!phoneNumberToCallValidate ? "Please enter a phone number to call." : ""}</Form.Control.Feedback>
+                    </Form.Group>
 
-                    </Form>
-                    <footer className = "footer2">
+
+
+                    <Button
+                        disabled={!(postFormData.taskTitle && postFormData.description)}
+                        type='submit'
+                        variant='success'>
+                        {t("Submit")}
+                    </Button>
+
+                </Form>
+                <footer className="footer2">
                     <p className="copyright">Connect 2 Call © 2022</p>
 
-                    </footer>
-                </div>
-  
+                </footer>
+            </div>
+
         </>
     );
 };

@@ -28,28 +28,33 @@ function Header() {
     const { name, value } = event.target;
     setSiteLanguage({ ...siteLanguage, [name]: value });
     localStorage.setItem("i18nextLng", value);
+    console.log(siteLanguage)
+    console.log(value)
+    console.log(localStorage.getItem("i18nextLng"))
   };
 
 
   useEffect(() => {
-
-
-
     const currentLanguage = localStorage.getItem("i18nextLng");
     setSiteLanguage(currentLanguage)
+    console.log(siteLanguage)
   });
 
-  const renderNewPost = () => {
-
+  const checkLogginForNewPost = () => {
     if (Auth.loggedIn()) {
       window.location.assign('/new-post');
+    } else {
+      window.location.assign('/#login-form')
     }
-    window.location.assign('/#login-form')
+  };
 
-  }
-
-
-
+  const checkLogginForBoard = () => {
+    if (Auth.loggedIn()) {
+      window.location.assign('/board');
+    } else {
+      window.location.assign('/#login-form')
+    }
+  };
 
 
 
@@ -69,10 +74,10 @@ function Header() {
           <a className="button" href="/signupform">
             {t("Sign Up")}
           </a>
-          <a className="button" href="/board">
+          <a className="button" onClick={checkLogginForBoard}>
             {t("Board")}
           </a>
-          <a className="button" onClick={renderNewPost}>
+          <a className="button" onClick={checkLogginForNewPost}>
             {t("New post")}
           </a>
           <br />
