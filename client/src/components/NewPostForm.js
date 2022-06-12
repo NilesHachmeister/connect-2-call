@@ -23,7 +23,7 @@ const NewPostForm = () => {
 
     const currentLanguage = localStorage.getItem("i18nextLng");
     // set initial form state
-    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: 0, callTime: '', phoneNumberToCall: '', });
+    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: '', callTime: '', phoneNumberToCall: '', });
     const [addPost, { error }] = useMutation(ADD_POST);
     // set state for form validation
     const [validated] = useState(true);
@@ -119,7 +119,7 @@ const NewPostForm = () => {
             setShowAlert(true);
         };
 
-        window.location.assign('/board');
+        // window.location.assign('/board');
 
     };
 
@@ -191,7 +191,7 @@ const NewPostForm = () => {
                     <Form.Group>
                         <Form.Label htmlFor='payment'>{t("Payment")}</Form.Label>
                         <Form.Control
-                            type='float'
+                            type='string'
                             name='payment'
                             onChange={handleInputChange}
                             value={postFormData.payment}

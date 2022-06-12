@@ -139,7 +139,7 @@ const Card = () => {
 
     const renderCallLang = (language) => {
 
-        if (language === "en") {
+        if (language === "en" || language === "en-US") {
             return "English";
         }
         if (language === "es") {
@@ -174,7 +174,7 @@ const Card = () => {
                         <p><u>{t("Call Language")}:</u> {renderCallLang(element.callLanguage)} </p>
                         <p><u>{t("Description")}:</u>{element.description}</p>
                         <p><u>{t("Call Category")}:</u> {element.callCategory}</p>
-                        <p><u>{t("Payment")}:</u> {element.payment}</p>
+                        <p><u>{t("Payment")}:</u> ${element.payment}</p>
                         <p><u>{t("Phone Number")}:</u> {element.phoneNumberToCall}</p>
 
                         <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
