@@ -36,9 +36,9 @@ function Header() {
 
   useEffect(() => {
     const currentLanguage = localStorage.getItem("i18nextLng");
-    setSiteLanguage(currentLanguage)
+    setSiteLanguage({ siteLanguage: currentLanguage })
     console.log(siteLanguage)
-  });
+  }, []);
 
   const checkLogginForNewPost = () => {
     if (Auth.loggedIn()) {
@@ -83,11 +83,11 @@ function Header() {
           <br />
           <div id="site-language">
             <Form.Group id="site-language-form">
-              <Form.Label id="site-language-form-label" htmlFor='spokenLanguage'
+              <Form.Label id="site-language-form-label" htmlFor='siteLanguage'
                 onChange={handleInputChange}
               >{t("Site Language")}:
-                <select name='spokenLanguage'
-                  value={siteLanguage}
+                <select name='siteLanguage'
+                  value={siteLanguage.siteLanguage}
                 >
                   <option value="en">English</option>
                   <option value="es">Español</option>

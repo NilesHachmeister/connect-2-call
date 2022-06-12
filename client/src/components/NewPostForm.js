@@ -23,7 +23,7 @@ const NewPostForm = () => {
 
     const currentLanguage = localStorage.getItem("i18nextLng");
     // set initial form state
-    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: '', description: '', callCategory: '', payment: 0, callTime: '', phoneNumberToCall: '', });
+    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: 0, callTime: '', phoneNumberToCall: '', });
     const [addPost, { error }] = useMutation(ADD_POST);
     // set state for form validation
     const [validated] = useState(true);
@@ -47,22 +47,6 @@ const NewPostForm = () => {
 
 
     useEffect(() => {
-
-
-
-
-        if (callLanguage === "en") {
-            setPostFormData({ ...postFormData, callLanguage: "English" });
-            setCallLanguage("English");
-        }
-        if (callLanguage === "es") {
-            setPostFormData({ ...postFormData, callLanguage: "Español" });
-            setCallLanguage("Español");
-        }
-        if (callLanguage === "ru") {
-            setPostFormData({ ...postFormData, callLanguage: "Русский" });
-            setCallLanguage("Русский");
-        }
 
 
         if (postFormData.taskTitle.split("").length >= 1) {
@@ -139,7 +123,6 @@ const NewPostForm = () => {
 
     };
 
-
     return (
         <>
             <div style={{ backgroundImage: `url(${pattern2})` }}>
@@ -171,9 +154,9 @@ const NewPostForm = () => {
                     <Form.Group>
                         <Form.Label htmlFor='callLanguage' onChange={handleInputChange} >{t("Call Language")}:
                             <select name='callLanguage' value={callLanguage}>
-                                <option value="English">English</option>
-                                <option value="Español">Español</option>
-                                <option value="Русский">Русский</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="ru">Русский</option>
                             </select></Form.Label>
                         <br></br>
                         <Form.Control.Feedback type='invalid'></Form.Control.Feedback>

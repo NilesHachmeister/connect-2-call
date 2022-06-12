@@ -18,7 +18,7 @@ const lngs = {
 
 
 const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '', username: '' });
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loginUser] = useMutation(LOGIN_USER);
@@ -50,7 +50,6 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-      username: '',
       email: '',
       password: '',
     });
@@ -58,10 +57,10 @@ const LoginForm = () => {
 
   return (
     <>
-      
+
       <Form noValidate validated={validated} onSubmit={handleFormSubmit} id="login-form">
-      <h1>{t("Welcome Back!")}</h1>
-      <br></br>
+        <h1>{t("Welcome Back!")}</h1>
+        <br></br>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           {t("Something went wrong with your login credentials!")}
         </Alert>
@@ -75,7 +74,7 @@ const LoginForm = () => {
             value={userFormData.email}
             required
           />
-          <Form.Control.Feedback type='invalid'>{t("Email is required!")}</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
@@ -88,7 +87,7 @@ const LoginForm = () => {
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback type='invalid'>{t("Password is required!")}</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
         </Form.Group>
         <Button
           disabled={!(userFormData.email && userFormData.password)}
