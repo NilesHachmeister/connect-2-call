@@ -86,12 +86,14 @@ p {
 	font-weight: 300;
 	line-height: 1.42;
 }
+
 p4 {
 	font-family: sans-serif;
 	font-weight: 300;
 	line-height: 1.42;
 	text-decoration: underline;
 }
+
 h44 {
 	font-family: sans-serif;
 	font-weight: 300;
@@ -100,15 +102,15 @@ h44 {
 }
 
 label.form-label {
-	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 span {
 	font-weight: 300;
 	font-size: 25px;
-	color:red;
+	color: red;
 	margin-bottom: 20px;
-	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #card-about {
@@ -301,8 +303,9 @@ h3 {
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-h33{
-	font-weight:200;
+
+h33 {
+	font-weight: 200;
 	font-style: oblique;
 	text-decoration: underline;
 	margin: 0;
@@ -311,8 +314,9 @@ h33{
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-h22{
-	
+
+h22 {
+
 	margin: 0;
 	color: rgb(182, 98, 98);
 	font-weight: 200;
@@ -328,6 +332,7 @@ h1 {
 	font-size: 2.5em;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 h44 {
 
 	font-weight: bold;
@@ -369,7 +374,7 @@ h11 {
 }
 
 div.container {
-	margin-left:auto;
+	margin-left: auto;
 	margin-right: auto;
 	padding-left: 30px;
 	padding-right: 30px;
@@ -483,7 +488,7 @@ input {
 
 
 .container {
-	padding-top:300px;
+	padding-top: 300px;
 	background-color: rgba(255, 255, 255, 0.74);
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
