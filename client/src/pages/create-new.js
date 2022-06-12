@@ -23,14 +23,14 @@ const NewPostPage = () => {
     <>
       <div style={{ backgroundImage: `url(${pattern2})` }}>
         <main>
-           
-          <Header />
+        <Header />
+         
 
           <NewPostForm />
          
         </main>
         <footer>
-            
+
         </footer>
       </div>
     </>

@@ -116,7 +116,7 @@ const SignupForm = () => {
   <main style={{ backgroundImage: `url(${pattern2})` }}>
     <Header />
         
-        {/* <div style={{ backgroundImage: `url(${pattern2})` }}></div> */}
+    
          
           <br></br>
           {/* This is needed for the validation functionality above */}
