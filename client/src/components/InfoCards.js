@@ -24,8 +24,9 @@ export default function Info() {
   <li className="card" id="card_1">
     <div className="card__content">
       <div>
+    
         <h2><i>"I'm so thankful I can depend on you!"</i></h2>
-        <p>-Joan from Minneapolis </p>
+        <p>-Joan from Minneapolis</p>
 
       </div>
       <figure>
