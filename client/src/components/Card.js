@@ -122,18 +122,18 @@ const Card = () => {
             {data ? data.posts.map((element, index) => {
                 return (
                    
-
+                        //figure out how to inline cap the Language
 
                     <div className = "container" key={element._id}>
 
                         <h33> Call Needed: </h33><h22>{element.taskTitle}</h22>
-                        <p>Username: {element.postUser.username}</p>
-                        <p>Created At: {element.createdAt} </p>
-                        <p>Call Language: {element.callLanguage} </p>
-                        <p><u>Description: </u>{element.description}</p>
-                        <p>Call Category: {element.callCategory}</p>
-                        <p>Payment: {element.payment}</p>
-                        <p>Phone Number: {element.phoneNumberToCall}</p>
+                        <p><u>Username:</u> {element.postUser.username}</p>
+                        <p><u>Created At:</u> {element.createdAt} </p>
+                        <p><u>Call Language:</u> {element.callLanguage} </p>     
+                        <p><u>Description:</u>{element.description}</p>
+                        <p><u>Call Category:</u> {element.callCategory}</p>
+                        <p><u>Payment:</u> {element.payment}</p>
+                        <p><u>Phone Number:</u> {element.phoneNumberToCall}</p>
                         <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
 
 
@@ -141,11 +141,11 @@ const Card = () => {
                         <p>Comments: {element.comments.length > 0 ? element.comments.map((comment) => {
                             return (
                                 <div>
-                                    <div>Comment: {comment.commentText}</div>
+                                    <div>Comment: <i>{comment.commentText}</i></div>
                                     <div>From: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
                                 </div>
                             )
-                        }) : <div>no comments</div>};</p>
+                        }) : <div><i>No Comments</i></div>}</p>
 
                         <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser} onClick={deletePost}>
                             Delete This Post  X {showDeleteAlert && deletePostIdState === element._id ? "You must own this post inorder to delete it" : ""}
@@ -154,7 +154,7 @@ const Card = () => {
                         <Form onSubmit={handleFormSubmit} data-postId={element._id}>
 
                             <Form.Group>
-                                <Form.Label htmlFor='comment'>Comment</Form.Label>
+                                <Form.Label htmlFor='comment'>Comment:</Form.Label>
                                 <Form.Control
                                     type='text'
                                     placeholder='Enter Comment Here'
