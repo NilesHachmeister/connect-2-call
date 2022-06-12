@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useTransition } from 'react';
 import {
     ApolloClient,
     InMemoryCache,
@@ -35,19 +35,9 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-
-// landing page
-
-// login/sign up
-
-// dashboard for caller full of posts
-
-// if noncaller - create new post option and posts already created
-
-// comments 
-
-
 class App extends React.Component {
+    
+
     render() {
         return (
             <ApolloProvider client={client}>

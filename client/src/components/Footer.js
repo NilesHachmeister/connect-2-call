@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../homepg.css';
+
+import { useTranslation, Trans } from "react-i18next";
+
+import "../i18n"
+import { t } from 'i18next';
+
+const lngs ={
+  en: { nativeName: 'English'},
+  es: { nativeName: 'Spanish'}
+}
 
 
 function Footer() {
+
+  
   return (
     <footer>
 
       <ul className="list-inline">
-        <li className="list-inline-item"><a href="#">Home</a></li>
-        <li className="list-inline-item"><a href="#">Login</a></li>
-        <li className="list-inline-item"><a href="#">Sign Up</a></li>
+        <li className="list-inline-item"><a href="#">{t("Home")}</a></li>
+        <li className="list-inline-item"><a href="#">{t("Login")}</a></li>
+        <li className="list-inline-item"><a href="#">{t("Sign Up")}</a></li>
 
       </ul>
 
