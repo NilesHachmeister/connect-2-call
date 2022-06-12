@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
 import '../homepg.css';
 import { Form } from 'react-bootstrap';
-
-import { useTranslation, Trans } from "react-i18next";
-
-import "../i18n"
-import { t } from 'i18next';
 import Home from './Home';
 
+import { useTranslation, Trans } from "react-i18next";
+import { Link } from 'react-router-dom';
+import "../i18n"
+import { t } from 'i18next';
 const lngs = {
   en: { nativeName: 'English' },
   es: { nativeName: 'Spanish' }

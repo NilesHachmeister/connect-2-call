@@ -8,6 +8,15 @@ import LoginForm from '../components/LoginForm'
 import SignupForm from "../components/SignupForm";
 import '../homepg.css';
 
+import { useTranslation, Trans } from "react-i18next";
+import { Link } from 'react-router-dom';
+import "../i18n"
+import { t } from 'i18next';
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
+}
+
 const SignUpPage = () => {
   const [content, setContent] = useState("Home")
   const handleChange = (content) => {

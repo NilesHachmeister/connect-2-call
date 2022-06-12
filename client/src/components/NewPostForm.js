@@ -5,6 +5,16 @@ import Auth from '../utils/auth'
 import { ADD_POST } from '../utils/mutations';
 import pattern2 from '../assets/pattern2.jpeg';
 
+import { useTranslation, Trans } from "react-i18next";
+import { Link } from 'react-router-dom';
+import "../i18n"
+import { t } from 'i18next';
+
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
+}
+
 // import Auth from '../utils/auth';
 
 const NewPostForm = () => {
@@ -150,11 +160,11 @@ const NewPostForm = () => {
                     <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
                         {/* show alert if server response is bad */}
                         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-                            Something went wrong with your signup!
+                            {t("Something went wrong with your signup!")}
                         </Alert>
 
                         <Form.Group>
-                            <Form.Label htmlFor='taskTitle'>taskTitle</Form.Label>
+                            <Form.Label htmlFor='taskTitle'>{t("taskTitle")}</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='taskTitle'
@@ -167,7 +177,7 @@ const NewPostForm = () => {
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label htmlFor='callLanguage' onChange={handleInputChange} >Call Language:
+                            <Form.Label htmlFor='callLanguage' onChange={handleInputChange} >{t("Call Language")}:
                                 <select name='callLanguage' value={callLanguage}>
                                     <option value="English">English</option>
                                     <option value="Español">Español</option>
@@ -178,7 +188,7 @@ const NewPostForm = () => {
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label htmlFor='description'>description</Form.Label>
+                            <Form.Label htmlFor='description'>{t("Description")}</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='description'
@@ -191,7 +201,7 @@ const NewPostForm = () => {
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label htmlFor='callCategory'>callCategory</Form.Label>
+                            <Form.Label htmlFor='callCategory'>{t("Call Category")}</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='callCategory'
@@ -204,7 +214,7 @@ const NewPostForm = () => {
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label htmlFor='payment'>payment</Form.Label>
+                            <Form.Label htmlFor='payment'>{t("Payment")}</Form.Label>
                             <Form.Control
                                 type='float'
                                 name='payment'
@@ -218,7 +228,7 @@ const NewPostForm = () => {
 
 
                         <Form.Group>
-                            <Form.Label htmlFor='callTime'>callTime</Form.Label>
+                            <Form.Label htmlFor='callTime'>{t("callTime")}</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='callTime'
@@ -233,7 +243,7 @@ const NewPostForm = () => {
 
 
                         <Form.Group>
-                            <Form.Label htmlFor='phoneNumberToCall'>phoneNumberToCall</Form.Label>
+                            <Form.Label htmlFor='phoneNumberToCall'>{t("phoneNumberToCall")}</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='phoneNumberToCall'
@@ -251,7 +261,7 @@ const NewPostForm = () => {
                             disabled={!(postFormData.taskTitle && postFormData.description)}
                             type='submit'
                             variant='success'>
-                            Submit
+                            {t("Submit")}
                         </Button>
 
                     </Form>

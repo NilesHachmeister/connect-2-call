@@ -7,6 +7,16 @@ import Auth from '../utils/auth';
 import { emailValidation } from '../utils/emailValidation';
 import Header from '../components/Header';
 
+import { useTranslation, Trans } from "react-i18next";
+import { Link } from 'react-router-dom';
+import "../i18n"
+import { t } from 'i18next';
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
+}
+
+
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', siteLanguage: '', spokenLanguage: 'English', isCaller: false });
@@ -111,15 +121,15 @@ const SignupForm = () => {
           <br></br>
           {/* This is needed for the validation functionality above */}
           <Form className="sign-up-form" onSubmit={handleFormSubmit}>
-          <h1>Happy To Have You!</h1>
+          <h1>{t("Happy To Have You!")}</h1>
           <br></br>
             {/* show alert if server response is bad */}
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-              Something went wrong with your signup!
+              {t("Something went wrong with your signup!")}
             </Alert>
 
             <Form.Group>
-              <Form.Label htmlFor='username'>Username:</Form.Label>
+              <Form.Label htmlFor='username'>{t("Username")}:</Form.Label>
               <br></br>
               <Form.Control
                 type='text'
@@ -133,7 +143,7 @@ const SignupForm = () => {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label htmlFor='email'>Email:</Form.Label>
+              <Form.Label htmlFor='email'>{t("Email")}:</Form.Label>
               <br></br>
               <Form.Control
                 type='email'
@@ -147,7 +157,7 @@ const SignupForm = () => {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label htmlFor='password'>Password:</Form.Label>
+              <Form.Label htmlFor='password'>{t("Password")}:</Form.Label>
               <br></br>
               <Form.Control
                 type='password'
@@ -174,7 +184,7 @@ const SignupForm = () => {
             </Form.Group> */}
 
             <Form.Group>
-              <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >Spoken Language:    
+              <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >{t("Spoken Language")}:    
                 <select name='spokenLanguage'>
                   <br></br>
                   <option value="en">English</option>
@@ -188,7 +198,7 @@ const SignupForm = () => {
 
 
             <Form.Group>
-              <Form.Label htmlFor='isCaller'>I will be making calls.</Form.Label>
+              <Form.Label htmlFor='isCaller'>{t("I will be making calls.")}</Form.Label>
               <br></br>
               <Form.Control
                 type='checkbox'
@@ -197,7 +207,7 @@ const SignupForm = () => {
               // value={userFormData.isCaller}
               />
               <br></br>
-              <h11>Yes!</h11>
+              <h11>{t("Yes!")}</h11>
               <br></br>
               <br></br>
             </Form.Group>
@@ -208,7 +218,7 @@ const SignupForm = () => {
               disabled={!(userFormData.username && userFormData.email && userFormData.password)}
               type='submit'
               variant='success'>
-              Submit
+              {t("Submit")}
             </Button>
           </Form>
         

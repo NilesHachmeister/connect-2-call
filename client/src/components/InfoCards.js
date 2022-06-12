@@ -5,6 +5,19 @@ import card3 from '../assets/card3.jpeg'
 import card4 from '../assets/card4.jpeg'
 import card13 from '../assets/card13.jpeg'
 
+import { useTranslation, Trans } from "react-i18next";
+
+import "../i18n"
+import { t } from 'i18next';
+import Home from './Home';
+
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
+}
+
+
+
 export default function Info() {
     return (
      <>
