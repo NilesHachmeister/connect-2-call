@@ -59,7 +59,7 @@ const LoginForm = () => {
   return (
     <>
       <h1>{t("Welcome Back!")}</h1>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} id="login-form">
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           {t("Something went wrong with your login credentials!")}
         </Alert>
