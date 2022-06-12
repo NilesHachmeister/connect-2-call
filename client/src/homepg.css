@@ -86,6 +86,30 @@ p {
 	font-weight: 300;
 	line-height: 1.42;
 }
+p4 {
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.42;
+	text-decoration: underline;
+}
+h44 {
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.42;
+
+}
+
+label.form-label {
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+span {
+	font-weight: 300;
+	font-size: 25px;
+	color:red;
+	margin-bottom: 20px;
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 #card-about {
 
@@ -188,10 +212,10 @@ footer.footer2 {
 header {
 
 	background-color: transparent;
-
+	padding-top: 20px;
 	padding-right: 16px;
 	color: white;
-	position: fixed;
+	/* position: fixed; */
 	height: 15vh;
 	display: flex;
 	place-items: center;
@@ -269,10 +293,35 @@ h3 {
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+h33{
+	font-weight:200;
+	font-style: oblique;
+	margin: 0;
+	color: rgb(185, 113, 113);
+	
+	font-size: 20px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h22{
+	
+	margin: 0;
+	color: rgb(185, 113, 113);
+	font-weight: 200;
+	font-size: 30px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 h1 {
 	font-weight: bold;
 	margin: 0;
+	color: rgb(0, 0, 0);
+	font-weight: 200;
+	font-size: 2.5em;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h44 {
+
+	font-weight: bold;
 	color: rgb(0, 0, 0);
 	font-weight: 200;
 	font-size: 2.5em;
@@ -310,7 +359,10 @@ h11 {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-
+div.container {
+	margin-left:auto;
+	margin-right: auto;
+}
 
 
 a {
@@ -392,11 +444,12 @@ form {
 	padding-top: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
+	margin-top:20px;
 
 }
 
 input {
-	background-color: #eee;
+	background-color: rgb(255, 255, 255);
 	border: none;
 	padding: 12px 12px;
 	margin: 8px 0;
@@ -406,15 +459,24 @@ input {
 
 
 .container {
-	background-color: #fff;
+	padding-top:300px;
+	background-color: rgba(255, 255, 255, 0.74);
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 	position: relative;
 	overflow: hidden;
 	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-	margin-bottom: 30px;
+	max-width: auto;
+	min-height: auto;
+   margin-top: 0;
+	border-radius: 15px;
+	height: 100%;
+	align-items: center;
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 
 }
 

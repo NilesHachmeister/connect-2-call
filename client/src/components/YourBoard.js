@@ -1,9 +1,13 @@
 import React, { useState, useQuery } from "react";
-import Card from './Card'
+import Card from "./Card";
 import NewPostForm from "./NewPostForm";
-import { GET_POSTS } from '../utils/queries'
+import { GET_POSTS } from "../utils/queries";
 import BoardPage from "../pages/board";
-import pattern2 from '../assets/pattern2.jpeg';
+import pattern2 from "../assets/pattern2.jpeg";
+import Header from '../components/Header';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 
 function YourBoard() {
@@ -11,18 +15,13 @@ function YourBoard() {
 
   // const { loading, data } = useQuery(GET_POSTS);
 
-
-
-
   // Function to add a bucket list item
   const addCardItem = (item) => {
-    console.log(
-      item
-    );
+    console.log(item);
     // Check to see if the item text is empty
     if (!item.text) {
       return;
-    };
+    }
 
     // Add the new bucket list item to the existing array of objects
     const newCard = [item, ...card];
@@ -38,7 +37,7 @@ function YourBoard() {
     let updatedCard = card.map((item) => {
       if (item.id === id) {
         item.isComplete = !item.isComplete;
-      };
+      }
       return item;
     });
 
@@ -58,7 +57,7 @@ function YourBoard() {
     // Make sure that the value isn't empty
     if (!newValue.text) {
       return;
-    };
+    }
 
     // We use the "prev" argument provided with the useState hook to map through our list of items
     // We then check to see if the item ID matches the if of the item that was clicked and if so we set it to a new value
@@ -68,26 +67,42 @@ function YourBoard() {
   };
 
   return (
-    
+    <>
+  
+
+
+   
  
-    <main style={{ backgroundImage: `url(${pattern2})` }}>
+ 
+            <Card className="boardCards"
+            card={card}
+            completeCardItem={completeCardItem}
+            removeCardItem={removeCardItem}
+            editCardItem={editCardItem}>
+       
+          </Card>
+
           
-    <div>
-      <h1>What is on your bucket list?</h1>
+   
 
-      <Card className = "sign-up-form"
+      
 
-        card={card}
-        completeCardItem={completeCardItem}
-        removeCardItem={removeCardItem}
-        editCardItem={editCardItem}
 
-      // data={data}
 
-      ></Card>
-    </div>
-    </main>
+     
+
+        
+      
+
+     
+        
+
+        <footer className="footer2">
+          <p className="copyright">Connect 2 Call © 2022</p>
+        </footer>
+       
+        </>
   );
-};
+}
 
 export default YourBoard;
