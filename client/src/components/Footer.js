@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import '../homepg.css';
+import Home from './Home';
 
 import { useTranslation, Trans } from "react-i18next";
-
+import { Link } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 

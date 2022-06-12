@@ -9,6 +9,16 @@ import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
 import Header from '../components/Header';
 import pattern2 from "../assets/pattern2.jpeg";
 
+import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from "react-i18next";
+
+import "../i18n"
+import { t } from 'i18next';
+const lngs = {
+    en: { nativeName: 'English' },
+    es: { nativeName: 'Spanish' }
+}
+
 
 // import { QUERY_CHECKOUT } from '../../utils/queries';
 
@@ -142,26 +152,28 @@ const Card = () => {
 
                     <div className="container" key={element._id}>
 
-                        <h33> Call Needed: </h33><h22>{element.taskTitle}</h22>
-                        <p><u>Username:</u> {element.postUser.username}</p>
-                        <p><u>Created At:</u> {element.createdAt} </p>
-                        <p><u>Call Language:</u> {element.callLanguage} </p>
-                        <p><u>Description:</u>{element.description}</p>
-                        <p><u>Call Category:</u> {element.callCategory}</p>
-                        <p><u>Payment:</u> {element.payment}</p>
-                        <p><u>Phone Number:</u> {element.phoneNumberToCall}</p>
+
+                        <h33> {t("Call Needed")}: </h33><h22>{element.taskTitle}</h22>
+                        <p><u>{t("Username")}:</u> {element.postUser.username}</p>
+                        <p><u>{t("Created At")}:</u> {element.createdAt} </p>
+                        <p><u>{t("Call Language")}:</u> {element.callLanguage} </p>     
+                        <p><u>{t("Description")}:</u>{element.description}</p>
+                        <p><u>{t("Call Category")}:</u> {element.callCategory}</p>
+                        <p><u>{t("Payment")}:</u> {element.payment}</p>
+                        <p><u>{t("Phone Number")}:</u> {element.phoneNumberToCall}</p>
+
                         <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
 
 
 
-                        <p>Comments: {element.comments.length > 0 ? element.comments.map((comment) => {
+                        <p>{t("Comments")}: {element.comments.length > 0 ? element.comments.map((comment) => {
                             return (
                                 <div>
-                                    <div>Comment: <i>{comment.commentText}</i></div>
-                                    <div>From: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
+                                    <div>{t("Comment")}: <i>{comment.commentText}</i></div>
+                                    <div>{t("From")}: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
                                 </div>
                             )
-                        }) : <div><i>No Comments</i></div>}</p>
+                        }) : <div><i>{t("No Comments")}</i></div>}</p>
 
                         <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser._id} onClick={deletePost}>
                             {deletePostIdState === element.postUser._id ? "Delete This Post  X" : ""}
@@ -170,7 +182,7 @@ const Card = () => {
                         <Form onSubmit={handleFormSubmit} data-postId={element._id}>
 
                             <Form.Group>
-                                <Form.Label htmlFor='comment'>Comment:</Form.Label>
+                                <Form.Label htmlFor='comment'>{t("Comment")}:</Form.Label>
                                 <Form.Control
                                     type='text'
                                     placeholder='Enter Comment Here'
@@ -187,7 +199,7 @@ const Card = () => {
                                 // disabled={!(commentFormData.commentText)}
                                 type='submit'
                                 variant='success'>
-                                Submit
+                                {t("Submit")}
                             </Button>
                         </Form>
                     </div>
