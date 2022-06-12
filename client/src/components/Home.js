@@ -3,7 +3,7 @@ import Info from './InfoCards';
 import '../homepg.css';
 import backgroundImage from '../assets/new-header.jpg';
 import signUp from '../assets/newsignup.jpeg';
-
+import LoginForm from "./LoginForm";
 import { useTranslation, Trans } from "react-i18next";
 import { Link } from 'react-router-dom';
 import "../i18n"
@@ -16,6 +16,14 @@ const lngs = {
 
 
 const Home = () => {
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -44,7 +52,7 @@ const Home = () => {
         <div class="container1" id="container1">
           <div class="form-container1 log-in-container1">
 
-            <form1>
+            {/* <form id="login-form">
               <h1>{t("Welcome Back!")}</h1>
 
               <br />
@@ -53,7 +61,11 @@ const Home = () => {
               <input type="password" placeholder="Password" />
 
               <button>{t("Log In")}</button>
-            </form1>
+            </form> */}
+
+            < LoginForm />
+
+
           </div>
           <div class="overlay-container">
             <div class="overlay" style={{ backgroundImage: `url(${signUp})` }}>
@@ -65,9 +77,9 @@ const Home = () => {
                 <br></br>
 
 
-                <a1 className="button" href="/signupform">
+                <a href="/signupform">
                   <button>{t("Sign Up")}</button>
-                </a1>
+                </a>
 
 
                 <br />
