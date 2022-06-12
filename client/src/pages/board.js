@@ -29,7 +29,7 @@ const BoardPage = () => {
        <div  style={{ backgroundImage: `url(${pattern2})` }}>
     <main>
       
-      <Header />
+ 
 
         
         <YourBoard />

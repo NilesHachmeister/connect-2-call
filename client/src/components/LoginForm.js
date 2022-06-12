@@ -58,16 +58,18 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1>{t("Welcome Back!")}</h1>
+      
       <Form noValidate validated={validated} onSubmit={handleFormSubmit} id="login-form">
+      <h1>{t("Welcome Back!")}</h1>
+      <br></br>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           {t("Something went wrong with your login credentials!")}
         </Alert>
         <Form.Group>
-          <Form.Label htmlFor='email'>{t("Email")}</Form.Label>
+          <Form.Label htmlFor='email'>{t("Email")}:</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Your email'
+            placeholder='Your Email'
             name='email'
             onChange={handleInputChange}
             value={userFormData.email}
@@ -77,10 +79,10 @@ const LoginForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='password'>{t("Password")}</Form.Label>
+          <Form.Label htmlFor='password'>{t("Password")}:</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Your password'
+            placeholder='Your Password'
             name='password'
             onChange={handleInputChange}
             value={userFormData.password}
