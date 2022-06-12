@@ -44,7 +44,7 @@
 	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
 	background: rgb(255, 255, 255);
 	color: rgb(10, 5, 7);
-	border-radius: 1em;
+	border-radius: 10px;
 	overflow: hidden;
 	display: grid;
 	grid-template-areas: "text img";
@@ -120,7 +120,7 @@ span {
 	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
 	background: rgb(255, 255, 255);
 	color: rgb(10, 5, 7);
-	border-radius: 1em;
+	border-radius: 10px;
 	width: 80%;
 	place-self: center;
 	text-align: center;
@@ -129,7 +129,11 @@ span {
 
 }
 
-
+select {
+	border-radius: 3px;
+	margin-left: 4px;
+	background-color: #dddddd7c;
+}
 
 
 /* ------------------- */
@@ -179,10 +183,8 @@ a.button {
 footer {
 	padding: 20px;
 	color: #4b4c4d;
-	background-color: rgba(245, 243, 243, 0.407);
-
-
-
+	background-color: rgba(245, 243, 243, 0.185);
+	margin-top: 20px;;
 }
 
 footer.footer2 {
@@ -191,6 +193,7 @@ footer.footer2 {
 	background-color: rgba(245, 243, 243, 0.407);
 	position: inherit;
 	margin-top: 20px;
+
 
 }
 
@@ -214,24 +217,29 @@ header {
 	background-color: transparent;
 	padding-top: 20px;
 	padding-right: 16px;
-	color: white;
-	/* position: fixed; */
+	
+	
 	height: 15vh;
 	display: flex;
 	place-items: center;
-	width: 100vw;
+	width: 100vw; 
+
 }
+
+
 
 
 .fixed-bg {
 	min-height: 900px;
 	justify-content: center;
-	background-attachment: fixed;
+	background-attachment:fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
+	
 
 }
+
 
 
 
@@ -296,16 +304,17 @@ h3 {
 h33{
 	font-weight:200;
 	font-style: oblique;
+	text-decoration: underline;
 	margin: 0;
-	color: rgb(185, 113, 113);
-	
+	color: rgb(182, 98, 98);
+	margin-right: 5px;
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 h22{
 	
 	margin: 0;
-	color: rgb(185, 113, 113);
+	color: rgb(182, 98, 98);
 	font-weight: 200;
 	font-size: 30px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -362,6 +371,10 @@ h11 {
 div.container {
 	margin-left:auto;
 	margin-right: auto;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-bottom: 10px;
+	margin-top: 20px;
 }
 
 
@@ -390,6 +403,7 @@ form.sign-up-form {
 	margin-left: auto;
 	margin-right: auto;
 	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.652), 0 1em 2em rgba(0, 0, 0, 0.1);
+	margin-top: 20px;
 
 }
 
@@ -419,6 +433,8 @@ input.form-control {
 	text-align: center;
 	font-style: italic;
 	margin-bottom: 0;
+	
+
 }
 
 div.invalid-feedback {
@@ -426,18 +442,23 @@ div.invalid-feedback {
 	padding-bottom: 15px;
 	font-style: italic;
 	padding-top: 1px;
+
+}
+
+div.invalid-feedback {
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
 
 
-
 form {
-	background-color: #FFFFFF;
+	background-color: #d7d7d7;
 	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.544), 0 1em 2em rgba(0, 0, 0, 0.4);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	border-radius: 15px;
+	border-radius: 10px;
 	height: 100%;
 	text-align: center;
 	padding-bottom: 20px;
@@ -445,6 +466,8 @@ form {
 	padding-left: 20px;
 	padding-right: 20px;
 	margin-top:20px;
+	margin-left: 20px;
+	margin-right: 20px;
 
 }
 
@@ -454,6 +477,7 @@ input {
 	padding: 12px 12px;
 	margin: 8px 0;
 	width: 100%;
+	border-radius: 5px;;
 }
 
 
@@ -469,7 +493,7 @@ input {
 	max-width: auto;
 	min-height: auto;
    margin-top: 0;
-	border-radius: 15px;
+	border-radius: 10px;
 	height: 100%;
 	align-items: center;
 	text-align: center;
@@ -480,11 +504,63 @@ input {
 
 }
 
+/* background-color: #d7d7d7; */
 
+form1 {
+	background-color: #e8e6e6c7;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
 
 .form-container {
 	position: absolute;
 	top: 0;
+	height: 100%;
+}
+
+.container1 {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+.form-container1 {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+.log-in-container1 {
+	font-family: sans-serif;
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+input.form1-control {
+	background-color: rgb(212, 210, 210);
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+
+.overlay-container1 {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
 	height: 100%;
 }
 

@@ -5,6 +5,7 @@ import pattern2 from '../assets/pattern2.jpeg';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { emailValidation } from '../utils/emailValidation';
+import Header from '../components/Header';
 
 const SignupForm = () => {
   // set initial form state
@@ -17,6 +18,10 @@ const SignupForm = () => {
   const [emailValidate, setEmailValidate] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
   const [spokenLanguageValidate, setSpokenLanguageValidate] = useState(false);
+
+  useEffect(() => {
+
+  });
 
 
   const [showAlert, setShowAlert] = useState(false);
@@ -99,6 +104,7 @@ const SignupForm = () => {
     <>
  
   <main style={{ backgroundImage: `url(${pattern2})` }}>
+    <Header />
         
         {/* <div style={{ backgroundImage: `url(${pattern2})` }}></div> */}
          
@@ -106,6 +112,7 @@ const SignupForm = () => {
           {/* This is needed for the validation functionality above */}
           <Form className="sign-up-form" onSubmit={handleFormSubmit}>
           <h1>Happy To Have You!</h1>
+          <br></br>
             {/* show alert if server response is bad */}
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
               Something went wrong with your signup!
@@ -122,7 +129,7 @@ const SignupForm = () => {
                 value={userFormData.username}
                 required
               />
-              <Form.Control.Feedback type='invalid'>{!usernameValidate ? "Username must be 5 characters or more" : ""}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{!usernameValidate ? "Username must be 5 characters or more." : ""}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group>
@@ -136,7 +143,7 @@ const SignupForm = () => {
                 value={userFormData.email}
                 required
               />
-              <Form.Control.Feedback type='invalid'>{!emailValidate ? "Must be a valid email" : ""}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{!emailValidate ? "Must be a valid email." : ""}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group>
@@ -150,7 +157,7 @@ const SignupForm = () => {
                 value={userFormData.password}
                 required
               />
-              <Form.Control.Feedback type='invalid'>{!passwordValidate ? "Password must be 5 characters or more" : ""}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{!passwordValidate ? "Password must be 5 characters or more." : ""}</Form.Control.Feedback>
             </Form.Group>
 
             {/* <Form.Group>
@@ -167,15 +174,16 @@ const SignupForm = () => {
             </Form.Group> */}
 
             <Form.Group>
-              <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >Spoken Language:
+              <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >Spoken Language:    
                 <select name='spokenLanguage'>
+                  <br></br>
                   <option value="en">English</option>
                   <option value="es">Español</option>
                   <option value="ru">Русский</option>
 
                 </select></Form.Label>
               <br></br>
-              <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak" : ""}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak." : ""}</Form.Control.Feedback>
             </Form.Group>
 
 
