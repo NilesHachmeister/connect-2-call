@@ -6,22 +6,22 @@ import { useTranslation, Trans } from "react-i18next";
 import "../i18n"
 import { t } from 'i18next';
 
-const lngs ={
-  en: { nativeName: 'English'},
-  es: { nativeName: 'Spanish'}
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
 }
 
 
 function Footer() {
 
-  
+
   return (
     <footer>
 
       <ul className="list-inline">
         <li className="list-inline-item"><a href="#">{t("Home")}</a></li>
-        <li className="list-inline-item"><a href="#">{t("Login")}</a></li>
-        <li className="list-inline-item"><a href="#">{t("Sign Up")}</a></li>
+        <li className="list-inline-item"><a href="#login-form">{t("Login")}</a></li>
+        <li className="list-inline-item"><a href="/signupform">{t("Sign Up")}</a></li>
 
       </ul>
 

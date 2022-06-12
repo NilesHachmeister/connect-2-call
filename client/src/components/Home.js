@@ -31,7 +31,7 @@ const Home = () => {
 
         <div class="container1" id="container1">
           <div class="form-container1 log-in-container1">
-            <form1>
+            <form1 id="login-form">
               <h1>Welcome Back!</h1>
               <br />
 
@@ -50,9 +50,9 @@ const Home = () => {
                 <p><h3>Sign up below to either make or request calls.</h3></p>
                 <br></br>
 
-                <a1 className="button" href="/signupform">
+                <a href="/signupform">
                   <button>Sign Up</button>
-                </a1>
+                </a>
 
                 <br />
 
