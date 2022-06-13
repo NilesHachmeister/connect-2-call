@@ -51,9 +51,10 @@ const Home = () => {
 
       <aside>
         <div class="card" id="card-about">
-          <p><h7>{t("Connect 2 Call is a platform utilized to assist others in making phone calls!")}
+          <p><h7>{t("Connect 2 Call is a platform utilized to assist others in making phone calls!")}</h7></p>
             <br></br>
-            <br></br>{t("Whether the reason be anxiety, language barriers, or available time, we help connect you to callers who are available, capable, and comfortable calling for you.")}</h7></p>
+            
+            <p><h7>{t("Whether the reason be anxiety, language barriers, or available time, we help connect you to callers who are available, capable, and comfortable calling for you.")}</h7></p>
 
         </div>
 
