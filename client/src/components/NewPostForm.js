@@ -23,7 +23,7 @@ const NewPostForm = () => {
 
     const currentLanguage = localStorage.getItem("i18nextLng");
     // set initial form state
-    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: '', callTime: '', phoneNumberToCall: '', });
+    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: '0', callTime: '', phoneNumberToCall: '', });
     const [addPost, { error }] = useMutation(ADD_POST);
     // set state for form validation
     const [validated] = useState(true);
@@ -93,6 +93,9 @@ const NewPostForm = () => {
 
 
         event.preventDefault();
+
+
+
 
         // check if form has everything (as per react-bootstrap docs)
         const form = event.currentTarget;
