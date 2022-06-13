@@ -25,11 +25,10 @@
 
 
 ## Built with. 
-* Front end: HTML, CSS, Bootstrap, Javascript, Node.js. 
-* Back end: MongoDB, etc.. etc.. 
+*  HTML, CSS, Bootstrap, Javascript, Node.js., Express.js, JWT 
+*  MongoDB, React, GraphQl, 
 
-
-
+## [Heroku deployment]()
 ## [Live Website]()
 <img src = "img/Screen Shot 2022-06-08 at 10.43.02 PM.png">
 <br />
