@@ -34,9 +34,9 @@ const postSchema = new Schema({
 
   payment: {
 
-    type: Number,
+    type: String,
     required: true,
-
+    default: '0'
   },
 
 
