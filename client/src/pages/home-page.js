@@ -9,33 +9,26 @@ import Footer from '../components/Footer';
 import '../homepg.css';
 import pattern2 from '../assets/pattern2.jpeg';
 
+import { useTranslation, Trans } from "react-i18next";
+import { Link } from 'react-router-dom';
+import "../i18n"
+import { t } from 'i18next';
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
+}
+
 const MainHomePage = () => {
-  const [content, setContent] = useState("Home")
-  const handleChange = (content) => {
-    setContent(content)
-  }
-  const render = () => {
-    if (content === "Home") {
-      return <Home />
-    }
-    else if (content === "Login") {
-      return <LoginForm
-      />
-    }
-    else if (content === "SignUp") {
-      return <SignUpPage />
-    }
-  }
+
+
   return (
     <>
-<main style = {{backgroundImage: `url(${pattern2})`}}>
-      <Header
-        currentPage={content} changeFunction={handleChange}
-      />
-   
-      {render()}
-    
-      <Footer />
+      <main style={{ backgroundImage: `url(${pattern2})` }}>
+        <Header
+        />
+
+        <Home />
+        <Footer />
       </main>
     </>
   )

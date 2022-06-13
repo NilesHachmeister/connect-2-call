@@ -36,6 +36,7 @@ query Posts {
     callTime
     phoneNumberToCall
       postUser {
+        _id
       username
     }
     completed

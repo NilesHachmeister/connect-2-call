@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 // the secret will need to be put in proccess.env
-const secret = 'mysecretsshhhhh';
+const secret = process.env.SECTRET || 'mysecretsshhhhh';
 const expiration = '2h';
 
 

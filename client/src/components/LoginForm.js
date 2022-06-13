@@ -5,8 +5,20 @@ import Auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 
+import { useTranslation, Trans } from "react-i18next";
+import { Link } from 'react-router-dom';
+import "../i18n"
+import { t } from 'i18next';
+
+const lngs = {
+  en: { nativeName: 'English' },
+  es: { nativeName: 'Spanish' }
+}
+
+
+
 const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '', username: '' });
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loginUser] = useMutation(LOGIN_USER);
@@ -38,7 +50,6 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-      username: '',
       email: '',
       password: '',
     });
@@ -46,41 +57,43 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1>Welcome Back!</h1>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} id="login-form">
+        <h1>{t("Welcome Back!")}</h1>
+        <br></br>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your login credentials!
+          {t("Something went wrong with your login credentials!")}
         </Alert>
         <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
+          <Form.Label htmlFor='email'>{t("Email")}:</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Your email'
+            placeholder='Your Email'
             name='email'
             onChange={handleInputChange}
             value={userFormData.email}
             required
           />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Label htmlFor='password'>{t("Password")}:</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Your password'
+            placeholder='Your Password'
             name='password'
             onChange={handleInputChange}
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
         </Form.Group>
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type='submit'
           variant='success'>
-          Submit
+          {t("Submit")}
         </Button>
       </Form>
     </>

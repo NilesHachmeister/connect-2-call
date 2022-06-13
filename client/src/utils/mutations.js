@@ -25,7 +25,9 @@ export const ADD_POST = gql`
         payment
         callTime
         phoneNumberToCall
-       postUser
+       postUser{
+        _id
+       }
 
       
     }

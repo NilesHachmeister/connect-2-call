@@ -1,16 +1,37 @@
 import React, { useState } from "react";
 import '../homepg.css';
 import Auth from '../utils/auth'
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { GET_POSTS, GET_USER } from "../utils/queries";
 import NewPostForm from "./NewPostForm";
 import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
+import Header from '../components/Header';
+import pattern2 from "../assets/pattern2.jpeg";
 
+import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from "react-i18next";
+
+import "../i18n"
+import { t } from 'i18next';
+const lngs = {
+    en: { nativeName: 'English' },
+    es: { nativeName: 'Spanish' }
+}
+
+
+// import { QUERY_CHECKOUT } from '../../utils/queries';
 
 const Card = () => {
 
     const { loading, data } = useQuery(GET_POSTS);
+
+    const loggedUser = Auth.getProfile()
+
+    const commentAuthorId = loggedUser.data._id
+
+
+
 
 
     const [deleteThisPost, { deleteError }] = useMutation(DELETE_POST);
@@ -20,16 +41,16 @@ const Card = () => {
     // set state for form validation
     const [validated] = useState(true);
     // set state for alert
-    const [showDeleteAlert, setDeleteShowAlert] = useState(false);
-    const [deletePostIdState, setDeletePostIdState] = useState("")
+    // const [showDeleteAlert, setDeleteShowAlert] = useState(false);
+    const [deletePostIdState, setDeletePostIdState] = useState(commentAuthorId)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setCommentFormData({ ...commentFormData, [name]: value });
-
-
-        console.log(commentFormData)
     };
+
+
+
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -44,14 +65,12 @@ const Card = () => {
 
             } catch (err) {
                 console.error(err);
-
             };
 
         } else {
-            setDeleteShowAlert(true)
             setDeletePostIdState(id)
-            console.log("you must own this post");
         }
+        window.location.assign('/board');
     }
 
 
@@ -65,9 +84,7 @@ const Card = () => {
             event.stopPropagation();
         }
 
-        const loggedUser = Auth.getProfile()
 
-        const commentAuthorId = loggedUser.data._id
 
         try {
             const { data } = await addComment({
@@ -107,56 +124,88 @@ const Card = () => {
         window.location.assign('/board');
     }
 
+    // const stripePay = async (event) => {
+    //     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    //     useEffect(() => {
+    //         if (data) {
+    //             stripePromise.then((res) => {
+    //                 res.redirectToCheckout({ sessionId: data.checkout.session });
+    //             });
+    //         }
+    //     }, [data]);
+    // }
+
+
+
+    const renderCallLang = (language) => {
+
+        if (language === "en" || language === "en-US") {
+            return "English";
+        }
+        if (language === "es") {
+            return "Español";
+        }
+        if (language === "ru") {
+            return "Русский";
+        }
+
+    };
+
+
 
     return (
 
+        <>
 
-        <div>
 
 
             {data ? data.posts.map((element, index) => {
                 return (
 
+                    //figure out how to inline cap the Language
 
-                    <div key={element._id}>
 
-                        <h2> title: {element.taskTitle}</h2>
-                        <p>Username: {element.postUser.username}</p>
-                        <p>createdAt:{element.createdAt} </p>
-                        <p>Call Language: {element.callLanguage} </p>
-                        <p>Description: {element.description}</p>
-                        <p>Call Category: {element.callCategory}</p>
-                        <p>Payment: {element.payment}</p>
-                        <p>Phone Number: {element.phoneNumberToCall}</p>
+                    <div className="container" key={element._id}>
+
+
+                        <h33> {t("Call Needed")}: </h33><h22>{element.taskTitle}</h22>
+                        <p><u>{t("Username")}:</u> {element.postUser.username}</p>
+                        <p><u>{t("Created At")}:</u> {element.createdAt} </p>
+                        <p><u>{t("Call Language")}:</u> {renderCallLang(element.callLanguage)} </p>
+                        <p><u>{t("Description")}:</u>{element.description}</p>
+                        <p><u>{t("Call Category")}:</u> {element.callCategory}</p>
+                        <p><u>{t("Payment")}:</u> ${element.payment}</p>
+                        <p><u>{t("Phone Number")}:</u> {element.phoneNumberToCall}</p>
+
                         <button data-id={element._id} onClick={toggleAPostCompleted}>{element.completed ? "This task has been completed" : "Mark as completed"}</button>
 
 
 
-                        <p>Comments: {element.comments.length > 0 ? element.comments.map((comment) => {
+                        <p>{t("Comments")}: {element.comments.length > 0 ? element.comments.map((comment) => {
                             return (
                                 <div>
-                                    <div>Comment: {comment.commentText}</div>
-                                    <div>From: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
+                                    <div>{t("Comment")}: <i>{comment.commentText}</i></div>
+                                    <div>{t("From")}: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
                                 </div>
                             )
-                        }) : <div>no comments</div>};</p>
+                        }) : <div><i>{t("No Comments")}</i></div>}</p>
 
-                        <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser} onClick={deletePost}>
-                            Delete This Post  X {showDeleteAlert && deletePostIdState === element._id ? "You must own this post inorder to delete it" : ""}
+                        <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser._id} onClick={deletePost}>
+                            {deletePostIdState === element.postUser._id ? "Delete This Post  X" : ""}
                         </span>
 
                         <Form onSubmit={handleFormSubmit} data-postId={element._id}>
 
                             <Form.Group>
-                                <Form.Label htmlFor='comment'>Comment</Form.Label>
+                                <Form.Label htmlFor='comment'>{t("Comment")}:</Form.Label>
                                 <Form.Control
                                     type='text'
-                                    placeholder='commentText'
+                                    placeholder='Enter Comment Here'
                                     name='commentText'
                                     onChange={handleInputChange}
                                     required
                                 />
-                                <Form.Control.Feedback type='invalid'>Comment is required!</Form.Control.Feedback>
+                                <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
                             </Form.Group>
 
 
@@ -165,7 +214,7 @@ const Card = () => {
                                 // disabled={!(commentFormData.commentText)}
                                 type='submit'
                                 variant='success'>
-                                Submit
+                                {t("Submit")}
                             </Button>
                         </Form>
                     </div>
@@ -180,9 +229,9 @@ const Card = () => {
 
 
 
-        </div>
 
 
+        </>
     );
 };
 
