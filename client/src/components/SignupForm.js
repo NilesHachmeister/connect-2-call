@@ -172,18 +172,6 @@ const SignupForm = () => {
             <Form.Control.Feedback type='invalid'>{!passwordValidate ? "Password must be 5 characters or more." : ""}</Form.Control.Feedback>
           </Form.Group>
 
-          {/* <Form.Group>
-              <Form.Label htmlFor='siteLanguage'>siteLanguage</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='siteLanguage'
-                name='siteLanguage'
-                onChange={handleInputChange}
-                value={userFormData.siteLanguage}
-                required
-              />
-              <Form.Control.Feedback type='invalid'>Site Language Preference is required.</Form.Control.Feedback>
-            </Form.Group> */}
 
           <Form.Group>
             <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >{t("Spoken Language")}:
@@ -220,7 +208,6 @@ const SignupForm = () => {
             disabled={!(userFormData.username && userFormData.email && userFormData.password)}
             type='submit'
             variant='success'>
-
             {t("Submit")}
           </Button>
         </Form>
