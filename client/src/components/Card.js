@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../homepg.css';
 import Auth from '../utils/auth'
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
@@ -49,7 +49,10 @@ const Card = () => {
     };
 
 
+    useEffect(() => {
 
+
+    }, [data]);
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -69,7 +72,7 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        location.reload()
+        navigate('/')
     }
 
 
@@ -103,8 +106,7 @@ const Card = () => {
             commentText: ''
         });
 
-
-        location.reload()
+        navigate('/')
     };
 
 
@@ -119,8 +121,7 @@ const Card = () => {
         } catch (err) {
             console.error(err);
         };
-
-        navigate('/board')
+        navigate('/')
     }
 
     // const stripePay = async (event) => {
