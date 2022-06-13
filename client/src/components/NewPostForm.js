@@ -122,7 +122,7 @@ const NewPostForm = () => {
             setShowAlert(true);
         };
 
-        // window.location.assign('/board');
+        window.location.assign('/board');
 
     };
 
