@@ -29,6 +29,7 @@ const Card = () => {
 
     const commentAuthorId = loggedUser.data._id
 
+    const [dataState, setDataState] = useState()
 
     const navigate = useNavigate();
 
@@ -48,6 +49,11 @@ const Card = () => {
         setCommentFormData({ ...commentFormData, [name]: value });
     };
 
+    useEffect(() => {
+        if (data) {
+            setDataState(data)
+        }
+    });
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -67,7 +73,7 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        window.location.reload(false);
+        setDataState(data)
 
     }
 
@@ -102,8 +108,8 @@ const Card = () => {
             commentText: ''
         });
 
+        setDataState(data)
 
-        window.location.reload(false);
     };
 
 
@@ -118,7 +124,7 @@ const Card = () => {
         } catch (err) {
             console.error(err);
         };
-        window.location.reload(false);
+        setDataState(data)
     }
 
     // const stripePay = async (event) => {
@@ -156,7 +162,7 @@ const Card = () => {
 
 
 
-            {data ? data.posts.map((element, index) => {
+            {dataState ? dataState.posts.map((element, index) => {
                 return (
 
                     //figure out how to inline cap the Language
