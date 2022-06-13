@@ -64,11 +64,13 @@ function Header() {
       <header>
         <div className="header">
 
-          <a className="button" href="/">
-            {t("Home")}
-          </a>
 
-          <a className="button" href="/#login-form">
+          <Link to="/"> {t("Home")}</Link>
+          {/* <Link to="/#login-form"> {t("Home")}</Link> */}
+          <Link to="/signupform">  {t("Sign Up")}</Link>
+          <Link to="/"> {t("Home")}</Link>
+
+          {/* <a className="button" href="/#login-form">
             {t("Login")}
           </a>
           <a className="button" href="/signupform">
@@ -79,7 +81,7 @@ function Header() {
           </a>
           <a className="button" onClick={checkLogginForNewPost}>
             {t("New post")}
-          </a>
+          </a> */}
           <br />
           <div id="site-language">
             <Form.Group id="site-language-form">

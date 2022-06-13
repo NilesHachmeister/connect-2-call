@@ -9,7 +9,6 @@ import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
 import Header from '../components/Header';
 import pattern2 from "../assets/pattern2.jpeg";
 
-import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from "react-i18next";
 
 import "../i18n"

@@ -10,7 +10,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     Routes
 } from "react-router-dom";
 import HomePage from './pages/home-page';
