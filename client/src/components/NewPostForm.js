@@ -122,6 +122,8 @@ const NewPostForm = () => {
             setShowAlert(true);
         };
         refetch()
+        navigate('/board')
+
     };
 
     return (
