@@ -78,8 +78,8 @@ function Header() {
           <Link to="/" style={inlineStyle}> {t("Home")}</Link>
           <Link to="/#login-form" style={inlineStyle}>{t("Login")}</Link>
           <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
-          <Link to={checkLogginForBoard} style={inlineStyle}>{t("Board")}</Link>
-          <Link to={checkLogginForNewPost} style={inlineStyle}>{t("New post")}</Link>
+          <Link to='/board' style={inlineStyle}>{t("Board")}</Link>
+          <Link to='/new-post' style={inlineStyle}>{t("New post")}</Link>
 
           <br />
           <div id="site-language">
