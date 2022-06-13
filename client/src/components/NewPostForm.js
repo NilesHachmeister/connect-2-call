@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
 import { ADD_POST } from '../utils/mutations';
 import pattern2 from '../assets/pattern2.jpeg';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import { GET_POSTS, GET_USER } from "../utils/queries";
 import { useTranslation, Trans } from "react-i18next";
 import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
@@ -20,6 +20,8 @@ const lngs = {
 // import Auth from '../utils/auth';
 
 const NewPostForm = () => {
+
+    const { loading, data, err, refetch } = useQuery(GET_POSTS);
 
     const currentLanguage = localStorage.getItem("i18nextLng");
     // set initial form state
@@ -92,11 +94,7 @@ const NewPostForm = () => {
     };
 
     const handleFormSubmit = async (event) => {
-
-
         event.preventDefault();
-
-
 
 
         // check if form has everything (as per react-bootstrap docs)
@@ -123,10 +121,7 @@ const NewPostForm = () => {
             console.error(err);
             setShowAlert(true);
         };
-
-        navigate('/board')
-
-
+        refetch()
     };
 
     return (

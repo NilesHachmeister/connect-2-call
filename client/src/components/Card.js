@@ -20,12 +20,12 @@ const lngs = {
     es: { nativeName: 'Spanish' }
 }
 
-
 // import { QUERY_CHECKOUT } from '../../utils/queries';
 
 const Card = () => {
 
     const { loading, data, err, refetch } = useQuery(GET_POSTS);
+
 
     const loggedUser = Auth.getProfile();
 
