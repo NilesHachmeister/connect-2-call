@@ -145,7 +145,8 @@ const NewPostForm = () => {
                     </Alert>
 
                     <Form.Group>
-                        <Form.Label htmlFor='taskTitle'>{t("Task Title")}</Form.Label>
+                        <Form.Label htmlFor='taskTitle'>{t("Task Title:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='TASK TITLE'
@@ -169,7 +170,8 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='description'>{t("Description")}</Form.Label>
+                        <Form.Label htmlFor='description'>{t("Description")}:</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='DESCRIPTION'
@@ -182,7 +184,8 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='callCategory'>{t("Call Category")}</Form.Label>
+                        <Form.Label htmlFor='callCategory'>{t("Call Category:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='CALL CATEGORY'
@@ -195,7 +198,8 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='payment'>{t("Payment")}</Form.Label>
+                        <Form.Label htmlFor='payment'>{t("Payment")}:</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='string'
                             name='payment'
@@ -209,7 +213,8 @@ const NewPostForm = () => {
 
 
                     <Form.Group>
-                        <Form.Label htmlFor='callTime'>{t("Call Time")}</Form.Label>
+                        <Form.Label htmlFor='callTime'>{t("Call Time:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='CALL TIME'
@@ -224,7 +229,8 @@ const NewPostForm = () => {
 
 
                     <Form.Group>
-                        <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call")}</Form.Label>
+                        <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='PHONE NUMBER'
