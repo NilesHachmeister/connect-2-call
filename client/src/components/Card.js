@@ -169,6 +169,7 @@ const Card = () => {
                         <p><u>{t("Call Language")}:</u> {renderCallLang(element.callLanguage)} </p>
                         <p><u>{t("Description")}:</u>{element.description}</p>
                         <p><u>{t("Call Category")}:</u> {element.callCategory}</p>
+                        <p><u>{t("Call Time")}:</u> {element.callTime}</p>
                         <p><u>{t("Payment")}:</u> ${element.payment}</p>
                         <p><u>{t("Phone Number")}:</u> {element.phoneNumberToCall}</p>
 
