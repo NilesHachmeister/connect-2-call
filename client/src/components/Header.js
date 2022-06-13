@@ -9,7 +9,7 @@ import { Form } from 'react-bootstrap';
 import Home from './Home';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -23,6 +23,10 @@ function Header() {
   // const { i18n } = useTranslation();
 
   const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'en' });
+
+
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -42,21 +46,27 @@ function Header() {
 
   const checkLogginForNewPost = () => {
     if (Auth.loggedIn()) {
-      window.location.assign('/new-post');
+      navigate('/new-post')
     } else {
-      window.location.assign('/#login-form')
+      navigate('/#login-form')
     }
   };
 
   const checkLogginForBoard = () => {
     if (Auth.loggedIn()) {
-      window.location.assign('/board');
+      navigate('/board')
     } else {
-      window.location.assign('/#login-form')
+      navigate('/#login-form')
     }
   };
 
-
+  const inlineStyle = {
+    "border-radius": "10px",
+    "background-color": "#5b806baf",
+    "padding": "10px",
+    "font-size": "20px",
+    "margin": "6px"
+  }
 
   return (
 
@@ -64,22 +74,13 @@ function Header() {
       <header>
         <div className="header">
 
-          <a className="button" href="/">
-            {t("Home")}
-          </a>
 
-          <a className="button" href="/#login-form">
-            {t("Login")}
-          </a>
-          <a className="button" href="/signupform">
-            {t("Sign Up")}
-          </a>
-          <a className="button" onClick={checkLogginForBoard}>
-            {t("Board")}
-          </a>
-          <a className="button" onClick={checkLogginForNewPost}>
-            {t("New post")}
-          </a>
+          <Link to="/" style={inlineStyle}> {t("Home")}</Link>
+          <Link to="/#login-form" style={inlineStyle}>{t("Login")}</Link>
+          <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
+          <Link to='/board' style={inlineStyle}>{t("Board")}</Link>
+          <Link to='/new-post' style={inlineStyle}>{t("New post")}</Link>
+
           <br />
           <div id="site-language">
             <Form.Group id="site-language-form">

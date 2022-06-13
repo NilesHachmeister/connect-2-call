@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 
@@ -23,12 +23,14 @@ const NewPostForm = () => {
 
     const currentLanguage = localStorage.getItem("i18nextLng");
     // set initial form state
-    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: '', callTime: '', phoneNumberToCall: '', });
+    const [postFormData, setPostFormData] = useState({ taskTitle: '', callLanguage: currentLanguage, description: '', callCategory: '', payment: '0', callTime: '', phoneNumberToCall: '', });
     const [addPost, { error }] = useMutation(ADD_POST);
     // set state for form validation
     const [validated] = useState(true);
     // set state for alert
     const [showAlert, setShowAlert] = useState(false);
+
+    const navigate = useNavigate();
 
     const loggedUser = Auth.getProfile();
 
@@ -94,6 +96,9 @@ const NewPostForm = () => {
 
         event.preventDefault();
 
+
+
+
         // check if form has everything (as per react-bootstrap docs)
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -119,7 +124,8 @@ const NewPostForm = () => {
             setShowAlert(true);
         };
 
-        // window.location.assign('/board');
+        navigate('/board')
+
 
     };
 
@@ -139,7 +145,8 @@ const NewPostForm = () => {
                     </Alert>
 
                     <Form.Group>
-                        <Form.Label htmlFor='taskTitle'>{t("Task Title")}</Form.Label>
+                        <Form.Label htmlFor='taskTitle'>{t("Task Title:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='TASK TITLE'
@@ -163,7 +170,8 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='description'>{t("Description")}</Form.Label>
+                        <Form.Label htmlFor='description'>{t("Description:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='DESCRIPTION'
@@ -176,7 +184,8 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='callCategory'>{t("Call Category")}</Form.Label>
+                        <Form.Label htmlFor='callCategory'>{t("Call Category:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='CALL CATEGORY'
@@ -189,7 +198,8 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='payment'>{t("Payment")}</Form.Label>
+                        <Form.Label htmlFor='payment'>{t("Payment:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='string'
                             name='payment'
@@ -203,7 +213,8 @@ const NewPostForm = () => {
 
 
                     <Form.Group>
-                        <Form.Label htmlFor='callTime'>{t("Call Time")}</Form.Label>
+                        <Form.Label htmlFor='callTime'>{t("Call Time:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='CALL TIME'
@@ -218,7 +229,8 @@ const NewPostForm = () => {
 
 
                     <Form.Group>
-                        <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call")}</Form.Label>
+                        <Form.Label htmlFor='phoneNumberToCall'>{t("Phone Number To Call:")}</Form.Label>
+                        <br></br>
                         <Form.Control
                             type='text'
                             placeholder='PHONE NUMBER'

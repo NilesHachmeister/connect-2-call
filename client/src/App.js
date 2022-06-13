@@ -6,7 +6,12 @@ import {
     createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Routes
+} from "react-router-dom";
 import HomePage from './pages/home-page';
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
@@ -36,7 +41,7 @@ const client = new ApolloClient({
 });
 
 class App extends React.Component {
-    
+
 
     render() {
         return (
@@ -44,12 +49,24 @@ class App extends React.Component {
                 <Router>
                     <div>
 
-                        {/* <Header /> */}
+
+
+                        {/* <Routes>
+                            <Route path="/signupform">
+                                <SignupForm />
+                            </Route>
+                            <Route path="/board">
+                                <Board />
+                            </Route>
+                            <Route path="/new-post">
+                                <NewPostForm />
+                            </Route>
+                            <Route path="/">
+                                <HomePage />
+                            </Route>
+                        </Routes> */}
+
                         <Routes>
-                            <Route
-                                path="/"
-                                element={<HomePage />}
-                            />
                             <Route
                                 path="/signupform"
                                 element={<SignupForm />}
@@ -62,11 +79,34 @@ class App extends React.Component {
                                 path="/new-post"
                                 element={<NewPostForm />}
                             />
+                            <Route
+                                path="/"
+                                element={<HomePage />}
+                            />
                         </Routes>
+
+
+                        {/* <Switch>
+                        <Route
+                            path="/signupform"
+                            element={<SignupForm />}
+                        />
+                        <Route
+                            path="/board"
+                            element={<Board />}
+                        />
+                        <Route
+                            path="/new-post"
+                            element={<NewPostForm />}
+                        />
+                        <Route
+                            path="/"
+                            element={<HomePage />}
+                        />
+                    </Switch> */}
+
                     </div>
                 </Router>
-           
-
             </ApolloProvider>
         );
     }

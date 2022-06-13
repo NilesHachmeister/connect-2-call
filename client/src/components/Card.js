@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../homepg.css';
 import Auth from '../utils/auth'
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
@@ -9,9 +9,8 @@ import { DELETE_POST, TOGGLE_COMPLETE, ADD_COMMENT } from "../utils/mutations";
 import Header from '../components/Header';
 import pattern2 from "../assets/pattern2.jpeg";
 
-import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from "react-i18next";
-
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -24,14 +23,16 @@ const lngs = {
 
 const Card = () => {
 
-    const { loading, data } = useQuery(GET_POSTS);
+    const { loading, data, err, refetch } = useQuery(GET_POSTS);
 
-    const loggedUser = Auth.getProfile()
+    const loggedUser = Auth.getProfile();
+
+
 
     const commentAuthorId = loggedUser.data._id
 
 
-
+    const navigate = useNavigate();
 
 
     const [deleteThisPost, { deleteError }] = useMutation(DELETE_POST);
@@ -70,7 +71,7 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        window.location.assign('/board');
+        location.reload()
     }
 
 
@@ -104,8 +105,8 @@ const Card = () => {
             commentText: ''
         });
 
-
-        window.location.assign('/board');
+            refetch()
+        // location.reload()
     };
 
 
@@ -121,7 +122,7 @@ const Card = () => {
             console.error(err);
         };
 
-        window.location.assign('/board');
+        navigate('/board')
     }
 
     // const stripePay = async (event) => {
@@ -168,7 +169,8 @@ const Card = () => {
                     <div className="container" key={element._id}>
 
 
-                        <h33> {t("Call Needed")}: </h33><h22>{element.taskTitle}</h22>
+                        <h33 className = "h33"> {t("Call Needed")}: </h33>
+                        <h22>{element.taskTitle}</h22>
                         <p><u>{t("Username")}:</u> {element.postUser.username}</p>
                         <p><u>{t("Created At")}:</u> {element.createdAt} </p>
                         <p><u>{t("Call Language")}:</u> {renderCallLang(element.callLanguage)} </p>
@@ -181,20 +183,20 @@ const Card = () => {
 
 
 
-                        <p>{t("Comments")}: {element.comments.length > 0 ? element.comments.map((comment) => {
+                        <h6><u>{t("Comments")}: </u>{element.comments.length > 0 ? element.comments.map((comment) => {
                             return (
                                 <div>
                                     <div>{t("Comment")}: <i>{comment.commentText}</i></div>
                                     <div>{t("From")}: {comment.commentAuthor.username != null ? comment.commentAuthor.username : ""}</div>
                                 </div>
                             )
-                        }) : <div><i>{t("No Comments")}</i></div>}</p>
+                        }) : <div><i>{t("No Comments")}</i></div>}</h6>
 
                         <span role="button" tabIndex="0" data-id={element._id} data-user={element.postUser._id} onClick={deletePost}>
                             {deletePostIdState === element.postUser._id ? "Delete This Post  X" : ""}
                         </span>
 
-                        <Form onSubmit={handleFormSubmit} data-postId={element._id}>
+                        <Form onSubmit={handleFormSubmit} data-postid={element._id}>
 
                             <Form.Group>
                                 <Form.Label htmlFor='comment'>{t("Comment")}:</Form.Label>

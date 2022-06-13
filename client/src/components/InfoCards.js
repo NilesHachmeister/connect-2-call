@@ -37,6 +37,7 @@ export default function Info() {
   <li className="card" id="card_2">
     <div className="card__content">
       <div>
+      {t("Call Needed")}:
         <h2><i>"So appreciative of this service- I can finally get some errands done while I'm at work."</i></h2>
         <p>-Brook from Scranton.</p>
  

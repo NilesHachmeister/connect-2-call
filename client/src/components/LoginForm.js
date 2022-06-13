@@ -6,7 +6,7 @@ import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 
@@ -22,6 +22,8 @@ const LoginForm = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loginUser] = useMutation(LOGIN_USER);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -48,11 +50,7 @@ const LoginForm = () => {
       console.error(err);
       setShowAlert(true);
     }
-
-    setUserFormData({
-      email: '',
-      password: '',
-    });
+    navigate('/board')
   };
 
   return (
