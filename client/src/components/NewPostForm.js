@@ -170,7 +170,7 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='description'>{t("Description:")}</Form.Label>
+                        <Form.Label htmlFor='description'>{t("Description")}:</Form.Label>
                         <br></br>
                         <Form.Control
                             type='text'
@@ -198,7 +198,7 @@ const NewPostForm = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label htmlFor='payment'>{t("Payment:")}</Form.Label>
+                        <Form.Label htmlFor='payment'>{t("Payment")}:</Form.Label>
                         <br></br>
                         <Form.Control
                             type='string'

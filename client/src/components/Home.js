@@ -25,7 +25,8 @@ const Home = () => {
     "background-color": "#5b806baf",
     "padding": "10px",
     "font-size": "20px",
-    "margin": "6px"
+    "margin": "6px",
+    "color": "white"
   }
 
 
