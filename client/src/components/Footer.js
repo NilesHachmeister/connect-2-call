@@ -13,6 +13,13 @@ const lngs = {
 }
 
 
+const footerStyle = {
+  "text-align": "center",
+  "align-items": "center",
+  "list-style": "none"
+}
+
+
 function Footer() {
 
 
@@ -20,9 +27,9 @@ function Footer() {
     <footer>
 
       <ul className="list-inline">
-        <li className="list-inline-item"><a href="#">{t("Home")}</a></li>
-        <li className="list-inline-item"><a href="#login-form">{t("Login")}</a></li>
-        <li className="list-inline-item"><a href="/signupform">{t("Sign Up")}</a></li>
+        <Link className="list-inline-item" to="/" stlye={footerStyle}> {t("Home")}</Link>
+        <Link className="list-inline-item" to="#login-form" stlye={footerStyle}>{t("Login")}</Link>
+        <Link className="list-inline-item" to="/signupform" stlye={footerStyle}>{t("Sign Up")}</Link>
 
       </ul>
 
