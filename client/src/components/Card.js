@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from "react";
+
 import '../homepg.css';
 import Auth from '../utils/auth'
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
@@ -28,8 +30,11 @@ const Card = () => {
     const loggedUser = Auth.getProfile();
 
 
+    const [dataState, setDataState] = useState()
+
 
     const commentAuthorId = loggedUser.data._id
+
 
 
     const navigate = useNavigate();
@@ -50,8 +55,11 @@ const Card = () => {
         setCommentFormData({ ...commentFormData, [name]: value });
     };
 
-
-
+    useEffect(() => {
+        if (data) {
+            setDataState(data)
+        }
+    });
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -71,7 +79,9 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
+
         location.reload()
+
     }
 
 
@@ -105,8 +115,10 @@ const Card = () => {
             commentText: ''
         });
 
+
             refetch()
         // location.reload()
+
     };
 
 
@@ -122,7 +134,9 @@ const Card = () => {
             console.error(err);
         };
 
+
         navigate('/board')
+
     }
 
     // const stripePay = async (event) => {
@@ -160,7 +174,7 @@ const Card = () => {
 
 
 
-            {data ? data.posts.map((element, index) => {
+            {dataState ? dataState.posts.map((element, index) => {
                 return (
 
                   

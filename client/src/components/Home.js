@@ -27,6 +27,7 @@ const Home = () => {
     "font-size": "20px",
     "margin": "6px",
     "color": "white"
+
   }
 
 
@@ -59,8 +60,6 @@ const Home = () => {
 
         <div class="container1" id="container1">
           <div class="form-container1 log-in-container1">
-
-     
 
             < LoginForm />
 
