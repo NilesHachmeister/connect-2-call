@@ -79,9 +79,7 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-
-        location.reload()
-
+        refetch()
     }
 
 
@@ -114,11 +112,7 @@ const Card = () => {
         setCommentFormData({
             commentText: ''
         });
-
-
-            refetch()
-        // location.reload()
-
+        refetch()
     };
 
 
@@ -133,23 +127,8 @@ const Card = () => {
         } catch (err) {
             console.error(err);
         };
-
-
-        navigate('/board')
-
+        refetch()
     }
-
-    // const stripePay = async (event) => {
-    //     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-    //     useEffect(() => {
-    //         if (data) {
-    //             stripePromise.then((res) => {
-    //                 res.redirectToCheckout({ sessionId: data.checkout.session });
-    //             });
-    //         }
-    //     }, [data]);
-    // }
-
 
 
     const renderCallLang = (language) => {
@@ -177,13 +156,13 @@ const Card = () => {
             {dataState ? dataState.posts.map((element, index) => {
                 return (
 
-                  
+
 
 
                     <div className="container" key={element._id}>
 
 
-                        <h33 className = "h33"> {t("Call Needed")}: </h33>
+                        <h33 className="h33"> {t("Call Needed")}: </h33>
                         <h22>{element.taskTitle}</h22>
                         <p><u>{t("Username")}:</u> {element.postUser.username}</p>
                         <p><u>{t("Created At")}:</u> {element.createdAt} </p>
