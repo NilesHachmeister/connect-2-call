@@ -11,7 +11,8 @@
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postinstall": "ng build"
   },
   "keywords": [],
   "author": "",
