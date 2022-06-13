@@ -9,7 +9,7 @@ import { Form } from 'react-bootstrap';
 import Home from './Home';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -23,6 +23,10 @@ function Header() {
   // const { i18n } = useTranslation();
 
   const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'en' });
+
+
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -42,17 +46,17 @@ function Header() {
 
   const checkLogginForNewPost = () => {
     if (Auth.loggedIn()) {
-      window.location.assign('/new-post');
+      navigate('/new-post')
     } else {
-      window.location.assign('/#login-form')
+      navigate('/#login-form')
     }
   };
 
   const checkLogginForBoard = () => {
     if (Auth.loggedIn()) {
-      window.location.assign('/board');
+      navigate('/board')
     } else {
-      window.location.assign('/#login-form')
+      navigate('/#login-form')
     }
   };
 
@@ -74,8 +78,8 @@ function Header() {
           <Link to="/" style={inlineStyle}> {t("Home")}</Link>
           <Link to="/#login-form" style={inlineStyle}>{t("Login")}</Link>
           <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
-          <Link to="/board" style={inlineStyle}>{t("Board")}</Link>
-          <Link to="/new-post" style={inlineStyle}>{t("New post")}</Link>
+          <Link to={checkLogginForBoard} style={inlineStyle}>{t("Board")}</Link>
+          <Link to={checkLogginForNewPost} style={inlineStyle}>{t("New post")}</Link>
 
           <br />
           <div id="site-language">

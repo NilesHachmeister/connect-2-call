@@ -69,7 +69,7 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        navigate('/board')
+        location.reload()
     }
 
 
@@ -104,7 +104,7 @@ const Card = () => {
         });
 
 
-        navigate('/board')
+        location.reload()
     };
 
 
