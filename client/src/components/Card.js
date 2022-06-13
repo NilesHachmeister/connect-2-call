@@ -147,7 +147,7 @@ const Card = () => {
             {data ? data.posts.map((element, index) => {
                 return (
 
-                    //figure out how to inline cap the Language
+                  
 
 
                     <div className="container" key={element._id}>

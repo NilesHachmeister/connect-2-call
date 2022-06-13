@@ -52,16 +52,7 @@ const Home = () => {
         <div class="container1" id="container1">
           <div class="form-container1 log-in-container1">
 
-            {/* <form id="login-form">
-              <h1>{t("Welcome Back!")}</h1>
-
-              <br />
-
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-
-              <button>{t("Log In")}</button>
-            </form> */}
+     
 
             < LoginForm />
 
