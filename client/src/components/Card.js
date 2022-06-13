@@ -49,11 +49,6 @@ const Card = () => {
     };
 
 
-    useEffect(() => {
-
-
-    }, [data]);
-
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
         const loggedUser = Auth.getProfile();
@@ -72,7 +67,8 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        navigate('/')
+        window.location.reload(false);
+
     }
 
 
@@ -106,7 +102,8 @@ const Card = () => {
             commentText: ''
         });
 
-        navigate('/')
+
+        window.location.reload(false);
     };
 
 
@@ -121,7 +118,7 @@ const Card = () => {
         } catch (err) {
             console.error(err);
         };
-        navigate('/')
+        window.location.reload(false);
     }
 
     // const stripePay = async (event) => {
