@@ -73,7 +73,8 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        setDataState(data)
+        // setDataState(data)
+        window.location.href = '/'
 
     }
 
@@ -108,7 +109,8 @@ const Card = () => {
             commentText: ''
         });
 
-        setDataState(data)
+        // setDataState(...dataState, data)
+        window.location.href = '/'
 
     };
 
@@ -124,7 +126,8 @@ const Card = () => {
         } catch (err) {
             console.error(err);
         };
-        setDataState(data)
+        // setDataState(data)
+        window.location.href = '/'
     }
 
     // const stripePay = async (event) => {
