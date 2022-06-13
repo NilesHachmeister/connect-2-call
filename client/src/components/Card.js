@@ -10,7 +10,7 @@ import Header from '../components/Header';
 import pattern2 from "../assets/pattern2.jpeg";
 
 import { useTranslation, Trans } from "react-i18next";
-
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -30,7 +30,7 @@ const Card = () => {
     const commentAuthorId = loggedUser.data._id
 
 
-
+    const navigate = useNavigate();
 
 
     const [deleteThisPost, { deleteError }] = useMutation(DELETE_POST);
@@ -69,7 +69,7 @@ const Card = () => {
         } else {
             setDeletePostIdState(id)
         }
-        window.location.assign('/board');
+        navigate('/board')
     }
 
 
@@ -104,7 +104,7 @@ const Card = () => {
         });
 
 
-        window.location.assign('/board');
+        navigate('/board')
     };
 
 
@@ -120,7 +120,7 @@ const Card = () => {
             console.error(err);
         };
 
-        window.location.assign('/board');
+        navigate('/board')
     }
 
     // const stripePay = async (event) => {
