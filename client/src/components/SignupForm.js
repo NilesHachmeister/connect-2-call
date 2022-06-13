@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, SplitButton } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import pattern2 from '../assets/pattern2.jpeg';
 import { ADD_USER } from '../utils/mutations';
@@ -8,7 +8,7 @@ import { emailValidation } from '../utils/emailValidation';
 import Header from '../components/Header';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -22,7 +22,7 @@ const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', siteLanguage: '', spokenLanguage: 'English', isCaller: false });
   const [addUser, { error }] = useMutation(ADD_USER);
 
-
+  const navigate = useNavigate();
 
   const [usernameValidate, setUsernameValidate] = useState(false);
   const [emailValidate, setEmailValidate] = useState(false);
@@ -97,6 +97,10 @@ const SignupForm = () => {
       console.error(err);
       setShowAlert(true);
     }
+
+
+
+    navigate('/board')
 
     setUserFormData({
       username: '',
@@ -216,6 +220,7 @@ const SignupForm = () => {
             disabled={!(userFormData.username && userFormData.email && userFormData.password)}
             type='submit'
             variant='success'>
+
             {t("Submit")}
           </Button>
         </Form>
