@@ -20,6 +20,13 @@ const Home = () => {
 
 
 
+  const inlineStyle = {
+    "border-radius": "10px",
+    "background-color": "#5b806baf",
+    "padding": "10px",
+    "font-size": "20px",
+    "margin": "6px"
+  }
 
 
 
@@ -52,17 +59,6 @@ const Home = () => {
         <div class="container1" id="container1">
           <div class="form-container1 log-in-container1">
 
-            {/* <form id="login-form">
-              <h1>{t("Welcome Back!")}</h1>
-
-              <br />
-
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-
-              <button>{t("Log In")}</button>
-            </form> */}
-
             < LoginForm />
 
 
@@ -76,10 +72,8 @@ const Home = () => {
                 <p><h3>{t("Sign up below to either make or request calls.")}</h3></p>
                 <br></br>
 
+                <Link to="/signupform" style={inlineStyle}>{t("Sign Up")}</Link>
 
-                <a href="/signupform">
-                  <button>{t("Sign Up")}</button>
-                </a>
 
 
                 <br />

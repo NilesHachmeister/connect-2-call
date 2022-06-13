@@ -56,7 +56,13 @@ function Header() {
     }
   };
 
-
+  const inlineStyle = {
+    "border-radius": "10px",
+    "background-color": "#5b806baf",
+    "padding": "10px",
+    "font-size": "20px",
+    "margin": "6px"
+  }
 
   return (
 
@@ -65,23 +71,12 @@ function Header() {
         <div className="header">
 
 
-          <Link to="/"> {t("Home")}</Link>
-          {/* <Link to="/#login-form"> {t("Home")}</Link> */}
-          <Link to="/signupform">  {t("Sign Up")}</Link>
-          <Link to="/"> {t("Home")}</Link>
+          <Link to="/" style={inlineStyle}> {t("Home")}</Link>
+          <Link to="/#login-form" style={inlineStyle}>{t("Login")}</Link>
+          <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
+          <Link to="/board" style={inlineStyle}>{t("Board")}</Link>
+          <Link to="/new-post" style={inlineStyle}>{t("New post")}</Link>
 
-          {/* <a className="button" href="/#login-form">
-            {t("Login")}
-          </a>
-          <a className="button" href="/signupform">
-            {t("Sign Up")}
-          </a>
-          <a className="button" onClick={checkLogginForBoard}>
-            {t("Board")}
-          </a>
-          <a className="button" onClick={checkLogginForNewPost}>
-            {t("New post")}
-          </a> */}
           <br />
           <div id="site-language">
             <Form.Group id="site-language-form">
