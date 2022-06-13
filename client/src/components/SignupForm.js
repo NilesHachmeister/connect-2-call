@@ -29,9 +29,7 @@ const SignupForm = () => {
   const [passwordValidate, setPasswordValidate] = useState(false);
   const [spokenLanguageValidate, setSpokenLanguageValidate] = useState(false);
 
-  useEffect(() => {
 
-  });
 
 
   const [showAlert, setShowAlert] = useState(false);
@@ -112,65 +110,65 @@ const SignupForm = () => {
 
   return (
     <>
- 
-  <main style={{ backgroundImage: `url(${pattern2})` }}>
-    <Header />
-        
-    
-         
-          <br></br>
-          {/* This is needed for the validation functionality above */}
-          <Form className="sign-up-form" onSubmit={handleFormSubmit}>
+
+      <main style={{ backgroundImage: `url(${pattern2})` }}>
+        <Header />
+
+
+
+        <br></br>
+        {/* This is needed for the validation functionality above */}
+        <Form className="sign-up-form" onSubmit={handleFormSubmit}>
           <h1>{t("Happy To Have You!")}</h1>
           <br></br>
-            {/* show alert if server response is bad */}
-            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-              {t("Something went wrong with your signup!")}
-            </Alert>
+          {/* show alert if server response is bad */}
+          <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+            {t("Something went wrong with your signup!")}
+          </Alert>
 
-            <Form.Group>
-              <Form.Label htmlFor='username'>{t("Username")}:</Form.Label>
-              <br></br>
-              <Form.Control
-                type='text'
-                placeholder='YOUR USERNAME'
-                name='username'
-                onChange={handleInputChange}
-                value={userFormData.username}
-                required
-              />
-              <Form.Control.Feedback type='invalid'>{!usernameValidate ? "Username must be 5 characters or more." : ""}</Form.Control.Feedback>
-            </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor='username'>{t("Username")}:</Form.Label>
+            <br></br>
+            <Form.Control
+              type='text'
+              placeholder='YOUR USERNAME'
+              name='username'
+              onChange={handleInputChange}
+              value={userFormData.username}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>{!usernameValidate ? "Username must be 5 characters or more." : ""}</Form.Control.Feedback>
+          </Form.Group>
 
-            <Form.Group>
-              <Form.Label htmlFor='email'>{t("Email")}:</Form.Label>
-              <br></br>
-              <Form.Control
-                type='email'
-                placeholder='EMAIL ADDRESS'
-                name='email'
-                onChange={handleInputChange}
-                value={userFormData.email}
-                required
-              />
-              <Form.Control.Feedback type='invalid'>{!emailValidate ? "Must be a valid email." : ""}</Form.Control.Feedback>
-            </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor='email'>{t("Email")}:</Form.Label>
+            <br></br>
+            <Form.Control
+              type='email'
+              placeholder='EMAIL ADDRESS'
+              name='email'
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>{!emailValidate ? "Must be a valid email." : ""}</Form.Control.Feedback>
+          </Form.Group>
 
-            <Form.Group>
-              <Form.Label htmlFor='password'>{t("Password")}:</Form.Label>
-              <br></br>
-              <Form.Control
-                type='password'
-                placeholder='PASSWORD'
-                name='password'
-                onChange={handleInputChange}
-                value={userFormData.password}
-                required
-              />
-              <Form.Control.Feedback type='invalid'>{!passwordValidate ? "Password must be 5 characters or more." : ""}</Form.Control.Feedback>
-            </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor='password'>{t("Password")}:</Form.Label>
+            <br></br>
+            <Form.Control
+              type='password'
+              placeholder='PASSWORD'
+              name='password'
+              onChange={handleInputChange}
+              value={userFormData.password}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>{!passwordValidate ? "Password must be 5 characters or more." : ""}</Form.Control.Feedback>
+          </Form.Group>
 
-            {/* <Form.Group>
+          {/* <Form.Group>
               <Form.Label htmlFor='siteLanguage'>siteLanguage</Form.Label>
               <Form.Control
                 type='text'
@@ -183,51 +181,51 @@ const SignupForm = () => {
               <Form.Control.Feedback type='invalid'>Site Language Preference is required.</Form.Control.Feedback>
             </Form.Group> */}
 
-            <Form.Group>
-              <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >{t("Spoken Language")}:    
-                <select name='spokenLanguage'>
-                  <br></br>
-                  <option value="en">English</option>
-                  <option value="es">Español</option>
-                  <option value="ru">Русский</option>
+          <Form.Group>
+            <Form.Label htmlFor='spokenLanguage' onChange={handleInputChange} >{t("Spoken Language")}:
+              <select name='spokenLanguage'>
+                <br></br>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="ru">Русский</option>
 
-                </select></Form.Label>
-              <br></br>
-              <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak." : ""}</Form.Control.Feedback>
-            </Form.Group>
-
-
-            <Form.Group>
-              <Form.Label htmlFor='isCaller'>{t("I will be making calls.")}</Form.Label>
-              <br></br>
-              <Form.Control
-                type='checkbox'
-                name='isCaller'
-                onChange={booleanChange}
-              // value={userFormData.isCaller}
-              />
-              <br></br>
-              <h11>{t("Yes!")}</h11>
-              <br></br>
-              <br></br>
-            </Form.Group>
+              </select></Form.Label>
+            <br></br>
+            <Form.Control.Feedback type='invalid'>{!spokenLanguageValidate ? "Please enter languages you speak." : ""}</Form.Control.Feedback>
+          </Form.Group>
 
 
+          <Form.Group>
+            <Form.Label htmlFor='isCaller'>{t("I will be making calls.")}</Form.Label>
+            <br></br>
+            <Form.Control
+              type='checkbox'
+              name='isCaller'
+              onChange={booleanChange}
+            // value={userFormData.isCaller}
+            />
+            <br></br>
+            <h11>{t("Yes!")}</h11>
+            <br></br>
+            <br></br>
+          </Form.Group>
 
-            <Button
-              disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-              type='submit'
-              variant='success'>
-              {t("Submit")}
-            </Button>
-          </Form>
-        
-            
 
-        <footer className = "footer2">
-      <p className="copyright">Connect 2 Call © 2022</p>
-      </footer>
-      
+
+          <Button
+            disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+            type='submit'
+            variant='success'>
+            {t("Submit")}
+          </Button>
+        </Form>
+
+
+
+        <footer className="footer2">
+          <p className="copyright">Connect 2 Call © 2022</p>
+        </footer>
+
       </main>
     </>
   );
