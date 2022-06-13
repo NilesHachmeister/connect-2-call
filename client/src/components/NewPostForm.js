@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 
@@ -29,6 +29,8 @@ const NewPostForm = () => {
     const [validated] = useState(true);
     // set state for alert
     const [showAlert, setShowAlert] = useState(false);
+
+    const navigate = useNavigate();
 
     const loggedUser = Auth.getProfile();
 
@@ -122,7 +124,8 @@ const NewPostForm = () => {
             setShowAlert(true);
         };
 
-        window.location.assign('/board');
+        navigate('/board')
+
 
     };
 
