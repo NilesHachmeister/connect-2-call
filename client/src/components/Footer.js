@@ -27,9 +27,9 @@ function Footer() {
     <footer>
 
       <ul className="list-inline">
-        <Link className="list-inline-item" to="/" stlye={footerStyle}> {t("Home")}</Link>
-        <Link className="list-inline-item" to="#login-form" stlye={footerStyle}>{t("Login")}</Link>
-        <Link className="list-inline-item" to="/signupform" stlye={footerStyle}>{t("Sign Up")}</Link>
+        <Link className="footer2" to="/" stlye={footerStyle}> {t("Home")}</Link>
+        <Link className="footer2" to="#login-form" stlye={footerStyle}>{t("Login")}</Link>
+        <Link className="footer2" to="/signupform" stlye={footerStyle}>{t("Sign Up")}</Link>
 
       </ul>
 
