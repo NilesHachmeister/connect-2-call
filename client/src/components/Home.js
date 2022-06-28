@@ -52,21 +52,21 @@ const Home = () => {
       <aside>
         <div class="card" id="card-about">
           <p><h7>{t("Connect 2 Call is a platform utilized to assist others in making phone calls!")}</h7></p>
-            <br></br>
-            
-            <p><h7>{t("Whether the reason be anxiety, language barriers, or available time, we help connect you to callers who are available, capable, and comfortable calling for you.")}</h7></p>
+          <br></br>
+
+          <p><h7>{t("Whether the reason be anxiety, language barriers, or available time, we help connect you to callers who are available, capable, and comfortable calling for you.")}</h7></p>
 
         </div>
 
 
         <div class="container1" id="container1">
-          <div class="form-container1 log-in-container1">
+          <div class="form-container1 log-in-container1" >
 
             < LoginForm />
 
 
           </div>
-          <div class="overlay-container">
+          <div class="overlay-container" id="homepage-signup">
             <div class="overlay" style={{ backgroundImage: `url(${signUp})` }}>
               <div class="overlay-panel overlay-right">
 

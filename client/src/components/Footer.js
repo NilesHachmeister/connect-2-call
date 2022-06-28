@@ -24,16 +24,9 @@ function Footer() {
 
 
   return (
-    <footer>
-
-      <ul className="list-inline">
-        <Link className="footer2" to="/" stlye={footerStyle}> {t("Home")}</Link>
-        <Link className="footer2" to="#login-form" stlye={footerStyle}>{t("Login")}</Link>
-        <Link className="footer2" to="/signupform" stlye={footerStyle}>{t("Sign Up")}</Link>
-
-      </ul>
-
+    <footer className="footer2">
       <p className="copyright">Connect 2 Call © 2022</p>
+
     </footer>
   );
 }

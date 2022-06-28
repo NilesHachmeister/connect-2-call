@@ -30,8 +30,6 @@ const Card = () => {
     const loggedUser = Auth.getProfile();
 
 
-    const [dataState, setDataState] = useState()
-
 
     const commentAuthorId = loggedUser.data._id
 
@@ -55,11 +53,7 @@ const Card = () => {
         setCommentFormData({ ...commentFormData, [name]: value });
     };
 
-    useEffect(() => {
-        if (data) {
-            setDataState(data)
-        }
-    });
+
 
     const deletePost = async (event) => {
         const { id, user } = event.target.dataset;
@@ -153,7 +147,7 @@ const Card = () => {
 
 
 
-            {dataState ? dataState.posts.map((element, index) => {
+            {data ? data.posts.map((element, index) => {
                 return (
 
 
