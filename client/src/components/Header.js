@@ -9,7 +9,8 @@ import { Form } from 'react-bootstrap';
 import Home from './Home';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -23,8 +24,6 @@ function Header() {
   // const { i18n } = useTranslation();
 
   const [siteLanguage, setSiteLanguage] = useState({ siteLanguage: 'en' });
-
-
 
   const navigate = useNavigate();
 
@@ -54,11 +53,17 @@ function Header() {
 
   const checkLogginForBoard = () => {
     if (Auth.loggedIn()) {
-      navigate('/board')
+      return '/board'
     } else {
-      navigate('/#login-form')
+      return '/'
     }
   };
+
+
+  const goToLoginForm = () => {
+    navigate('#homepage-signup');
+  };
+
 
   const inlineStyle = {
     "border-radius": "10px",
@@ -76,38 +81,14 @@ function Header() {
 
 
           <Link to="/" style={inlineStyle}> {t("Home")}</Link>
-          <Link to="/#login-form" style={inlineStyle}>{t("Login")}</Link>
+          <Link to="/#homepage-signup" style={inlineStyle}>{t("Login")}</Link>
           <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
-          <Link to='/board' style={inlineStyle}>{t("Board")}</Link>
-          <Link to='/new-post' style={inlineStyle}>{t("New post")}</Link>
+          <Link to={Auth.loggedIn() ? '/board' : '/signupform'} style={inlineStyle}>{t("Board")}</Link>
+          <Link to={Auth.loggedIn() ? '/new-post' : '/signupform'} style={inlineStyle}>{t("New post")}</Link>
 
           <br />
-          <div id="site-language">
-            <Form.Group id="site-language-form">
-              <Form.Label id="site-language-form-label" htmlFor='siteLanguage'
-                onChange={handleInputChange}
-              >{t("Site Language")}:
-                <select name='siteLanguage'
-                  value={siteLanguage.siteLanguage}
-                >
-                  <option value="en">English</option>
-                  <option value="es">Español</option>
-                  <option value="ru">Русский</option>
-                </select></Form.Label>
-              <Form.Control.Feedback type='invalid'></Form.Control.Feedback>
-            </Form.Group>
-            {/* <div>
-              {Object.keys(lngs).map((lng)=>(
-                <button type="submit" key={lng} 
-                >{lngs[lng].nativeName}</button>
-              ))}
-            </div> */}
-          </div>
 
         </div>
-
-
-
 
       </header>
 
