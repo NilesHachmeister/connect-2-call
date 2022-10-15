@@ -83,7 +83,7 @@ function Header() {
           <Link to="/" style={inlineStyle}> {t("Home")}</Link>
           <Link to="/#homepage-signup" style={inlineStyle}>{t("Login")}</Link>
           <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
-          <Link to={Auth.loggedIn() ? '/board' : '/signupform'} style={inlineStyle}>{t("Board")}</Link>
+          <Link to={Auth.loggedIn() ? '/board' : '/#homepage-signup'} style={inlineStyle}>{t("Board")}</Link>
           <Link to='/new-post' style={inlineStyle}>{t("New post")}</Link>
 
           <br />
