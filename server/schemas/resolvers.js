@@ -33,10 +33,10 @@ const resolvers = {
 
 
         addPost: async (parent, args) => {
-   
+
             const post = await Post.create(args);
             console.log(post)
-  
+
         },
 
 

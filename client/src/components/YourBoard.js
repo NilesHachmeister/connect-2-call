@@ -1,4 +1,4 @@
-import React, { useState, useQuery } from "react";
+import React, { useState, useQuery, useEffect } from "react";
 import Card from "./Card";
 import NewPostForm from "./NewPostForm";
 import { GET_POSTS } from "../utils/queries";
@@ -8,9 +8,9 @@ import Header from '../components/Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-
+import Auth from '../utils/auth';
 import { useTranslation, Trans } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -21,6 +21,11 @@ const lngs = {
 
 function YourBoard() {
   const [card, setCard] = useState([]);
+  const navigate = useNavigate();
+
+
+
+
 
   // const { loading, data } = useQuery(GET_POSTS);
 
@@ -77,40 +82,24 @@ function YourBoard() {
 
   return (
     <>
-  
+
       <Header />
 
-   
- 
- 
-            <Card className="boardCards"
-            card={card}
-            completeCardItem={completeCardItem}
-            removeCardItem={removeCardItem}
-            editCardItem={editCardItem}>
-       
-          </Card>
 
-          
-   
+      <Card className="boardCards"
+        card={card}
+        completeCardItem={completeCardItem}
+        removeCardItem={removeCardItem}
+        editCardItem={editCardItem}>
 
-      
+      </Card>
 
 
+      <footer className="footer2">
+        <p className="copyright">Connect 2 Call © 2022</p>
+      </footer>
 
-     
-
-        
-      
-
-     
-        
-
-        <footer className="footer2">
-          <p className="copyright">Connect 2 Call © 2022</p>
-        </footer>
-       
-        </>
+    </>
   );
 }
 
