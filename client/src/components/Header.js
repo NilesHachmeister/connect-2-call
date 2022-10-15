@@ -9,7 +9,8 @@ import { Form } from 'react-bootstrap';
 import Home from './Home';
 
 import { useTranslation, Trans } from "react-i18next";
-import { Link, useNavigate } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+import { useNavigate } from 'react-router-dom';
 import "../i18n"
 import { t } from 'i18next';
 const lngs = {
@@ -78,7 +79,7 @@ function Header() {
           <Link to="/" style={inlineStyle}> {t("Home")}</Link>
           <Link to="/#login-form" style={inlineStyle}>{t("Login")}</Link>
           <Link to="/signupform" style={inlineStyle}>  {t("Sign Up")}</Link>
-          <Link to='/board' style={inlineStyle}>{t("Board")}</Link>
+          <Link to={Auth.loggedIn() ? '/board' : '/'} style={inlineStyle}>{t("Board")}</Link>
           <Link to='/new-post' style={inlineStyle}>{t("New post")}</Link>
 
           <br />
